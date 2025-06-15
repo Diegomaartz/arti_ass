@@ -1,0 +1,53 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: articulo.aux
+Reallocating 'name_of_file' (item size: 1) to 7 items.
+The style file: ieeetr.bst
+Reallocating 'name_of_file' (item size: 1) to 12 items.
+Database file #1: referencias.bib
+Repeated entry---line 967 of file referencias.bib
+ : @article{estadoarte2
+ :                     ,
+I'm skipping whatever remains of this entry
+You've used 9 entries,
+            1876 wiz_defined-function locations,
+            517 strings with 4777 characters,
+and the built_in function-call counts, 1275 in all, are:
+= -- 112
+> -- 55
+< -- 0
++ -- 23
+- -- 14
+* -- 65
+:= -- 197
+add.period$ -- 13
+call.type$ -- 9
+change.case$ -- 9
+chr.to.int$ -- 0
+cite$ -- 9
+duplicate$ -- 51
+empty$ -- 160
+format.name$ -- 14
+if$ -- 315
+int.to.chr$ -- 0
+int.to.str$ -- 9
+missing$ -- 3
+newline$ -- 34
+num.names$ -- 7
+pop$ -- 51
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 25
+stack$ -- 0
+substring$ -- 0
+swap$ -- 3
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 7
+width$ -- 10
+write$ -- 79
+(There was 1 error message)

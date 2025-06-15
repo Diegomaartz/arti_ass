@@ -1,0 +1,47 @@
+\begin{thebibliography}{1}
+
+\bibitem{resumenet}
+J.~Hu {\em et~al.}, ``Resumenet: A learning-based framework for automatic
+  resume quality assessment,'' {\em IEEE Transactions on Services Computing},
+  2023.
+
+\bibitem{girl}
+A.~Shen and B.~He, ``Generative job recommendations with large language
+  models,'' {\em arXiv preprint arXiv:2401.01234}, 2024.
+
+\bibitem{estadoarte1}
+S.~M.~R. Cuevas, ``Aplicación de métodos nlu en la recomendación de cvs para
+  la selección de personal.'' Trabajo de Fin de Grado, Universidad de
+  Valladolid, 2022.
+
+\bibitem{estadoarte2}
+Y.~Yang, W.~Li, and B.~Wang, ``Generative job recommendations with large
+  language model (girl),'' {\em arXiv preprint}, 2023.
+
+\bibitem{estadoarte4}
+G.~S. Franco, M.~A.~G. Pérez, M.~A.~G. Silva, and V.~M.~Z. García, ``Redes
+  neuronales: nueva estrategia de inteligencia artificial para implementar
+  dentro del proceso de reclutamiento y selección de personal.'' Universidad
+  Politécnica Metropolitana de Hidalgo, 2018.
+
+\bibitem{estadoarte5}
+``Linkedin resume builder | linkedin help.''
+  \url{https://www.linkedin.com/help/linkedin/answer/a551182}.
+\newblock Accedido: 8 de marzo de 2025.
+
+\bibitem{estadoarte8}
+CVMATCHER, ``Cvmatcher: Encuentra el trabajo perfecto para ti.''
+  \url{https://www.cvmatcher.app/}, 2025.
+\newblock Accedido: 8 de marzo de 2025.
+
+\bibitem{estadoarte6}
+``Crea tu currículum vitae gratis y encuentra trabajo en 2025.''
+  \url{https://cvapp.mx/}, 2025.
+\newblock Accedido: 8 de marzo de 2025.
+
+\bibitem{estadoarte7}
+Jobania, ``Analizador de compatibilidad de currículum y oferta laboral.''
+  \url{https://www.jobania.cl/analizar-cv-oferta}, 2025.
+\newblock Accedido: 8 de marzo de 2025.
+
+\end{thebibliography}
