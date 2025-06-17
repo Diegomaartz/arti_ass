@@ -1,19 +1,23 @@
 % vitaex_article.tex  --  12-page synthesis of the VitaEX project
-\documentclass[12pt,a4paper]{article}
+%\documentclass[12pt,a4paper]{article}
+\documentclass[runningheads]{llncs}
 
 % --- Packages & Formatting -----------------------------
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{fontawesome}
+\usepackage{textcomp}
+\usepackage{amssymb} 
+\usepackage{marvosym}
 \usepackage{lmodern}
 \usepackage{geometry}
 \geometry{margin=2.5cm}
 \usepackage{setspace}
-\onehalfspacing
-\usepackage{titlesec}
 \usepackage{float}
-\titleformat{\section}{\normalfont\Large\bfseries}{\thesection.}{1em}{}
+%\titleformat{\section}{\normalfont\Large\bfseries}{\thesection.}{1em}{}
 \usepackage[numbers,sort&compress]{natbib}
 \usepackage{hyperref}
+
 \hypersetup{
 	colorlinks=true,
 	linkcolor=black,    % color de las citas dentro del texto
@@ -33,23 +37,41 @@
 \usepackage[table]{xcolor}
 \usepackage{url}
 
-
-% --- Title & Metadata ----------------------------------
+%\author{Oscar Huerta$^1$ \and Diego Martínez$^1$ \and Luis Fernando Valle$^1$ \\ $^1$Escuela Superior de Cómputo, Instituto Politécnico Nacional, Unidad Profesional	Adolfo López Mateos, Zacatenco, Mexico City, Mexico \\ \texttt{\{ohuertav2100,dmartinez,lvalleh1800\}@alumno.ipn.mx}}
+%% --- Title & Metadata ----------------------------------
 \title{VitaEX: A Web Prototype for Curriculum Vitae Analysis and AI-Driven Job Matching}
-\author{Oscar Huerta$^1$ \and Diego Martínez$^1$ \and Luis Fernando Valle$^1$ \\ $^1$Escuela Superior de Cómputo, IPN, Mexico City, Mexico \\ \texttt{\{ohuerta,dmartinez,lvalle\}@escom.ipn.mx}}
-\date{May 2025}
+
+
+\author{
+	Abdiel Reyes Vera\inst{1,2} \and
+	Oscar Huerta Villanueva\inst{1} \and
+	Diego Martínez Méndez\inst{1}(\Letter) \and 
+	Luis Fernando Valle Hernández\inst{1} 
+}
+
+
+\institute{
+	Escuela Superior de Cómputo, IPN, Mexico City, Mexico \\
+	\texttt{\Letter~dmartinezm1707@alumno.ipn.mx} % Fixed email display
+	\and
+	Centro de Investigación en Computación, IPN, Mexico City, Mexico
+}
 
 \begin{document}
 	\maketitle
 	
 	\begin{abstract}
-		Recruiters rely heavily on \emph{applicant tracking systems} (ATS), which automatically filter up to 75~\% of résumés before a human ever sees them. VitaEX is a three-tier, Django-based web prototype that helps undergraduate and recently-graduated students in Artificial Intelligence (AI) tailor their curricula vitae (CVs) to pass these filters while simultaneously recommending the most relevant job vacancies. This article synthesises every major facet of the original Spanish thesis: literature review, dataset construction via large-scale LinkedIn scraping, an NLP pipeline, an Apriori rule-mining recommender, spiral \& CRISP-DM methodologies, architecture, risk and feasibility analyses, and early validation with 1~200 ESCOM students.
+		Recruiters rely heavily on \emph{applicant tracking systems} (ATS), which automatically filter up to 75~\% of résumés before a human ever sees them. VitaEX is a three-tier, Django-based web prototype that helps undergraduate and recently-graduated students in Artificial Intelligence (AI) tailor their curricula vitae (CVs) to pass these filters while simultaneously recommending the most relevant job vacancies. This article synthesises every major facet of the original Spanish thesis: literature review, dataset construction via large-scale LinkedIn scraping, an Apriori rule-mining recommender, spiral \& CRISP-DM methodologies and architecture.
+		
+		
+		\keywords{Curriculum optimisation \and ATS \and Apriori \and NLP \and web scraping \and Django \and ESCOM-IPN}
+		 
 	\end{abstract}
 	
-	\textbf{Keywords—} Curriculum optimisation; ATS; Apriori; NLP; web scraping; Django; ESCOM-IPN
+
 	
 	\section{Introduction}
-	Applicant tracking systems have become ubiquitous: Fortune~500 companies deploy them in 98~\% of hires, often eliminating competent “hidden workers” whose CVs lack the \emph{exact} keywords a vacancy demands. Mexico’s National Graduate Survey (2023) shows 46.3~\% of graduates deem job-hunting “difficult” — largely due to missing experience and ATS incompatibility. VitaEX attacks this gap with an AI-powered CV analyser plus a vacancy recommender specialised in AI roles across five Mexican tech hubs.
+	Applicant tracking systems have become highly relevant: Fortune~500 companies deploy them in 98~\% of hires \cite{ats1}, often eliminating competent “hidden workers” whose CVs lack the \emph{exact} keywords a vacancy demands. Mexico’s National Graduate Survey (2023) shows 46.3~\% \cite{uvm2023} of graduates deem job-hunting “difficult” — largely due to missing experience and ATS incompatibility. VitaEX attacks this gap with an AI-powered CV analyser plus a vacancy recommender specialised in AI roles across five Mexican tech hubs.
 	
 	\section{Related Work}
 	Table~\ref{tab:related} benchmarks eight commercial and academic systems. Most either (i) generate generic résumés, (ii) recommend jobs without explaining the match, or (iii) ignore student-specific constraints. ResumeNet~\cite{resumenet} scores CV quality but not vacancy fit; GIRL~\cite{girl} uses large language models but lacks transparency. In contrast, VitaEX combines interpretable Apriori rules with a student-centered workflow and provides a free usage tier.
@@ -86,7 +108,7 @@
 		\label{tab:related}
 	\end{longtable}
 	\end{center}
-\newpage
+
 	% --------------------------------------------------------
 	\section{Project Overview}
 	\subsection{Objectives}
@@ -109,9 +131,9 @@
 	Text is lower-cased, tokenised (spaCy), stop-words removed, and skill synonyms normalised (\emph{"ML"}$\to$\emph{"machine learning"}). Eight AI-centric job titles (AI Engineer, NLP Engineer, \dots) and five cities (CDMX, Monterrey, Guadalajara, Querétaro, Puebla) define the study scope.
 	
 	% --------------------------------------------------------
-	\section{NLP Pipeline and Recommender}
-	\subsection{Feature Extraction}
-	CVs in PDF/DOCX are parsed (\texttt{pdfplumber}, \texttt{python-docx}). Skills and experiences become one-hot vectors; TF–IDF and SBERT embeddings provide semantic similarity used later to flag “missing” skills.
+	\section{Recommender}
+%	\subsection{Feature Extraction}
+%	CVs in PDF/DOCX are parsed (\texttt{pdfplumber}, \texttt{python-docx}). Skills and experiences become one-hot vectors; TF–IDF and SBERT embeddings provide semantic similarity used later to flag “missing” skills.
 	
 	\subsection{Apriori Rule-Mining}
 	
@@ -199,31 +221,44 @@
 		\caption{High-level architecture of VitaEX.}
 		\label{fig:blocks}
 	\end{figure}
-	\newpage
+
 	% --------------------------------------------------------
-	\section{Risk and Feasibility}
-	Thirty‑one risks were catalogued. Catastrophic items include time under‑estimation (R04) and data leakage (R25). Mitigations: Agile sprints with 20–30~\% buffer and TLS+role‑based access, respectively. Economically, development costs \textasciitilde\$122\,k~MXN, with monthly OPEX \mbox{$\approx\!\$3\,k$}. Potential revenue (ads + premium templates) could reach \$23\,k~MXN\,/year, covering OPEX but requiring external seed funding.
-	
+%	\section{Risk and Feasibility}
+%	Thirty‑one risks were catalogued. Catastrophic items include time under‑estimation (R04) and data leakage (R25). Mitigations: Agile sprints with 20–30~\% buffer and TLS+role‑based access, respectively. Economically, development costs \textasciitilde\$122\,k~MXN, with monthly OPEX \mbox{$\approx\!\$3\,k$}. Potential revenue (ads + premium templates) could reach \$23\,k~MXN\,/year, covering OPEX but requiring external seed funding.
+%	
 	% --------------------------------------------------------
-	\section{Preliminary Evaluation}
-	A/B tests on 30 students showed:
-	\begin{itemize}
-		\item \textbf{CV pass-rate through a commercial ATS} rose from 28~\% to 60~\%.
-		\item \textbf{Perceived usability} (SUS) scored 79~$\pm$~4 (“good”).
-		\item Average rule-explanation helpfulness rated 4.2/5.
-	\end{itemize}
-	Limitations: small single-institution sample and absence of long-term placement data.
-	
+%	\section{Preliminary Evaluation}
+%	A/B tests on 30 students showed:
+%	\begin{itemize}
+%		\item \textbf{CV pass-rate through a commercial ATS} rose from 28~\% to 60~\%.
+%		\item \textbf{Perceived usability} (SUS) scored 79~$\pm$~4 (“good”).
+%		\item Average rule-explanation helpfulness rated 4.2/5.
+%	\end{itemize}
+%	Limitations: small single-institution sample and absence of long-term placement data.
+%	
 	% --------------------------------------------------------
-	\section{Conclusion}
-	VitaEX demonstrates that combining transparent rule-based recommender systems with modern NLP can materially improve employment prospects of AI students in Mexico. Future work includes bias auditing, multilingual support, and integration with ATS APIs for live feedback.
+\section{Conclusion}
+VitaEX demonstrates that combining transparent rule-based systems with modern NLP can materially improve employment prospects of AI students in Mexico. Our innovative application of the \textbf{Apriori algorithm} has proven particularly valuable for uncovering hidden skill associations in the job market and generating actionable CV recommendations. By mining over 500,000 association rules from real vacancy data, the system provides explainable suggestions that help candidates optimize their CVs for ATS compatibility while identifying relevant career opportunities.
+
+Future work will focus on enhancing the \textbf{keyword extraction capabilities} for user-submitted CVs through:
+\begin{enumerate}
+	\item Advanced context-aware NER models to better identify implicit skills
+	\item Extraction from CV formats (.docx or.pdf)
+	\item Skill normalization using domain-specific ontologies
+	\item Temporal analysis of skill importance 
+\end{enumerate}
+
+These enhancements will further bridge the gap between academic preparation and industry requirements in Mexico's rapidly evolving AI job market.
 	
 	% ----------------- Acknowledgements ---------------------
 	\section*{Acknowledgements}
-	We thank M.\,C. Elizabeth Moreno Galván and M.\,C. Abdiel Reyes Vera for supervision, and the ESCOM student testers for invaluable feedback.
+	We thank M.\,C. Elizabeth Moreno Galván and M.\,C. Abdiel Reyes Vera for supervision
 	
-	% ----------------- Bibliography -------------------------
-	\newpage
-	\bibliographystyle{ieeetr}
-	\bibliography{referencias}
+% ----------------- Bibliography -------------------------
+\makeatletter
+\renewcommand{\@biblabel}[1]{#1.} 
+\makeatother
+
+\bibliographystyle{splncs04}
+\bibliography{referencias}
 \end{document}
