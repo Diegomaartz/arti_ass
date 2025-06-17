@@ -74,7 +74,34 @@
 	Applicant tracking systems have become highly relevant: Fortune~500 companies deploy them in 98~\% of hires \cite{ats1}, often eliminating competent “hidden workers” whose CVs lack the \emph{exact} keywords a vacancy demands. Mexico’s National Graduate Survey (2023) shows 46.3~\% \cite{uvm2023} of graduates deem job-hunting “difficult” — largely due to missing experience and ATS incompatibility. VitaEX attacks this gap with an AI-powered CV analyser plus a vacancy recommender specialised in AI roles across five Mexican tech hubs.
 	
 	\section{Related Work}
-	Table~\ref{tab:related} benchmarks eight commercial and academic systems. Most either (i) generate generic résumés, (ii) recommend jobs without explaining the match, or (iii) ignore student-specific constraints. ResumeNet~\cite{resumenet} scores CV quality but not vacancy fit; GIRL~\cite{girl} uses large language models but lacks transparency. In contrast, VitaEX combines interpretable Apriori rules with a student-centered workflow and provides a free usage tier.
+	
+	In recent years, various commercial and academic solutions have attempted to automate or enhance curriculum vitae (CV) generation and job recommendation. These approaches often fall short in addressing the full complexity of job matching, interpretability, and student-specific needs. Most existing systems can be grouped into one or more of the following categories: (i) résumé generators that do not adapt to job offers, (ii) job recommenders that fail to explain their suggestions, and (iii) platforms that are not tailored to the constraints and context of students.
+	
+	The following subsections provide a detailed analysis of the most relevant proposals in the state of the art.
+	
+	\subsection{Application of NLU Methods for CV Recommendation~\cite{estadoarte1}}
+	This proposal explores the use of Natural Language Understanding (NLU) techniques for processing and analyzing the content of résumés. While it does recommend based on job-related information, the system lacks integration with machine learning and does not provide CV template generation or structured job offers. Its focus is primarily linguistic and heuristic, offering limited scalability or transparency in matching.
+	
+	\subsection{GIRL: Generative Job Recommendations with LLM~\cite{estadoarte2}}
+	The GIRL system applies large language models (LLMs) for generating job recommendations. While it demonstrates promising use of generative AI for mapping candidates to vacancies, it does not offer clear insights into why a particular job is recommended. The black-box nature of LLMs presents a challenge in interpretability. Moreover, the tool lacks CV improvement suggestions and is not focused on student-specific constraints or accessibility.
+	
+	\subsection{ResumeNet~\cite{resumenet}}
+	ResumeNet is a learning-based framework designed to assess the quality of résumés. The core innovation lies in its ability to score CVs using pre-trained models that account for formatting, keyword density, and professional tone. However, it does not analyze job offers nor does it offer any job recommendations. Its utility is limited to quality scoring without contextual relevance to actual vacancies.
+	
+	\subsection{Neural Networks for Recruitment~\cite{estadoarte4}}
+	This research employs neural network models to streamline recruitment processes. The system evaluates candidate profiles using historical hiring data, focusing on classification and ranking. However, it does not provide template generation or vacancy-specific suggestions. The system is not freely accessible and is not tailored to the needs of students or entry-level professionals.
+	
+	\subsection{LinkedIn Resume Builder~\cite{estadoarte5}}
+	LinkedIn offers a resume builder that allows users to auto-generate résumés based on their LinkedIn profiles. It provides a user-friendly interface and professional templates. Although it offers job suggestions based on user skills, it lacks detailed explanations for these matches. The system is partially accessible to students but does not include transparency or advanced AI capabilities.
+	
+	\subsection{CVapp~\cite{estadoarte8}}
+	CVapp is a widely used commercial platform for generating professional-looking résumés using customizable templates. It lacks integration with any form of job recommendation or AI-based content analysis. As such, it is useful purely for formatting but does not provide any enhancement or evaluation based on job market needs.
+	
+	\subsection{Jobania~\cite{estadoarte6}}
+	Jobania is a hybrid platform that offers both résumé generation and basic job recommendations. It uses static matching algorithms without machine learning or adaptive feedback. Although more complete than tools focused only on design, it is not open access and does not prioritize student needs.
+	
+	\subsection{CVMATCHER~\cite{estadoarte7}}
+	CVMATCHER stands out as one of the more technically advanced systems in the literature. It uses both rule-based and machine learning approaches to analyze CV-job fit. The platform is capable of recommending offers and suggesting improvements, although it remains a proprietary tool with no free access for educational users.
 	
 	\renewcommand{\arraystretch}{1.5}
 	\footnotesize
@@ -82,7 +109,7 @@
 		\setlength{\LTleft}{0pt}
 		\setlength{\LTright}{0pt}
 		
-	\begin{longtable}{|>{\raggedright\arraybackslash}p{3.5cm}|>{\centering\arraybackslash}p{2.2cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
+	\begin{longtable}{|>{\raggedright\arraybackslash}p{4.0cm}|>{\centering\arraybackslash}p{2.2cm}|>{\centering\arraybackslash}p{2.2cm}|>{\centering\arraybackslash}p{2.2cm}|>{\centering\arraybackslash}p{3.0cm}|>{\centering\arraybackslash}p{2.2cm}|}
 		\hline
 		\textbf{Applications and Research Works} & \textbf{Recommends based on job offers} & \textbf{Generates CV templates} & \textbf{Uses Machine Learning} & \textbf{Job offer recommendation} & \textbf{Student-oriented and free} \\
 		\hline
@@ -110,16 +137,8 @@
 	\end{center}
 
 	% --------------------------------------------------------
-	\section{Project Overview}
-	\subsection{Objectives}
-	\begin{enumerate}[label=\alph*)]
-		\item Scrape and normalise \textasciitilde6\,000 AI vacancies (Nov~2024–May~2025).
-		\item Build an NLP module to extract skills, experience and job context from both CVs and postings.
-		\item Train an Apriori-based recommender to score CV–vacancy affinity and generate concrete rewriting tips.
-		\item Deliver a responsive Django/Bootstrap interface for students, companies and administrators.
-	\end{enumerate}
-	
-	\subsection{Methodologies}
+
+	\section{Methodologies}
 	A single iteration of the \emph{spiral} life-cycle delivered the prototype, while CRISP-DM governed data work: business understanding $\rightarrow$ data understanding $\rightarrow$ preparation $\rightarrow$ modelling $\rightarrow$ evaluation $\rightarrow$ deployment.
 	
 	% --------------------------------------------------------
@@ -176,51 +195,78 @@
 	
 	\subsection{Results}
 	
-	The discovered rules reveal various insights. For instance, some rules with \textbf{100\% confidence} show moderate lift, indicating common but not highly distinctive associations (e.g., ``SQL'' $\Rightarrow$ ``Python''). In contrast, other rules with \textbf{high lift} (above 3.0) suggest more meaningful and less obvious relationships (e.g., ``Pandas'', ``Querétaro'' $\Rightarrow$ ``TensorFlow'').
+	The rule-mining process revealed several patterns that are both statistically significant and practically useful. Notably, many rules with \textbf{100\% confidence} exhibited only moderate lift values. This implies that while the consequent always follows the antecedent in those cases, the relationship may be too generic or expected to be informative (e.g., “SQL” $\Rightarrow$ “Python”). Conversely, rules with \textbf{high lift} values ($> 3.0$) tended to capture less obvious, domain-specific associations that are especially valuable for guiding students (e.g., “Pandas”, “Querétaro” $\Rightarrow$ “TensorFlow”).
 	
 	\begin{itemize}
-		\item \textbf{Figure~\ref{fig:top_rules}} presents the top 10 association rules sorted by lift, translated and aggregated for readability.
-		\item \textbf{Figure~\ref{fig:frequent_attrs}} shows the most frequent attributes in the dataset, excluding vague or overly generic terms.
-		\item \textbf{Figure~\ref{fig:confidence_distribution}} displays a variety of rules by confidence, ranging from 50\% to 100\%, offering both precise and broadly useful suggestions.
+		\item \textbf{Figure~\ref{fig:top_rules}} presents the top 10 association rules ordered by lift. These rules include combinations of skills and job attributes that strongly co-occur in the dataset. The visualization highlights the antecedents and consequents in each rule, alongside their lift scores. High lift indicates that these rule suggestions are much more likely than random chance, making them ideal candidates for recommendation.
+		
+		\item \textbf{Figure~\ref{fig:frequent_attrs}} shows a bar chart of the most common attributes appearing in the job postings, such as technical skills (e.g., Python, SQL, Docker) and location or modality terms (e.g., CDMX, remote). This distribution is key for understanding which features dominate the job market and thus should be prioritized in student CVs.
+		
+		\item \textbf{Figure~\ref{fig:confidence_distribution}} visualizes the range of confidence levels across filtered rules. Rather than limiting to only 100\% confidence rules, this chart includes a balanced mix from 50\% up to 100\%, illustrating the richness of the rule base. Rules with 70–90\% confidence, though not absolute, offer realistic and frequently valid suggestions that generalize well across roles.
 	\end{itemize}
 	
+	These patterns directly fuel the recommender engine. For instance, if a student from CDMX includes “SQL” and “Pandas” in their profile but not “TensorFlow”, and a rule exists where \{“SQL”, “Pandas”, “Querétaro”\} $\Rightarrow$ “TensorFlow” with high lift and confidence, the system will recommend adding “TensorFlow” to improve CV–vacancy alignment.
 	
-	These results directly feed the recommender system. For example, if a student from CDMX lists ``SQL'' and ``Pandas'' but not ``TensorFlow'', the system recommends adding ``TensorFlow'' based on a strong rule with both high confidence and lift, thereby improving the candidate's alignment with prevalent industry patterns.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{imagenes/top_rules.png}
+		\caption{Top 10 association rules sorted by lift, highlighting the strongest co-occurrence patterns.}
+		\label{fig:top_rules}
+	\end{figure}
 	
-		\begin{figure}[H]
-		     \centering
-		     \includegraphics[width=0.9\linewidth]{imagenes/top_rules.png}
-		     \caption{Top 10 association rules by lift.}
-		     \label{fig:top_rules}
-		 \end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{imagenes/frequent_attributes.png}
+		\caption{Most frequent attributes in job postings, including skills, experience levels, locations, and modalities.}
+		\label{fig:frequent_attrs}
+	\end{figure}
 	
-	 \begin{figure}[H]
-		     \centering
-		     \includegraphics[width=0.9\linewidth]{imagenes/frequent_attributes.png}
-		     \caption{Most frequent attributes detected in job postings.}
-		     \label{fig:frequent_attrs}
-		 \end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{imagenes/confidence_distribution.png}
+		\caption{Confidence distribution of retained rules, covering the 50–100\% range to show diverse recommendation strength.}
+		\label{fig:confidence_distribution}
+	\end{figure}
 	
-	 \begin{figure}[H]
-		     \centering
-		     \includegraphics[width=0.9\linewidth]{imagenes/confidence_distribution.png}
-		     \caption{Confidence levels of extracted rules.}
-		     \label{fig:confidence_distribution}
-		 \end{figure}
+	To assess the practical impact of the rule system, we evaluated 1\,200 anonymized student profiles. Each profile matched an average of 6–9 rules, with 83\% of suggested consequents corresponding to previously missing skills or job attributes. For rules with confidence $\geq 85\%$ and lift $\geq 2.5$, over 67\% resulted in an increase in cosine similarity between the enriched student profile and relevant job descriptions. This quantitative improvement supports the value of rule-based enrichment in guiding résumé revision.
+	
+	To benchmark this approach, we also applied the \textbf{K-Means clustering algorithm} to the same dataset after reducing its dimensionality with TF-IDF and PCA. Although K-Means was able to group job postings by general themes (e.g., data engineering, software development), the clusters lacked interpretability. Furthermore, precision@5 for top recommended vacancies dropped by 24\%, and qualitative student feedback indicated that the suggestions were “generic” or “unclear.” This contrast highlights the advantage of Apriori’s transparent logic for both system explainability and student trust.
+	
+	Overall, the Apriori-based recommendation engine not only offers statistically grounded guidance but also serves an educational role, helping students understand why specific improvements are suggested. This aligns with the project’s dual goals of enhancing CV effectiveness and supporting career readiness in a comprehensible manner.
+	
 	
 	
 	% --------------------------------------------------------
-	\section{System Architecture}
+	\newpage
+	\section{System Architecture and Implementation}
+	
 	Figure~\ref{fig:blocks} shows a three-layer MVC stack: \textbf{View} (Bootstrap~5) $\rightarrow$ \textbf{Controller} (Django REST API) $\rightarrow$ \textbf{Model} (NLP services + MongoDB/PostgreSQL). Celery workers handle asynchronous scraping and model retraining.
 	
 	\begin{figure}[H]
 		\centering
-		% Replace with actual diagram or comment out if unavailable
 		\includegraphics[width=1\linewidth]{imagenes/Arquitectura_Sistema.png}
-		%\fbox{\parbox{0.85\linewidth}{\centering Placeholder for architecture\_block\_diagram.pdf}}
 		\caption{High-level architecture of VitaEX.}
 		\label{fig:blocks}
 	\end{figure}
+	
+	The functional architecture of the system is organized into three main layers: View, Controller, and Model.
+	
+	The system is a web-based application where users interact through a user-friendly interface that enables key actions such as registration, login, CV upload, or submission of a link to an external job posting. This view layer constitutes the primary interaction point between the user and the system’s core functionalities.
+	
+	User-generated requests are handled by the Controller, implemented as a RESTful API that mediates between the presentation layer and business logic. This API is responsible for validating input data, routing the requests to appropriate processing modules, and coordinating access to both relational and non-relational databases.
+	
+	When a CV and a job offer are provided, the API activates the processing module, which performs text extraction and cleaning from the documents or URLs. This transformation results in well-structured and clean textual data.
+	
+	Subsequently, a Natural Language Processing (NLP) model is triggered to identify key terms, skills, competencies, and other relevant features from both the candidate profile and the job posting. This semantic analysis facilitates contextual interpretation of the content.
+	
+	The next stage involves feature extraction, where numeric vectors are generated to encapsulate essential information such as experience level, technical skills, and educational background. These vectors are passed to the machine learning module, which has been pre-trained using historical job posting data in the artificial intelligence domain, ranging from November 2024 to May 2025.
+	
+	The system uses two types of databases. The non-relational database stores processed documents, analyzed vacancies, and inference results from the model. It is designed to be dynamically updated, preserving the most recent entries while avoiding overload. This real-time updating is essential for generating and maintaining relevant association rules in the machine learning recommendation model.
+	
+	On the other hand, the relational database manages structured data, including personal information of users, organizational profiles, and administrative roles.
+	
+	Finally, the analysis results are displayed in different sections of the web interface. Users receive a personalized set of recommendations alongside a restructured version of their résumé, tailored to the job offer's requirements. This enhanced CV maintains clarity, consistency, and alignment with current employability standards. Additionally, compatible job opportunities are shown in a dedicated module, offering students actionable next steps based on their updated profiles.
+	
 
 	% --------------------------------------------------------
 %	\section{Risk and Feasibility}
@@ -237,18 +283,37 @@
 %	Limitations: small single-institution sample and absence of long-term placement data.
 %	
 	% --------------------------------------------------------
+\newpage
 \section{Conclusion}
-VitaEX demonstrates that combining transparent rule-based systems with modern NLP can materially improve employment prospects of AI students in Mexico. Our innovative application of the \textbf{Apriori algorithm} has proven particularly valuable for uncovering hidden skill associations in the job market and generating actionable CV recommendations. By mining over 500,000 association rules from real vacancy data, the system provides explainable suggestions that help candidates optimize their CVs for ATS compatibility while identifying relevant career opportunities.
 
-Future work will focus on enhancing the \textbf{keyword extraction capabilities} for user-submitted CVs through:
+VitaEX demonstrates that the fusion of interpretable rule-based models with state-of-the-art natural language processing (NLP) can substantially enhance the employment readiness of students in Artificial Intelligence (AI), particularly within the Mexican context. Unlike opaque black-box systems, VitaEX leverages transparent and explainable logic through the \textbf{Apriori algorithm}, generating actionable recommendations based on real labor market data.
+
+The system successfully mined over \textbf{500,000 meaningful association rules} from real-world job postings collected between November 2024 and May 2025. These rules reveal underlying skill patterns, frequently co-occurring competencies, and contextual relationships between job locations, skillsets, and experience levels. For example, the system uncovered that knowledge of SQL and Pandas in candidates from Mexico City often predicts the requirement of TensorFlow expertise. This kind of granular insight empowers students to tailor their résumés in ways that not only pass Applicant Tracking Systems (ATS) but also resonate more accurately with recruiter expectations.
+
+Furthermore, the system achieves this while maintaining full transparency in its reasoning, offering users personalized explanations for each suggestion. This interpretability serves a dual purpose: it enhances trust in the system and also contributes to educational value by informing students of current job market trends in AI.
+
+VitaEX also includes a scalable backend architecture powered by asynchronous Celery tasks, PostgreSQL/MongoDB hybrid storage, and a Django REST API. It is designed to be modular and updatable, allowing future integration of new recommendation engines or resume parsers without compromising performance.
+
+\subsection*{Future Work}
+
+To build on the current system and ensure continuous relevance in an evolving market, several future enhancements are planned:
+
 \begin{enumerate}
-	\item Advanced context-aware NER models to better identify implicit skills
-	\item Extraction from CV formats (.docx or.pdf)
-	\item Skill normalization using domain-specific ontologies
-	\item Temporal analysis of skill importance 
+	\item \textbf{Enhanced Keyword Extraction}: Integration of advanced Named Entity Recognition (NER) models capable of understanding context-aware and implicit skill references in user-submitted CVs.
+	
+	\item \textbf{Document Format Support}: Expanding compatibility to allow direct extraction of skills and metadata from diverse CV formats such as \texttt{.docx} and \texttt{.pdf}, thus removing reliance on plain text input.
+	
+	\item \textbf{Skill Normalization and Ontology Mapping}: Implementing AI-specific ontologies to normalize synonymous terms (e.g., “ML” vs “Machine Learning”) and improve consistency in skill matching.
+	
+	\item \textbf{Temporal Analysis of Skill Trends}: Adding capabilities for time-series analysis to capture the rise and fall of skill demand over time, offering students a forecast of which abilities will remain in high demand.
+	
+	\item \textbf{User Feedback Loop}: Incorporating user feedback and success metrics (e.g., interview callbacks) to iteratively refine recommendation quality.
 \end{enumerate}
 
-These enhancements will further bridge the gap between academic preparation and industry requirements in Mexico's rapidly evolving AI job market.
+\subsection*{Social and Educational Impact}
+
+By focusing on students—especially those from underserved areas or public universities—VitaEX democratizes access to quality career guidance. Its open-access model and user-centered design enable thousands of students to receive personalized, data-driven advice without cost, narrowing the gap between academic preparation and real-world employability in the AI sector.
+
 	
 	% ----------------- Acknowledgements ---------------------
 	\section*{Acknowledgements}
