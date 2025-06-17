@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.5.11)  17 JUN 2025 11:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.5.11)  17 JUN 2025 12:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -842,6 +842,10 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 6
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 
+Package natbib Warning: Citation `rae' on page 1 undefined on input line 76.
+
+
+
 [1
 
 {C:/Users/Diego Mendez/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Use
@@ -859,65 +863,88 @@ thsy.enc}]
 [4]
 
 [5]
-Underfull \hbox (badness 10000) in alignment at lines 282--306
+Underfull \hbox (badness 10000) in alignment at lines 291--315
 [] [] [] [] [] []
  []
 
 
 
 [6]
+Underfull \hbox (badness 3323) in paragraph at lines 363--365
+\T1/lmr/m/n/9 ads to in-spect fields and noise. EDA:
+ []
 
-LaTeX Warning: Reference `fig:architecture' on page 7 undefined on input line 3
-70.
+
+Underfull \hbox (badness 4726) in paragraph at lines 363--365
+\T1/lmr/m/n/9 city/skill/experience his-tograms, missing-
+ []
+
+
+Underfull \hbox (badness 3158) in paragraph at lines 368--368
+[]|\T1/lmr/m/n/9 Clean, trans-form and for-mat
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 371--372
+[]\T1/lmr/m/n/9 Spanish spaCy POS-tagger to keep
+ []
 
 
 
 [7]
-<imagenes/top_rules.png, id=148, 1004.553pt x 498.663pt>
-File: imagenes/top_rules.png Graphic file (type png)
-<use imagenes/top_rules.png>
-Package pdftex.def Info: imagenes/top_rules.png  used on input line 456.
-(pdftex.def)             Requested size: 394.14925pt x 195.65717pt.
+
+LaTeX Warning: Reference `fig:architecture' on page 8 undefined on input line 4
+34.
+
 
 
 [8]
-<imagenes/frequent_attributes.png, id=166, 714.7503pt x 426.393pt>
+<imagenes/top_rules.png, id=166, 1004.553pt x 498.663pt>
+File: imagenes/top_rules.png Graphic file (type png)
+<use imagenes/top_rules.png>
+Package pdftex.def Info: imagenes/top_rules.png  used on input line 520.
+(pdftex.def)             Requested size: 394.14925pt x 195.65717pt.
+<imagenes/frequent_attributes.png, id=168, 714.7503pt x 426.393pt>
 File: imagenes/frequent_attributes.png Graphic file (type png)
 <use imagenes/frequent_attributes.png>
-Package pdftex.def Info: imagenes/frequent_attributes.png  used on input line 4
-63.
+Package pdftex.def Info: imagenes/frequent_attributes.png  used on input line 5
+27.
 (pdftex.def)             Requested size: 424.82523pt x 253.44348pt.
-<imagenes/confidence_distribution.png, id=167, 932.283pt x 498.663pt>
-File: imagenes/confidence_distribution.png Graphic file (type png)
-<use imagenes/confidence_distribution.png>
-Package pdftex.def Info: imagenes/confidence_distribution.png  used on input li
-ne 470.
-(pdftex.def)             Requested size: 424.82523pt x 227.23442pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[9 <./imagenes/top_rules.png> <./imagenes/frequent_attributes.png>]
+[9 <./imagenes/top_rules.png>]
+<imagenes/confidence_distribution.png, id=178, 932.283pt x 498.663pt>
+File: imagenes/confidence_distribution.png Graphic file (type png)
+<use imagenes/confidence_distribution.png>
+Package pdftex.def Info: imagenes/confidence_distribution.png  used on input li
+ne 534.
+(pdftex.def)             Requested size: 424.82523pt x 227.23442pt.
 
-[10 <./imagenes/confidence_distribution.png>]
-<imagenes/Arquitectura_Sistema.png, id=180, 2049.6575pt x 973.6375pt>
+
+[10 <./imagenes/frequent_attributes.png> <./imagenes/confidence_distribution.pn
+g>]
+
+[11]
+<imagenes/Arquitectura_Sistema.png, id=190, 2049.6575pt x 973.6375pt>
 File: imagenes/Arquitectura_Sistema.png Graphic file (type png)
 <use imagenes/Arquitectura_Sistema.png>
 Package pdftex.def Info: imagenes/Arquitectura_Sistema.png  used on input line 
-491.
+555.
 (pdftex.def)             Requested size: 472.03123pt x 224.22903pt.
 
 
-[11 <./imagenes/Arquitectura_Sistema.png>]
-Overfull \hbox (3.33253pt too wide) in paragraph at lines 539--540
+[12 <./imagenes/Arquitectura_Sistema.png>]
+Overfull \hbox (3.33253pt too wide) in paragraph at lines 603--604
 []\T1/lmr/m/n/9 VitaEX also in-cludes a scal-able back-end ar-chi-tec-ture pow-
 ered by asyn-chronous Cel-ery tasks, Post-greSQL/MongoDB
  []
 
 (articulo.bbl
 
-[12]
+[13]
 Underfull \hbox (badness 10000) in paragraph at lines 28--31
 []\T1/lmr/m/n/9 GeeksforGeeks: Python web de-vel-op-ment with django. [][]$\T1/
 lmtt/m/n/9 https : / / www . geeksforgeeks . org / python /
@@ -943,7 +970,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 67--69
 
 )
 
-[13
+Package natbib Warning: There were undefined citations.
+
+
+
+[14
 
 ] (articulo.aux)
  ***********
@@ -958,36 +989,37 @@ Package rerunfilecheck Info: File `articulo.out' has not changed.
 (rerunfilecheck)             Checksum: 28D4983B2A11223D6015BED9BAF6D08C;476.
  ) 
 Here is how much of TeX's memory you used:
- 14883 strings out of 473522
- 227490 string characters out of 5711185
- 644146 words of memory out of 5000000
- 37750 multiletter control sequences out of 15000+600000
- 624238 words of font info for 84 fonts, out of 8000000 for 9000
+ 14892 strings out of 473522
+ 227592 string characters out of 5711185
+ 644284 words of memory out of 5000000
+ 37756 multiletter control sequences out of 15000+600000
+ 632780 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,7n,79p,870b,752s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,8n,79p,764b,676s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Diego Mendez/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lm
 bx10.pfb><C:/Users/Diego Mendez/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/lm/lmbx12.pfb><C:/Users/Diego Mendez/AppData/Local/Programs/MiKTeX/fonts/type
 1/public/lm/lmbx9.pfb><C:/Users/Diego Mendez/AppData/Local/Programs/MiKTeX/font
-s/type1/public/lm/lmmi10.pfb><C:/Users/Diego Mendez/AppData/Local/Programs/MiKT
-eX/fonts/type1/public/lm/lmmi7.pfb><C:/Users/Diego Mendez/AppData/Local/Program
-s/MiKTeX/fonts/type1/public/lm/lmmi9.pfb><C:/Users/Diego Mendez/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Diego Mendez/AppData/L
-ocal/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/Diego Mendez/AppD
-ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/Diego Mendez
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users/Diego M
-endez/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/
-Diego Mendez/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri9.pfb><C:/
-Users/Diego Mendez/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.p
-fb><C:/Users/Diego Mendez/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/l
-msy9.pfb><C:/Users/Diego Mendez/AppData/Local/Programs/MiKTeX/fonts/type1/publi
-c/lm/lmtt10.pfb><C:/Users/Diego Mendez/AppData/Local/Programs/MiKTeX/fonts/type
-1/public/lm/lmtt9.pfb><C:/Users/Diego Mendez/AppData/Local/Programs/MiKTeX/font
-s/type1/public/marvosym/marvosym.pfb><C:/Users/Diego Mendez/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on articulo.pdf (13 pages, 651741 bytes).
+s/type1/public/lm/lmbxi10.pfb><C:/Users/Diego Mendez/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/Diego Mendez/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Users/Diego Mendez/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/lm/lmmi9.pfb><C:/Users/Diego Mendez/AppData
+/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Diego Mendez/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/Diego Men
+dez/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/Dieg
+o Mendez/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users
+/Diego Mendez/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C
+:/Users/Diego Mendez/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri9.
+pfb><C:/Users/Diego Mendez/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/
+lmsy10.pfb><C:/Users/Diego Mendez/AppData/Local/Programs/MiKTeX/fonts/type1/pub
+lic/lm/lmsy9.pfb><C:/Users/Diego Mendez/AppData/Local/Programs/MiKTeX/fonts/typ
+e1/public/lm/lmtt10.pfb><C:/Users/Diego Mendez/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/lm/lmtt9.pfb><C:/Users/Diego Mendez/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/marvosym/marvosym.pfb><C:/Users/Diego Mendez/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/urw/zapfding/uzdr.pfb>
+Output written on articulo.pdf (14 pages, 675209 bytes).
 PDF statistics:
- 340 PDF objects out of 1000 (max. 8388607)
- 106 named destinations out of 1000 (max. 500000)
+ 352 PDF objects out of 1000 (max. 8388607)
+ 108 named destinations out of 1000 (max. 500000)
  29 words of extra memory for PDF output out of 10000 (max. 10000000)
 

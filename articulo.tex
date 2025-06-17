@@ -72,19 +72,28 @@
 	
 
 	
-	\section{Introduction}
-Recruitment has entered a data-driven era in which algorithmic gatekeepers decide who even reaches a human recruiter. Applicant-tracking systems (ATS) now screen roughly 98 percent of all applications that arrive at Fortune 500 companies, and they do so in milliseconds. The same tools that promise efficiency also create a fast-growing cohort of “hidden workers”: qualified candidates filtered out simply because their résumés lack the exact keywords a vacancy demands. The paradox is especially acute in artificial-intelligence (AI) roles: while demand for AI talent in Mexico rises at double-digit rates each year, recent AI graduates remain among the most frequently rejected profiles at the initial ATS stage.
+\section{Introduction}
+A \emph{curriculum vitae} (CV) is, in the words of the Royal Spanish Academy, a document that summarises a person’s academic record, work history, skills and achievements for professional or academic purposes\,\cite{rae}.  
+In today’s labour market that summary must first persuade algorithms.  
+Harvard Business School and Accenture estimate that \textbf{between 75 \% and 98 \%} of all applications in large firms are screened by applicant-tracking systems (ATS) before any human review, quietly excluding millions of otherwise qualified “hidden workers” whose CVs lack certain keywords or credentials\,\cite{ats1}.  
+In Mexico the impact is amplified: the \emph{Encuesta Nacional de Egresados 2023} reports that \textbf{46.3 \%} of new graduates describe the job-search process as “difficult”, citing ATS incompatibility as a leading barrier\,\cite{uvm2023}.  
+Paradoxically, many of those applicants hold precisely the AI-related skills that employers claim to need most urgently.
 
-The disconnect begins inside the classroom. Although many Mexican universities now offer courses in machine learning, data science, and web development, most degree programmes still omit formal training on digital employability and on how ATS software actually interprets a résumé. Graduates therefore craft narrative-rich CVs that resonate with human readers yet score poorly on keyword density and skills taxonomies. According to the 2023 National Graduate Survey, 46.3 percent of respondents describe job hunting as “difficult,” citing lack of experience and ATS incompatibility as their main obstacles. Ironically, the very students equipped to build intelligent systems are the ones most hindered by them during the hiring process.
+\textbf{VitaEX} addresses this mismatch by converting the ATS from gatekeeper to mentor.  
+The prototype continuously scrapes AI-oriented vacancies from LinkedIn and regional job boards across five Mexican tech hubs—Mexico City, Guadalajara, Monterrey, Querétaro and Puebla—building a local demand repository updated monthly.  
+After normalising more than 5 000 postings, the system mines over \textbf{500 000} interpretable association rules with the \emph{Apriori} algorithm and enriches them with semantic similarity scores produced by SBERT.  
+The result is a transparent recommender that tells students \emph{what} to add (e.g., “Docker”, “MLOps”, “English B2”), \emph{why} it matters, and \emph{how} it improves their match with specific vacancies.
 
-A flourishing ecosystem of résumé builders and job-matching platforms offers partial relief, yet three structural problems persist. First, most tools provide minimal local context, ignoring Mexico’s specific labour-market signals such as regional salary bands or the skills mix favoured by tech hubs beyond Mexico City. Second, they behave like opaque black boxes—proprietary ranking models rarely explain why a résumé is rejected or what concrete change would raise its score. Third, subscription fees or feature paywalls undermine the purpose of serving students, who have limited income and professional experience.
+VitaEX is implemented as a three-tier web architecture: a responsive React front-end, a Django REST controller that enforces JWT-based authentication, and a hybrid MongoDB/PostgreSQL data layer.  
+Celery workers orchestrate asynchronous scraping and model retraining, ensuring that recommendations reflect real-time market shifts.
 
-This research introduces VitaEX, a three-tier Django web prototype that turns the ATS from a barrier into a formative guide. The system continuously scrapes AI-related vacancies from LinkedIn and regional portals across Mexico’s five principal tech clusters—Mexico City, Guadalajara, Monterrey, Querétaro and Puebla—building a live repository of local demand. It then applies Apriori rule mining to more than half a million job descriptions to uncover non-obvious skill combinations—for example, “SQL plus Pandas implies TensorFlow”—and to power personalised recommendations. Finally, a semantic-similarity engine based on sentence embeddings highlights exactly which terms such as “Docker,” “MLOps” or “English B2” would lift a student’s match score for a selected vacancy and, crucially, explains why.
+By offering localised, open-access and fully explainable feedback, VitaEX pursues three concrete goals:  
+\emph{(i)} empower students by revealing actionable skill gaps;  
+\emph{(ii)} streamline recruiter workflows by surfacing CVs already aligned with job requirements; and  
+\emph{(iii)} promote regional equity by delivering data-driven career guidance to public-university graduates across Mexico.  
+This article details the theoretical foundations, CRISP-DM methodology and system architecture that together demonstrate how transparent data-mining and modern NLP can narrow the employability gap for AI graduates in developing economies.
 
-By delivering free, localised, and interpretable résumé feedback, VitaEX seeks to generate three concrete benefits. First, it empowers students by converting résumé optimisation into a learning loop that exposes real skill gaps. Second, n b  it boosts recruiter efficiency by surfacing profiles already enriched with high-value keywords, reducing manual screening time. Third, it promotes regional equity by democratising access to data-driven career guidance for students at public universities and in underserved areas.
-
-In sum, VitaEX positions itself as an intelligent bridge between academic preparation and fast-evolving market requirements in Mexican AI, tackling both a social inequity and a technical challenge through an openly accessible, evidence-based approach.
-
+	
 	
 	\section{Theoretical Framework}
 	In this chapter, we focus on the principal techniques and technologies for the prototype
@@ -318,11 +327,11 @@ To ensure disciplined software delivery \emph{and} reproducible data science, Vi
 The \textbf{Spiral Model} governs system development, guiding each release through goal setting, risk analysis, engineering, and stakeholder validation.  
 Concurrently, all data activities follow the \textbf{CRISP-DM} standard, whose six-step cycle—business understanding, data understanding, preparation, modelling, evaluation, deployment—provides full traceability from raw web data to production rules.
 
-\paragraph{Spiral Model.}
+\paragraph{\textbf{Spiral Model.}}
 Every loop begins by defining objectives and identifying risks; mitigations are then prototyped and evaluated before the next iteration.  
 This cadence enabled early validation of LinkedIn-scraping scalability, Apriori performance, and security controls, reducing late-stage surprises.
 
-\paragraph{CRISP-DM.}
+\paragraph{\textbf{CRISP-DM.}}
 Within each Spiral loop the team executes CRISP-DM:  
 \emph{(i)} translate recruiter needs into scraping targets;  
 \emph{(ii)} profile incoming job data;  
@@ -331,6 +340,61 @@ Within each Spiral loop the team executes CRISP-DM:
 \emph{(v)} benchmark rule quality; and  
 \emph{(vi)} publish refreshed models via the REST API.  
 The outputs of CRISP-DM feed the next Spiral cycle, while new Spiral deliverables provide infrastructure for subsequent data iterations.
+
+
+
+
+
+\renewcommand{\arraystretch}{1.3}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{3.5cm}|p{4.6cm}|p{6.3cm}|}
+	\hline
+	\rowcolor{gray!20}\textbf{Phase} & \textbf{Standard Definition} & \textbf{Implementation in \emph{VitaEX}} \\ \hline
+	\endhead
+	\textbf{1. Business Understanding} &
+	Translate business goals into a well-framed analytics problem. &
+	AI graduates rejected by ATS keyword filters.\
+	
+	Goal: turn the ATS into a “mentor” that pinpoints missing skills.\
+	
+	\\ \hline
+	
+	\textbf{2. Data Understanding} &
+	Collect, explore and assess raw data quality. &
+	Pilot scrape (Nov 2024) of 500 LinkedIn ads to inspect fields and noise.\
+	EDA: city/skill/experience histograms, missing-value audit, HTML encoding issues.\
+	\\ \hline
+	
+	\textbf{3. Data Preparation} &
+	Clean, transform and format data for modelling. &
+	Lower-casing, accent removal, strip HTML.\
+	
+	Spanish spaCy POS-tagger to keep nouns/verbs/adjectives.\
+	
+	Custom ontology (\textit{ML}→\textit{machine learning}).\
+	
+	Each vacancy becomes a transaction $\mathcal{T}=\{$skills, city, modality, experience$\}$.\
+	
+	Output: 5 313 clean records. \\ \hline
+	
+	\textbf{4. Modelling} &
+	Choose algorithms, build models, tune parameters. &
+	Apriori algorithm \\ \hline
+	
+	\textbf{5. Evaluation} &
+	Verify models meet business and quality objectives. &
+	Offline metrics: Precision, confidence, lift
+\\ \hline
+	
+	\textbf{6. Deployment} &
+	Put the solution into production and plan maintenance. &
+	REST endpoint \texttt{recommend} exposes rules and rankings.\
+	
+\\ \hline
+	\caption{Step-by-step application of CRISP–DM in the \emph{VitaEX} project.}
+	\label{tab:crispdm}
+\end{longtable}
+% ----------------------------------------------------------
+
 
 % ........................................................
 \subsection{Data Acquisition and Ingestion}
@@ -354,8 +418,8 @@ Monthly Celery-based cron jobs refresh the corpus and flag updates via change st
 
 \begin{enumerate}[leftmargin=*]
 	\item \textbf{Cleaning \& normalisation:} lower-casing, accent stripping, HTML removal.
-	\item \textbf{Tokenisation \& POS-filtering:} spaCy’s Spanish model retains nouns, verbs, adjectives.
-	\item \textbf{Skill canonicalisation:} custom ontology maps synonyms (\textit{“ML”}$\rightarrow$\textit{“machine learning”}).
+	\item \textbf{Filtering:} spaCy’s Spanish model retains nouns, verbs, adjectives.
+	\item \textbf{Skill maapping:} custom ontology maps synonyms (\textit{“ML”}$\rightarrow$\textit{“machine learning”}).
 	\item \textbf{Feature engineering:} each posting becomes a transaction
 	$\mathcal{T}=\{$\texttt{skills, city, modality, experience}$\}$.
 \end{enumerate}
