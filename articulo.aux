@@ -1,27 +1,58 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \citation{ats1}
 \citation{uvm2023}
-\citation{estadoarte1}
-\citation{estadoarte2}
-\citation{resumenet}
+\citation{ibm_apriori}
 \@writefile{toc}{\contentsline {title}{VitaEX: A Web Prototype for Curriculum Vitae Analysis and AI-Driven Job Matching}{1}{chapter.1}\protected@file@percent }
 \@writefile{toc}{\authcount {4}}
 \@writefile{toc}{\contentsline {author}{ Abdiel Reyes Vera \and Oscar Huerta Villanueva \and Diego Martínez Méndez({\fontfamily  {mvs}\fontencoding  {U}\fontseries  {m}\fontshape  {n}\selectfont  \char 66}) \and Luis Fernando Valle Hernández }{1}{chapter.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{1}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Application of NLU Methods for CV Recommendation~\cite  {estadoarte1}}{1}{subsection.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}GIRL: Generative Job Recommendations with LLM~\cite  {estadoarte2}}{1}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Theoretical Framework}{1}{section.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Apriori Algorithm}{1}{subsection.1.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Steps of the Apriori Algorithm}{1}{section*.2}\protected@file@percent }
+\citation{gfg_web_scraping}
+\citation{Mitchell2018}
+\citation{Mitchell2018}
+\@writefile{toc}{\contentsline {subsubsection}{Example: Bookstore Recommendations}{2}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Key Metrics for Rule Evaluation}{2}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Web Scrapping}{2}{subsection.1.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Scrapping Python Tools}{2}{section*.5}\protected@file@percent }
+\citation{mongodbdocs}
+\@writefile{toc}{\contentsline {subsubsection}{Web Scraping Flow Description}{3}{section*.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Phase 1: Collect Job IDs}{3}{section*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Phase 2: Extract Job Details}{3}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}MongoDB}{3}{subsection.1.2.3}\protected@file@percent }
+\citation{djangodocs}
+\citation{estadoarte1}
+\citation{estadoarte2}
+\citation{estadoarte3}
 \citation{estadoarte4}
 \citation{estadoarte5}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Django}{4}{subsection.1.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Related Work}{4}{section.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Application of NLU Methods for CV Recommendation\nobreakspace  {}\cite  {estadoarte1}}{4}{subsection.1.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}GIRL: Generative Job Recommendations with LLM\nobreakspace  {}\cite  {estadoarte2}}{4}{subsection.1.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}ResumeNet\nobreakspace  {}\cite  {estadoarte3}}{4}{subsection.1.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Neural Networks for Recruitment\nobreakspace  {}\cite  {estadoarte4}}{4}{subsection.1.3.4}\protected@file@percent }
 \citation{estadoarte8}
 \citation{estadoarte6}
 \citation{estadoarte7}
 \citation{estadoarte1}
 \citation{estadoarte2}
-\citation{resumenet}
+\citation{estadoarte3}
 \citation{estadoarte4}
 \citation{estadoarte5}
 \citation{estadoarte8}
@@ -34,44 +65,43 @@
     {1}{65.79594pt}\LT@entry 
     {1}{88.55824pt}\LT@entry 
     {1}{65.79594pt}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}ResumeNet~\cite  {resumenet}}{2}{subsection.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Neural Networks for Recruitment~\cite  {estadoarte4}}{2}{subsection.2.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}LinkedIn Resume Builder~\cite  {estadoarte5}}{2}{subsection.2.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.6}CVapp~\cite  {estadoarte8}}{2}{subsection.2.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.7}Jobania~\cite  {estadoarte6}}{2}{subsection.2.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.8}CVMATCHER~\cite  {estadoarte7}}{2}{subsection.2.8}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1}{Comparison of systems and research works related to CV analysis and job recommendation}}{3}{table.1}\protected@file@percent }
-\newlabel{tab:related}{{1}{3}{Comparison of systems and research works related to CV analysis and job recommendation}{table.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Methodologies}{3}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Dataset Construction}{3}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Web Scraping Pipeline}{3}{subsection.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Pre-processing}{3}{subsection.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Recommender}{3}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Apriori Rule-Mining}{3}{subsection.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Algorithm Workflow:}{4}{section*.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Results}{4}{subsection.5.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Top 10 association rules sorted by lift, highlighting the strongest co-occurrence patterns.}}{5}{figure.1}\protected@file@percent }
-\newlabel{fig:top_rules}{{1}{5}{Top 10 association rules sorted by lift, highlighting the strongest co-occurrence patterns}{figure.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Most frequent attributes in job postings, including skills, experience levels, locations, and modalities.}}{5}{figure.2}\protected@file@percent }
-\newlabel{fig:frequent_attrs}{{2}{5}{Most frequent attributes in job postings, including skills, experience levels, locations, and modalities}{figure.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Confidence distribution of retained rules, covering the 50–100\% range to show diverse recommendation strength.}}{6}{figure.3}\protected@file@percent }
-\newlabel{fig:confidence_distribution}{{3}{6}{Confidence distribution of retained rules, covering the 50–100\% range to show diverse recommendation strength}{figure.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}System Architecture and Implementation}{7}{section.6}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces High-level architecture of VitaEX.}}{7}{figure.4}\protected@file@percent }
-\newlabel{fig:blocks}{{4}{7}{High-level architecture of VitaEX}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}LinkedIn Resume Builder\nobreakspace  {}\cite  {estadoarte5}}{5}{subsection.1.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}CVapp\nobreakspace  {}\cite  {estadoarte8}}{5}{subsection.1.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7}Jobania\nobreakspace  {}\cite  {estadoarte6}}{5}{subsection.1.3.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.8}CVMATCHER\nobreakspace  {}\cite  {estadoarte7}}{5}{subsection.1.3.8}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{Comparison of systems and research works related to CV analysis and job recommendation}}{5}{table.1.1}\protected@file@percent }
+\newlabel{tab:related}{{1}{5}{Comparison of systems and research works related to CV analysis and job recommendation}{table.1.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Methodologies}{6}{section.1.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Recommender}{6}{section.1.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Apriori Rule-Mining}{6}{subsection.1.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Algorithm Workflow:}{6}{section*.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Results}{6}{subsection.1.5.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Top 10 association rules sorted by lift, highlighting the strongest co-occurrence patterns.}}{7}{figure.1.1}\protected@file@percent }
+\newlabel{fig:top_rules}{{1}{7}{Top 10 association rules sorted by lift, highlighting the strongest co-occurrence patterns}{figure.1.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Most frequent attributes in job postings, including skills, experience levels, locations, and modalities.}}{7}{figure.1.2}\protected@file@percent }
+\newlabel{fig:frequent_attrs}{{2}{7}{Most frequent attributes in job postings, including skills, experience levels, locations, and modalities}{figure.1.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Confidence distribution of retained rules, covering the 50–100\% range to show diverse recommendation strength.}}{8}{figure.1.3}\protected@file@percent }
+\newlabel{fig:confidence_distribution}{{3}{8}{Confidence distribution of retained rules, covering the 50–100\% range to show diverse recommendation strength}{figure.1.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}System Architecture and Implementation}{8}{section.1.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces High-level architecture of VitaEX.}}{9}{figure.1.4}\protected@file@percent }
+\newlabel{fig:blocks}{{4}{9}{High-level architecture of VitaEX}{figure.1.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{9}{section.1.7}\protected@file@percent }
 \bibstyle{splncs04}
 \bibdata{referencias}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{8}{section.7}\protected@file@percent }
-\bibcite{ats1}{{1}{}{{}}{{}}}
-\bibcite{uvm2023}{{2}{}{{}}{{}}}
-\bibcite{resumenet}{{3}{}{{}}{{}}}
-\bibcite{girl}{{4}{}{{}}{{}}}
-\bibcite{estadoarte1}{{5}{}{{}}{{}}}
-\bibcite{estadoarte2}{{6}{}{{}}{{}}}
-\bibcite{estadoarte4}{{7}{}{{}}{{}}}
-\bibcite{estadoarte5}{{8}{}{{}}{{}}}
-\bibcite{estadoarte8}{{9}{}{{}}{{}}}
-\bibcite{estadoarte6}{{10}{}{{}}{{}}}
-\bibcite{estadoarte7}{{11}{}{{}}{{}}}
+\bibcite{estadoarte1}{{1}{}{{}}{{}}}
+\bibcite{estadoarte6}{{2}{}{{}}{{}}}
+\bibcite{estadoarte8}{{3}{}{{}}{{}}}
+\bibcite{estadoarte4}{{4}{}{{}}{{}}}
+\bibcite{djangodocs}{{5}{}{{}}{{}}}
+\bibcite{gfg_web_scraping}{{6}{}{{}}{{}}}
+\bibcite{ibm_apriori}{{7}{}{{}}{{}}}
+\bibcite{estadoarte7}{{8}{}{{}}{{}}}
+\bibcite{estadoarte5}{{9}{}{{}}{{}}}
+\bibcite{Mitchell2018}{{10}{}{{}}{{}}}
+\bibcite{mongodbdocs}{{11}{}{{}}{{}}}
+\bibcite{uvm2023}{{12}{}{{}}{{}}}
+\bibcite{ats1}{{13}{}{{}}{{}}}
+\bibcite{estadoarte2}{{14}{}{{}}{{}}}
+\bibcite{estadoarte3}{{15}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
-\gdef \@abspage@last{9}
+\gdef \@abspage@last{11}

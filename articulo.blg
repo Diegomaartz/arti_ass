@@ -1,55 +1,46 @@
 This is BibTeX, Version 0.99d (TeX Live 2023)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: articulo.aux
-The style file: ieeetr.bst
+The style file: splncs04.bst
 Database file #1: referencias.bib
-Repeated entry---line 484 of file referencias.bib
- : @article{estadoarte2
- :                     ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 579 of file referencias.bib
- : @misc{uvm2023
- :              ,
-I'm skipping whatever remains of this entry
-You've used 11 entries,
-            1876 wiz_defined-function locations,
-            525 strings with 5081 characters,
-and the built_in function-call counts, 1541 in all, are:
-= -- 134
-> -- 67
+You've used 15 entries,
+            2850 wiz_defined-function locations,
+            665 strings with 6852 characters,
+and the built_in function-call counts, 5179 in all, are:
+= -- 376
+> -- 145
 < -- 0
-+ -- 28
-- -- 17
-* -- 76
-:= -- 237
-add.period$ -- 15
-call.type$ -- 11
-change.case$ -- 11
++ -- 61
+- -- 46
+* -- 259
+:= -- 688
+add.period$ -- 14
+call.type$ -- 15
+change.case$ -- 76
 chr.to.int$ -- 0
-cite$ -- 11
-duplicate$ -- 59
-empty$ -- 196
-format.name$ -- 17
-if$ -- 382
+cite$ -- 15
+duplicate$ -- 475
+empty$ -- 570
+format.name$ -- 50
+if$ -- 1126
 int.to.chr$ -- 0
-int.to.str$ -- 11
-missing$ -- 3
-newline$ -- 40
-num.names$ -- 9
-pop$ -- 64
+int.to.str$ -- 15
+missing$ -- 99
+newline$ -- 51
+num.names$ -- 30
+pop$ -- 266
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 53
 quote$ -- 0
-skip$ -- 33
+skip$ -- 111
 stack$ -- 0
-substring$ -- 0
-swap$ -- 3
+substring$ -- 171
+swap$ -- 204
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
+type$ -- 58
 warning$ -- 0
-while$ -- 9
-width$ -- 13
-write$ -- 94
-(There were 2 error messages)
+while$ -- 40
+width$ -- 17
+write$ -- 147

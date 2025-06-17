@@ -1,56 +1,79 @@
 \begin{thebibliography}{10}
-
-\bibitem{ats1}
-H.~B. School and Accenture, ``Hidden workers: Untapped talent,'' 2021.
-
-\bibitem{uvm2023}
-U.~del Valle~de México~(UVM), ``Encuesta nacional de egresados 2023.'' UVM
-  Opinión Pública, nov. 2023. [En línea]. Disponible en:
-  \url{https://opinionpublica.uvm.mx/wp-content/uploads/2023/11/BROCHURE_ENE-2023-1.pdf},
-  2023.
-
-\bibitem{resumenet}
-J.~Hu {\em et~al.}, ``Resumenet: A learning-based framework for automatic
-  resume quality assessment,'' {\em IEEE Transactions on Services Computing},
-  2023.
-
-\bibitem{girl}
-A.~Shen and B.~He, ``Generative job recommendations with large language
-  models,'' {\em arXiv preprint arXiv:2401.01234}, 2024.
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{https://doi.org/#1}
 
 \bibitem{estadoarte1}
-S.~M.~R. Cuevas, ``Aplicación de métodos nlu en la recomendación de cvs para
-  la selección de personal.'' Trabajo de Fin de Grado, Universidad de
-  Valladolid, 2022.
-
-\bibitem{estadoarte2}
-Y.~Yang, W.~Li, and B.~Wang, ``Generative job recommendations with large
-  language model (girl),'' {\em arXiv preprint}, 2023.
-
-\bibitem{estadoarte4}
-G.~S. Franco, M.~A.~G. Pérez, M.~A.~G. Silva, and V.~M.~Z. García, ``Redes
-  neuronales: nueva estrategia de inteligencia artificial para implementar
-  dentro del proceso de reclutamiento y selección de personal.'' Universidad
-  Politécnica Metropolitana de Hidalgo, 2018.
-
-\bibitem{estadoarte5}
-``Linkedin resume builder | linkedin help.''
-  \url{https://www.linkedin.com/help/linkedin/answer/a551182}.
-\newblock Accedido: 8 de marzo de 2025.
-
-\bibitem{estadoarte8}
-CVMATCHER, ``Cvmatcher: Encuentra el trabajo perfecto para ti.''
-  \url{https://www.cvmatcher.app/}, 2025.
-\newblock Accedido: 8 de marzo de 2025.
+Cuevas, S.M.R.: Aplicación de métodos nlu en la recomendación de cvs para la
+  selección de personal. Trabajo de Fin de Grado, Universidad de Valladolid
+  (2022),
+  \url{https://uvadoc.uva.es/bitstream/handle/10324/57977/TFG-G5966.pdf}
 
 \bibitem{estadoarte6}
-``Crea tu currículum vitae gratis y encuentra trabajo en 2025.''
-  \url{https://cvapp.mx/}, 2025.
-\newblock Accedido: 8 de marzo de 2025.
+CVAPP: Crea tu currículum vitae gratis y encuentra trabajo en 2025.
+  \url{https://cvapp.mx/} (2025), accessed: 2025-03-08
+
+\bibitem{estadoarte8}
+CVMATCHER: Cvmatcher: Encuentra el trabajo perfecto para ti.
+  \url{https://www.cvmatcher.app/} (2025), accessed: 2025-03-08
+
+\bibitem{estadoarte4}
+Franco, G.S., Pérez, M.A.G., Silva, M.A.G., García, V.M.Z.: Redes neuronales:
+  nueva estrategia de inteligencia artificial para implementar dentro del
+  proceso de reclutamiento y selección de personal. Universidad Politécnica
+  Metropolitana de Hidalgo (2018),
+  \url{https://kc.cgpub.net/assets/downloads/technology/Room-3-Virtual-posters.pdf}
+
+\bibitem{djangodocs}
+{GeeksforGeeks}: Python web development with django.
+  \url{https://www.geeksforgeeks.org/python/what-is-django-web-framework/},
+  accessed: 2025-05-17
+
+\bibitem{gfg_web_scraping}
+{GeeksforGeeks}: What is web scraping and how to use it?
+  \url{https://www.geeksforgeeks.org/what-is-web-scraping-and-how-to-use-it/},
+  accessed: 2025-05-17
+
+\bibitem{ibm_apriori}
+{IBM}: Apriori algorithm.
+  \url{https://www.ibm.com/think/topics/apriori-algorithm}, accessed:
+  2025-05-17
 
 \bibitem{estadoarte7}
-Jobania, ``Analizador de compatibilidad de currículum y oferta laboral.''
-  \url{https://www.jobania.cl/analizar-cv-oferta}, 2025.
-\newblock Accedido: 8 de marzo de 2025.
+Jobania: Analizador de compatibilidad de currículum y oferta laboral.
+  \url{https://www.jobania.cl/analizar-cv-oferta} (2025), accessed: 2025-03-08
+
+\bibitem{estadoarte5}
+LinkedIn: Linkedin resume builder | linkedin help.
+  \url{https://www.linkedin.com/help/linkedin/answer/a551182}, accessed:
+  2025-03-08
+
+\bibitem{Mitchell2018}
+Mitchell, R.: Web Scraping with Python. O’Reilly Media, Sebastopol, CA, USA,
+  2 edn. (2018)
+
+\bibitem{mongodbdocs}
+{MongoDB}: What is nosql? nosql databases explained.
+  \url{https://www.mongodb.com/resources/basics/databases/nosql-explained},
+  accessed: 2025-05-17
+
+\bibitem{uvm2023}
+del Valle~de México~(UVM), U.: Encuesta nacional de egresados 2023. UVM
+  Opinión Pública, nov. 2023. [En línea]. Disponible en:
+  \url{https://opinionpublica.uvm.mx/wp-content/uploads/2023/11/BROCHURE_ENE-2023-1.pdf}
+  (2023)
+
+\bibitem{ats1}
+School, H.B., Accenture: Hidden workers: Untapped talent (2021),
+  \url{https://www.hbs.edu/managing-the-future-of-work/Documents/research/hiddenworkers09032021.pdf}
+
+\bibitem{estadoarte2}
+Yang, Y., Li, W., Wang, B.: Generative job recommendations with large language
+  model (girl). arXiv preprint  (2023), \url{https://arxiv.org/abs/2307.02157}
+
+\bibitem{estadoarte3}
+Zhang, X., Wu, J., Chen, L.: Resumenet: A learning-based framework for
+  automatic resume quality assessment. arXiv preprint  (2018),
+  \url{https://arxiv.org/abs/1810.02832}
 
 \end{thebibliography}
