@@ -60,18 +60,31 @@
 \begin{document}
 	\maketitle
 	
-	\begin{abstract}
-		Recruiters rely heavily on \emph{applicant tracking systems} (ATS), which automatically filter up to 75~\% of résumés before a human ever sees them. VitaEX is a three-tier, Django-based web prototype that helps undergraduate and recently-graduated students in Artificial Intelligence (AI) tailor their curricula vitae (CVs) to pass these filters while simultaneously recommending the most relevant job vacancies. This article synthesises every major facet of the original Spanish thesis: literature review, dataset construction via large-scale LinkedIn scraping, an Apriori rule-mining recommender, spiral \& CRISP-DM methodologies and architecture.
-		
-		
-		\keywords{Curriculum optimisation \and ATS \and Apriori \and NLP \and web scraping \and Django \and ESCOM-IPN}
-		 
-	\end{abstract}
+\begin{abstract}
+	Recruiters now depend on \emph{applicant-tracking systems} (ATS) that filter between 75 \% and 98 \% of résumés before a human review, often rejecting qualified graduates whose CVs lack machine-readable keywords. This automated gatekeeping disproportionately harms junior professionals in Artificial Intelligence (AI) across Mexico’s emerging tech hubs. \textit{VitaEX} tackles the problem by shifting the ATS from gatekeeper to mentor, showing students \emph{what} to add, \emph{why} it matters, and \emph{how} it aligns with real vacancies.
+	
+	The prototype is a three-tier web platform—React front-end, Django REST controller, MongoDB/PostgreSQL data layer—developed through the Spiral Model. A resilient Python scraper harvested LinkedIn postings from November 2024 to May 2025 for eight AI roles across five Mexican cities. Using the CRISP-DM framework, the team cleaned and normalised 5k+ vacancies, then mined more than 500,000 interpretable association rules with Apriori, creating a hybrid recommender that fuses rule confidence with SBERT cosine similarity.
+	
+	Beyond raw metrics, VitaEX delivers transparent explanations that boost ATS pass rates, raise skill awareness, and promote regional equity. This article synthesises every major facet of the Spanish thesis—literature review, large-scale data collection, rule-based recommendation, and full-stack architecture—demonstrating how interpretable data-mining and modern web engineering can narrow the employability gap for AI graduates in developing economies.
+	\keywords{Curriculum optimisation \and ATS \and Apriori \and CRISP-DM \and Web scraping \and NLP \and Django \and ESCOM-IPN}
+\end{abstract}
+
 	
 
 	
 	\section{Introduction}
-	Applicant tracking systems have become highly relevant: Fortune~500 companies deploy them in 98~\% of hires \cite{ats1}, often eliminating competent “hidden workers” whose CVs lack the \emph{exact} keywords a vacancy demands. Mexico’s National Graduate Survey (2023) shows 46.3~\% \cite{uvm2023} of graduates deem job-hunting “difficult” — largely due to missing experience and ATS incompatibility. VitaEX attacks this gap with an AI-powered CV analyser plus a vacancy recommender specialised in AI roles across five Mexican tech hubs.
+Recruitment has entered a data-driven era in which algorithmic gatekeepers decide who even reaches a human recruiter. Applicant-tracking systems (ATS) now screen roughly 98 percent of all applications that arrive at Fortune 500 companies, and they do so in milliseconds. The same tools that promise efficiency also create a fast-growing cohort of “hidden workers”: qualified candidates filtered out simply because their résumés lack the exact keywords a vacancy demands. The paradox is especially acute in artificial-intelligence (AI) roles: while demand for AI talent in Mexico rises at double-digit rates each year, recent AI graduates remain among the most frequently rejected profiles at the initial ATS stage.
+
+The disconnect begins inside the classroom. Although many Mexican universities now offer courses in machine learning, data science, and web development, most degree programmes still omit formal training on digital employability and on how ATS software actually interprets a résumé. Graduates therefore craft narrative-rich CVs that resonate with human readers yet score poorly on keyword density and skills taxonomies. According to the 2023 National Graduate Survey, 46.3 percent of respondents describe job hunting as “difficult,” citing lack of experience and ATS incompatibility as their main obstacles. Ironically, the very students equipped to build intelligent systems are the ones most hindered by them during the hiring process.
+
+A flourishing ecosystem of résumé builders and job-matching platforms offers partial relief, yet three structural problems persist. First, most tools provide minimal local context, ignoring Mexico’s specific labour-market signals such as regional salary bands or the skills mix favoured by tech hubs beyond Mexico City. Second, they behave like opaque black boxes—proprietary ranking models rarely explain why a résumé is rejected or what concrete change would raise its score. Third, subscription fees or feature paywalls undermine the purpose of serving students, who have limited income and professional experience.
+
+This research introduces VitaEX, a three-tier Django web prototype that turns the ATS from a barrier into a formative guide. The system continuously scrapes AI-related vacancies from LinkedIn and regional portals across Mexico’s five principal tech clusters—Mexico City, Guadalajara, Monterrey, Querétaro and Puebla—building a live repository of local demand. It then applies Apriori rule mining to more than half a million job descriptions to uncover non-obvious skill combinations—for example, “SQL plus Pandas implies TensorFlow”—and to power personalised recommendations. Finally, a semantic-similarity engine based on sentence embeddings highlights exactly which terms such as “Docker,” “MLOps” or “English B2” would lift a student’s match score for a selected vacancy and, crucially, explains why.
+
+By delivering free, localised, and interpretable résumé feedback, VitaEX seeks to generate three concrete benefits. First, it empowers students by converting résumé optimisation into a learning loop that exposes real skill gaps. Second, n b  it boosts recruiter efficiency by surfacing profiles already enriched with high-value keywords, reducing manual screening time. Third, it promotes regional equity by democratising access to data-driven career guidance for students at public universities and in underserved areas.
+
+In sum, VitaEX positions itself as an intelligent bridge between academic preparation and fast-evolving market requirements in Mexican AI, tackling both a social inequity and a technical challenge through an openly accessible, evidence-based approach.
+
 	
 	\section{Theoretical Framework}
 	In this chapter, we focus on the principal techniques and technologies for the prototype
@@ -294,11 +307,86 @@ The framework's Object-Relational Mapper (ORM) enables database-agnostic data op
 	\end{center}
 
 	% --------------------------------------------------------
+% --------------------------------------------------------
+\newpage
+% --------------------------------------------------------
+% --------------------------------------------------------
+\section{Methodologies}
+\label{sec:methodologies}
 
-	\section{Methodologies}
-	A single iteration of the \emph{spiral} life-cycle delivered the prototype, while CRISP-DM governed data work: business understanding $\rightarrow$ data understanding $\rightarrow$ preparation $\rightarrow$ modelling $\rightarrow$ evaluation $\rightarrow$ deployment.
-	
-	% --------------------------------------------------------
+To ensure disciplined software delivery \emph{and} reproducible data science, VitaEX combines two complementary frameworks.  
+The \textbf{Spiral Model} governs system development, guiding each release through goal setting, risk analysis, engineering, and stakeholder validation.  
+Concurrently, all data activities follow the \textbf{CRISP-DM} standard, whose six-step cycle—business understanding, data understanding, preparation, modelling, evaluation, deployment—provides full traceability from raw web data to production rules.
+
+\paragraph{Spiral Model.}
+Every loop begins by defining objectives and identifying risks; mitigations are then prototyped and evaluated before the next iteration.  
+This cadence enabled early validation of LinkedIn-scraping scalability, Apriori performance, and security controls, reducing late-stage surprises.
+
+\paragraph{CRISP-DM.}
+Within each Spiral loop the team executes CRISP-DM:  
+\emph{(i)} translate recruiter needs into scraping targets;  
+\emph{(ii)} profile incoming job data;  
+\emph{(iii)} clean, tokenise, and canonicalise skills;  
+\emph{(iv)} mine Apriori association rules;  
+\emph{(v)} benchmark rule quality; and  
+\emph{(vi)} publish refreshed models via the REST API.  
+The outputs of CRISP-DM feed the next Spiral cycle, while new Spiral deliverables provide infrastructure for subsequent data iterations.
+
+% ........................................................
+\subsection{Data Acquisition and Ingestion}
+\label{ssec:data_acquisition}
+
+\subsubsection{Target definition.}
+The scraping focused on eight AI-related roles—\emph{AI Engineer}, \emph{Machine Learning Engineer}, \emph{Data Scientist}, \emph{NLP Engineer}, \emph{Computer Vision Engineer}, \emph{Deep Learning Researcher}, \emph{MLOps Engineer}, and \emph{Data Analyst}—across five Mexican tech hubs: \emph{Ciudad de México (CDMX)}, \emph{Guadalajara}, \emph{Monterrey}, \emph{Querétaro}, and \emph{Puebla}.
+
+
+\subsubsection{Scraping pipeline.}
+A resilient Python crawler (\texttt{requests} + \texttt{BeautifulSoup}) executed a two-phase loop:  
+\emph{(i)} collect paginated job IDs using rotating user-agents and exponential back-off;  
+\emph{(ii)} retrieve detail pages through LinkedIn’s public API, parsing HTML and JSON payloads.  
+All records are stored in MongoDB as BSON documents
+\verb|{id, title, company, city, date, experience, description, skills[]}|.  
+Monthly Celery-based cron jobs refresh the corpus and flag updates via change streams.
+
+% ........................................................
+\subsection{Data Preparation}
+\label{ssec:data_prep}
+
+\begin{enumerate}[leftmargin=*]
+	\item \textbf{Cleaning \& normalisation:} lower-casing, accent stripping, HTML removal.
+	\item \textbf{Tokenisation \& POS-filtering:} spaCy’s Spanish model retains nouns, verbs, adjectives.
+	\item \textbf{Skill canonicalisation:} custom ontology maps synonyms (\textit{“ML”}$\rightarrow$\textit{“machine learning”}).
+	\item \textbf{Feature engineering:} each posting becomes a transaction
+	$\mathcal{T}=\{$\texttt{skills, city, modality, experience}$\}$.
+\end{enumerate}
+
+% ........................................................
+
+% ........................................................
+\subsection{Web-Application Development}
+\label{ssec:web_dev}
+
+\subsubsection{Architecture}
+VitaEX follows a service-oriented, three–layer MVC design (Fig.~\ref{fig:architecture}):
+\begin{itemize}[leftmargin=*]
+	\item \textbf{View} – A lightweight React front-end styled with Bootstrap~5 delivers a fully
+	responsive UI.  Static assets are served by \texttt{nginx}, enabling HTTP/2
+	multiplexing and Brotli compression for optimal latency on low-bandwidth connections.
+	\item \textbf{Controller} – All business logic resides in a versioned \texttt{/api/v1}
+	implemented with Django REST Framework.  The API enforces stateless JWT
+	authentication, role-based authorisation, and request throttling.  Swagger/OpenAPI
+	documentation is autogenerated at build time.
+	\item \textbf{Model} – Persistence is split by access pattern:  
+	\emph{(i)}~PostgreSQL stores relational data (users, roles, audit trails) and vector
+	embeddings via the \texttt{pgvector} extension;  
+	\emph{(ii)}~MongoDB houses unstructured job postings and mined Apriori rules in BSON
+	format, supporting rapid schema evolution.  
+	All write operations are wrapped in ACID transactions where cross-store consistency
+	is required.
+\end{itemize}
+
+% ........................................................
+
 %	\section{Dataset Construction}
 %	\subsection{Web Scraping Pipeline}
 %	Python \texttt{requests} + BeautifulSoup iteratively queried LinkedIn’s public job pages using rotating user agents and random delays. Each posting is stored in MongoDB with fields \{\texttt{id}, title, company, city, modality, date, experience, description, skills[\,]\}. Monthly incremental runs refresh the corpus and trigger rule re-mining.
@@ -391,7 +479,7 @@ The framework's Object-Relational Mapper (ORM) enables database-agnostic data op
 	Overall, the Apriori-based recommendation engine not only offers statistically grounded guidance but also serves an educational role, helping students understand why specific improvements are suggested. This aligns with the project’s dual goals of enhancing CV effectiveness and supporting career readiness in a comprehensible manner.
 	
 	
-	
+	\newpage
 	% --------------------------------------------------------
 
 	\section{System Architecture and Implementation}
