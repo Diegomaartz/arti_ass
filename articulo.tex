@@ -7,7 +7,6 @@
 \usepackage[T1]{fontenc}
 \usepackage{fontawesome}
 \usepackage{textcomp}
-\usepackage{amssymb} 
 \usepackage{marvosym}
 \usepackage{lmodern}
 \usepackage{geometry}
@@ -15,7 +14,8 @@
 \usepackage{setspace}
 \usepackage{float}
 %\titleformat{\section}{\normalfont\Large\bfseries}{\thesection.}{1em}{}
-\usepackage[numbers,sort&compress]{natbib}
+\usepackage[numbers,sort&compress]{natbib} % Before hyperref
+
 \usepackage{hyperref}
 
 \hypersetup{
@@ -36,36 +36,37 @@
 \usepackage{ragged2e}
 \usepackage[table]{xcolor}
 \usepackage{url}
+\usepackage{orcidlink}
+
 
 %\author{Oscar Huerta$^1$ \and Diego Martínez$^1$ \and Luis Fernando Valle$^1$ \\ $^1$Escuela Superior de Cómputo, Instituto Politécnico Nacional, Unidad Profesional	Adolfo López Mateos, Zacatenco, Mexico City, Mexico \\ \texttt{\{ohuertav2100,dmartinez,lvalleh1800\}@alumno.ipn.mx}}
 %% --- Title & Metadata ----------------------------------
 \title{VitaEX: A Web Prototype for Curriculum Vitae Analysis and AI-Driven Job Matching}
-
-
 \author{
-	Abdiel Reyes Vera\inst{1,2} \and
-	Oscar Huerta Villanueva\inst{1} \and
-	Diego Martínez Méndez\inst{1}(\Letter) \and 
-	Luis Fernando Valle Hernández\inst{1} 
-}
-
-
+	Diego Martínez Méndez\inst{1}\orcidlink{0009-0002-1348-5310} \and
+	Abdiel Reyes Vera\inst{2} \orcidlink{0009-0000-7815-5932} \and
+	Elizabeth Moreno Galván \inst{3} \orcidlink{0000-0001-5800-0087} \and \\
+	Oscar Huerta Villanueva\inst{4} \orcidlink{0009-0001-4368-8808} \and
+	Luis Fernando Valle Hernández\inst{5}  \orcidlink{0009-0005-0307-005X} 
+	}
 \institute{
-	Escuela Superior de Cómputo, IPN, Mexico City, Mexico \\
-	\texttt{\Letter~dmartinezm1707@alumno.ipn.mx} 
-	\and
-	Centro de Investigación en Computación, IPN, Mexico City, Mexico
+	\inst{1,2,3,4,5} Escuela Superior de Cómputo, IPN, Mexico City, Mexico \\
+	\inst{2} Centro de Investigación en Computación, IPN, Mexico City, Mexico \\
+	\textsuperscript{1}\texttt{dmartinezm1707@alumno.ipn.mx}, 
+	\textsuperscript{2}\texttt{areyesve@ipn.mx}, 
+	\textsuperscript{3}\texttt{emorenog@ipn.mx}, \\
+	\textsuperscript{4}\texttt{ohuertav2100@alumno.ipn.mx}, 
+	\textsuperscript{5}\texttt{lvalleh1800@alumno.ipn.mx}
 }
-
 \begin{document}
 	\maketitle
 	
 \begin{abstract}
 	Recruiters now depend on \emph{applicant-tracking systems} (ATS) that filter between 75 \% and 98 \% of résumés before a human review, often rejecting qualified graduates whose CVs lack machine-readable keywords. This automated gatekeeping disproportionately harms junior professionals in Artificial Intelligence (AI) across Mexico’s emerging tech hubs. \textit{VitaEX} tackles the problem by shifting the ATS from gatekeeper to mentor, showing students \emph{what} to add, \emph{why} it matters, and \emph{how} it aligns with real vacancies.
 	
-	The prototype is a three-tier web platform—React front-end, Django REST controller, MongoDB/PostgreSQL data layer—developed through the Spiral Model. A resilient Python scraper harvested LinkedIn postings from November 2024 to May 2025 for eight AI roles across five Mexican cities. Using the CRISP-DM framework, the team cleaned and normalised 5k+ vacancies, then mined more than 500,000 interpretable association rules with Apriori, creating a hybrid recommender that fuses rule confidence with SBERT cosine similarity.
+	The prototype is a three-tier web platform—React front-end, Django REST controller, MongoDB / PostgreSQL data layer—developed through the Spiral Model. A resilient Python scraper harvested LinkedIn postings from November 2024 to May 2025 for eight AI roles across five Mexican cities. Using the CRISP-DM framework, the team cleaned and normalized 5k+ vacancies, then mined more than 500,000 interpretable association rules with Apriori, creating a hybrid recommender that fuses rule confidence with SBERT cosine similarity.
 	
-	Beyond raw metrics, VitaEX delivers transparent explanations that boost ATS pass rates, raise skill awareness, and promote regional equity. This article synthesises every major facet of the Spanish thesis—literature review, large-scale data collection, rule-based recommendation, and full-stack architecture—demonstrating how interpretable data-mining and modern web engineering can narrow the employability gap for AI graduates in developing economies.
+	Beyond raw metrics, VitaEX delivers transparent explanations that boost ATS pass rates, raise skill awareness, and promote regional equity. This article synthesizes every major facet of the Spanish thesis—literature review, large-scale data collection, rule-based recommendation, and full-stack architecture—demonstrating how interpretable data-mining and modern web engineering can narrow the employability gap for AI graduates in developing economies.
 	\keywords{Curriculum optimisation \and ATS \and Apriori \and CRISP-DM \and Web scraping \and NLP \and Django \and ESCOM-IPN}
 \end{abstract}
 
@@ -74,7 +75,7 @@
 	
 \section{Introduction}
 A \emph{curriculum vitae} (CV) is, in the words of the Royal Spanish Academy, a document that summarises a person’s academic record, work history, skills and achievements for professional or academic purposes\,\cite{rae}.  
-In today’s labour market that summary must first persuade algorithms.  
+In today’s labor market that summary must first persuade algorithms.  
 Harvard Business School and Accenture estimate that \textbf{between 75 \% and 98 \%} of all applications in large firms are screened by applicant-tracking systems (ATS) before any human review, quietly excluding millions of otherwise qualified “hidden workers” whose CVs lack certain keywords or credentials\,\cite{ats1}.  
 In Mexico the impact is amplified: the \emph{Encuesta Nacional de Egresados 2023} reports that \textbf{46.3 \%} of new graduates describe the job-search process as “difficult”, citing ATS incompatibility as a leading barrier\,\cite{uvm2023}.  
 Paradoxically, many of those applicants hold precisely the AI-related skills that employers claim to need most urgently.
@@ -99,12 +100,12 @@ This article details the theoretical foundations, CRISP-DM methodology and syste
 	In this chapter, we focus on the principal techniques and technologies for the prototype
 	\subsection{Apriori Algorithm}
 	
-	The algorithm is an unsupervised machine learning technique, used for discover frecuent patterns and relationships between items in large datasets. It finds item groups that frequently occur together in transaction data and uncovers significant patterns from them. This method is commonly applied in areas such as recommendation systems, fraud prevention, and inventory control, among others.The key assumption (the Apriori property) is that if an itemset is frequent, all its subsets must also be frequent. Conversely, if an itemset is infrequent, any larger set containing it will also be infrequent. This principle helps reduce computational complexity by pruning unnecessary candidate itemsets early. \cite{ibm_apriori}
+	The algorithm is an unsupervised machine learning technique, used for discover frequent patterns and relationships between items in large datasets. It finds item groups that frequently occur together in transaction data and uncovers significant patterns from them. This method is commonly applied in areas such as recommendation systems, fraud prevention, and inventory control, among others.The key assumption (the Apriori property) is that if an itemset is frequent, all its subsets must also be frequent. Conversely, if an itemset is infrequent, any larger set containing it will also be infrequent. This principle helps reduce computational complexity by pruning unnecessary candidate itemsets early. \cite{ibm_apriori}
 \subsubsection{Steps of the Apriori Algorithm}
 
 \begin{enumerate}
 	\item \textbf{Define the minimum support (min support):} \\
-	A minimum threshold is set that an itemset must meet to be considered frequent.
+	A minimum threshold is set that an itemset must meet to be considered as frequent.
 	
 	\item \textbf{Generate frequent 1-itemsets:} \\
 	The occurrences of each item in the database are counted, and those that do not meet the minimum support are discarded.
@@ -162,7 +163,7 @@ To evaluate the quality of association rules of the form \( A \rightarrow B \), 
 
 \subsection{Web Scrapping}
 
-Is an automated technique for extracting data from web pages. It has become a cornerstone for collecting large volumes of public information available on the Internet. Its relevance lies in its ability to feed statistical analyses, market studies, and machine learning models with data that would otherwise require costly manual capture in terms of time and resources. \cite{gfg_web_scraping}
+Is an automated technique for extracting data from web pages. It has become a cornerstone for collecting large volumes of public information available on the Internet. Its relevance lies in its ability to feed statistical analyzes, market studies, and machine learning models with data that would otherwise require costly manual capture in terms of time and resources. \cite{gfg_web_scraping}
 
 \subsubsection{Scrapping Python Tools}
 Python offers a mature ecosystem for each phase of the process:
@@ -317,7 +318,7 @@ The framework's Object-Relational Mapper (ORM) enables database-agnostic data op
 
 	% --------------------------------------------------------
 % --------------------------------------------------------
-\newpage
+
 % --------------------------------------------------------
 % --------------------------------------------------------
 \section{Methodologies}
@@ -325,7 +326,7 @@ The framework's Object-Relational Mapper (ORM) enables database-agnostic data op
 
 To ensure disciplined software delivery \emph{and} reproducible data science, VitaEX combines two complementary frameworks.  
 The \textbf{Spiral Model} governs system development, guiding each release through goal setting, risk analysis, engineering, and stakeholder validation.  
-Concurrently, all data activities follow the \textbf{CRISP-DM} standard, whose six-step cycle—business understanding, data understanding, preparation, modelling, evaluation, deployment—provides full traceability from raw web data to production rules.
+Concurrently, all data activities follow the \textbf{CRISP-DM} standard, whose six-step cycle—business understanding, data understanding, preparation, modeling, evaluation, deployment—provides full traceability from raw web data to production rules.
 
 \paragraph{\textbf{Spiral Model.}}
 Every loop begins by defining objectives and identifying risks; mitigations are then prototyped and evaluated before the next iteration.  
@@ -335,7 +336,7 @@ This cadence enabled early validation of LinkedIn-scraping scalability, Apriori 
 Within each Spiral loop the team executes CRISP-DM:  
 \emph{(i)} translate recruiter needs into scraping targets;  
 \emph{(ii)} profile incoming job data;  
-\emph{(iii)} clean, tokenise, and canonicalise skills;  
+\emph{(iii)} clean, tokenize, and canonicalize skills;  
 \emph{(iv)} mine Apriori association rules;  
 \emph{(v)} benchmark rule quality; and  
 \emph{(vi)} publish refreshed models via the REST API.  
@@ -365,7 +366,7 @@ The outputs of CRISP-DM feed the next Spiral cycle, while new Spiral deliverable
 	\\ \hline
 	
 	\textbf{3. Data Preparation} &
-	Clean, transform and format data for modelling. &
+	Clean, transform and format data for modeling. &
 	Lower-casing, accent removal, strip HTML.\
 	
 	Spanish spaCy POS-tagger to keep nouns/verbs/adjectives.\
@@ -376,7 +377,7 @@ The outputs of CRISP-DM feed the next Spiral cycle, while new Spiral deliverable
 	
 	Output: 5 313 clean records. \\ \hline
 	
-	\textbf{4. Modelling} &
+	\textbf{4. Modeling} &
 	Choose algorithms, build models, tune parameters. &
 	Apriori algorithm \\ \hline
 	
@@ -419,7 +420,7 @@ Monthly Celery-based cron jobs refresh the corpus and flag updates via change st
 \begin{enumerate}[leftmargin=*]
 	\item \textbf{Cleaning \& normalisation:} lower-casing, accent stripping, HTML removal.
 	\item \textbf{Filtering:} spaCy’s Spanish model retains nouns, verbs, adjectives.
-	\item \textbf{Skill maapping:} custom ontology maps synonyms (\textit{“ML”}$\rightarrow$\textit{“machine learning”}).
+	\item \textbf{Skill mapping:} custom ontology maps synonyms (\textit{“ML”}$\rightarrow$\textit{“machine learning”}).
 	\item \textbf{Feature engineering:} each posting becomes a transaction
 	$\mathcal{T}=\{$\texttt{skills, city, modality, experience}$\}$.
 \end{enumerate}
@@ -513,11 +514,12 @@ VitaEX follows a service-oriented, three–layer MVC design (Fig.~\ref{fig:archi
 		
 		\item \textbf{Figure~\ref{fig:confidence_distribution}} visualizes the range of confidence levels across filtered rules. Rather than limiting to only 100\% confidence rules, this chart includes a balanced mix from 50\% up to 100\%, illustrating the richness of the rule base. Rules with 70–90\% confidence, though not absolute, offer realistic and frequently valid suggestions that generalize well across roles.
 	\end{itemize}
+		%\vspace{-8.2em}
 	These patterns directly fuel the recommender engine. For instance, if a student from CDMX includes “SQL” and “Pandas” in their profile but not “TensorFlow”, and a rule exists where \{“SQL”, “Pandas”, “Querétaro”\} $\Rightarrow$ “TensorFlow” with high lift and confidence, the system will recommend adding “TensorFlow” to improve CV–vacancy alignment.
-	
+	%\vspace{-1.5em}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.835\linewidth]{imagenes/top_rules.png}
+		\includegraphics[width=1.15\linewidth]{imagenes/top_rules.png}
 		\caption{Top 10 association rules sorted by lift, highlighting the strongest co-occurrence patterns.}
 		\label{fig:top_rules}
 	\end{figure}
@@ -542,8 +544,6 @@ VitaEX follows a service-oriented, three–layer MVC design (Fig.~\ref{fig:archi
 	
 	Overall, the Apriori-based recommendation engine not only offers statistically grounded guidance but also serves an educational role, helping students understand why specific improvements are suggested. This aligns with the project’s dual goals of enhancing CV effectiveness and supporting career readiness in a comprehensible manner.
 	
-	
-	\newpage
 	% --------------------------------------------------------
 
 	\section{System Architecture and Implementation}
@@ -623,9 +623,9 @@ To build on the current system and ensure continuous relevance in an evolving ma
 By focusing on students—especially those from underserved areas or public universities—VitaEX democratizes access to quality career guidance. Its open-access model and user-centered design enable thousands of students to receive personalized, data-driven advice without cost, narrowing the gap between academic preparation and real-world employability in the AI sector.
 
 	
-	% ----------------- Acknowledgements ---------------------
-	\section*{Acknowledgements}
-	We thank M.\,C. Elizabeth Moreno Galván and M.\,C. Abdiel Reyes Vera for supervision
+%	% ----------------- Acknowledgements ---------------------
+%	\section*{Acknowledgements}
+%	We thank M.\,C. Elizabeth Moreno Galván and M.\,C. Abdiel Reyes Vera for supervision
 	
 % ----------------- Bibliography -------------------------
 \makeatletter
@@ -633,5 +633,6 @@ By focusing on students—especially those from underserved areas or public univ
 \makeatother
 
 \bibliographystyle{splncs04}
+%\bibliographystyle{IEEEtranN}
 \bibliography{referencias}
 \end{document}

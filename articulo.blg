@@ -1,48 +1,60 @@
-This is BibTeX, Version 0.99d
+This is BibTeX, Version 0.99d (TeX Live 2023)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: articulo.aux
-Reallocating 'name_of_file' (item size: 1) to 9 items.
-The style file: splncs04.bst
-Reallocating 'name_of_file' (item size: 1) to 12 items.
+The style file: IEEEtranN.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: referencias.bib
-You've used 15 entries,
-            2850 wiz_defined-function locations,
-            665 strings with 6852 characters,
-and the built_in function-call counts, 5179 in all, are:
-= -- 376
-> -- 145
-< -- 0
-+ -- 61
-- -- 46
-* -- 259
-:= -- 688
-add.period$ -- 14
-call.type$ -- 15
-change.case$ -- 76
-chr.to.int$ -- 0
-cite$ -- 15
-duplicate$ -- 475
-empty$ -- 570
-format.name$ -- 50
-if$ -- 1126
-int.to.chr$ -- 0
-int.to.str$ -- 15
-missing$ -- 99
-newline$ -- 51
-num.names$ -- 30
-pop$ -- 266
+-- IEEEtranN.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+** Natbib version - not for normal IEEE work.
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=200001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+
+Done.
+You've used 16 entries,
+            4855 wiz_defined-function locations,
+            1020 strings with 10588 characters,
+and the built_in function-call counts, 8600 in all, are:
+= -- 799
+> -- 178
+< -- 15
++ -- 89
+- -- 48
+* -- 407
+:= -- 1517
+add.period$ -- 32
+call.type$ -- 16
+change.case$ -- 39
+chr.to.int$ -- 21
+cite$ -- 16
+duplicate$ -- 636
+empty$ -- 710
+format.name$ -- 70
+if$ -- 1847
+int.to.chr$ -- 2
+int.to.str$ -- 17
+missing$ -- 120
+newline$ -- 82
+num.names$ -- 48
+pop$ -- 397
 preamble$ -- 1
-purify$ -- 53
-quote$ -- 0
-skip$ -- 111
+purify$ -- 16
+quote$ -- 2
+skip$ -- 621
 stack$ -- 0
-substring$ -- 171
-swap$ -- 204
+substring$ -- 68
+swap$ -- 321
 text.length$ -- 0
 text.prefix$ -- 0
-top$ -- 0
-type$ -- 58
+top$ -- 6
+type$ -- 228
 warning$ -- 0
-while$ -- 40
-width$ -- 17
-write$ -- 147
+while$ -- 33
+width$ -- 0
+write$ -- 198
