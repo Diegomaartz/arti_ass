@@ -60,7 +60,6 @@
 }
 \begin{document}
 	\maketitle
-	
 \begin{abstract}
 	Recruiters now depend on \emph{applicant-tracking systems} (ATS) that filter between 75 \% and 98 \% of résumés before a human review, often rejecting qualified graduates whose CVs lack machine-readable keywords. This automated gatekeeping disproportionately harms junior professionals in Artificial Intelligence (AI) across Mexico’s emerging tech hubs. \textit{VitaEX} tackles the problem by shifting the ATS from gatekeeper to mentor, showing students \emph{what} to add, \emph{why} it matters, and \emph{how} it aligns with real vacancies.
 	
@@ -85,7 +84,7 @@ The prototype continuously scrapes AI-oriented vacancies from LinkedIn and regio
 After normalising more than 5 000 postings, the system mines over \textbf{500 000} interpretable association rules with the \emph{Apriori} algorithm and enriches them with semantic similarity scores produced by SBERT.  
 The result is a transparent recommender that tells students \emph{what} to add (e.g., “Docker”, “MLOps”, “English B2”), \emph{why} it matters, and \emph{how} it improves their match with specific vacancies.
 
-VitaEX is implemented as a three-tier web architecture: a responsive React front-end, a Django REST controller that enforces JWT-based authentication, and a hybrid MongoDB/PostgreSQL data layer.  
+VitaEX is implemented as a three-tier web architecture: a responsive React front-end, a Django REST controller that enforces JWT-based authentication, and a hybrid MongoDB/MySQL data layer.  
 Celery workers orchestrate asynchronous scraping and model retraining, ensuring that recommendations reflect real-time market shifts.
 
 By offering localised, open-access and fully explainable feedback, VitaEX pursues three concrete goals:  
@@ -255,34 +254,17 @@ The framework's Object-Relational Mapper (ORM) enables database-agnostic data op
 
 	\section{Related Work}
 	
-	In recent years, various commercial and academic solutions have attempted to automate or enhance curriculum vitae (CV) generation and job recommendation. These approaches often fall short in addressing the full complexity of job matching, interpretability, and student-specific needs. Most existing systems can be grouped into one or more of the following categories: (i) résumé generators that do not adapt to job offers, (ii) job recommenders that fail to explain their suggestions, and (iii) platforms that are not tailored to the constraints and context of students.
+	Several systems and academic efforts have attempted to address the challenges of résumé optimization and job recommendation. These initiatives generally fall into three categories: (i) platforms that focus on CV template generation without intelligent adaptation to job market demands, (ii) machine learning models that recommend jobs but provide little to no explanation of the matching process, and (iii) systems that are either commercial or not tailored to student users in emerging markets.\\
 	
-	The following subsections provide a detailed analysis of the most relevant proposals in the state of the art.
+	For instance, ResumeNet~\cite{estadoarte3} evaluates the quality of résumés using learning-based models, offering an automated assessment score. However, it does not align candidates’ profiles with specific job offers, nor does it offer concrete suggestions for improvement. Similarly, GIRL~\cite{estadoarte2} leverages large language models to generate job recommendations, but it lacks transparency in its reasoning process, which undermines user trust and makes the recommendations difficult to interpret or act upon.\\
 	
-	\subsection{Application of NLU Methods for CV Recommendation~\cite{estadoarte1}}
-	This proposal explores the use of Natural Language Understanding (NLU) techniques for processing and analyzing the content of résumés. While it does recommend based on job-related information, the system lacks integration with machine learning and does not provide CV template generation or structured job offers. Its focus is primarily linguistic and heuristic, offering limited scalability or transparency in matching.
+	On the other hand, systems such as LinkedIn Resume Builder and CVapp focus on providing attractive résumé templates but do not employ machine learning to assess skill-job fit. While they are user-friendly and widely used, their utility ends at formatting rather than strategic content optimization. Likewise, platforms like CVMATCHER and Jobania attempt to recommend job matches but do so without considering nuanced attributes such as location constraints, student experience levels, or evolving industry skill demands.\\
 	
-	\subsection{GIRL: Generative Job Recommendations with LLM~\cite{estadoarte2}}
-	The GIRL system applies large language models (LLMs) for generating job recommendations. While it demonstrates promising use of generative AI for mapping candidates to vacancies, it does not offer clear insights into why a particular job is recommended. The black-box nature of LLMs presents a challenge in interpretability. Moreover, the tool lacks CV improvement suggestions and is not focused on student-specific constraints or accessibility.
+	Notably, some works have applied Natural Language Understanding (NLU) methods to extract information from CVs~\cite{estadoarte1}, or employed neural networks in recruitment pipelines~\cite{estadoarte4}. While technically advanced, these efforts are often limited in scope—focusing either on model performance or on recruiter-facing use cases, rather than the candidate experience.\\
 	
-	\subsection{ResumeNet~\cite{estadoarte3}}
-	ResumeNet is a learning-based framework designed to assess the quality of résumés. The core innovation lies in its ability to score CVs using pre-trained models that account for formatting, keyword density, and professional tone. However, it does not analyze job offers nor does it offer any job recommendations. Its utility is limited to quality scoring without contextual relevance to actual vacancies.
+	In contrast, \textbf{VitaEX} distinguishes itself through a student-centered, transparent, and interpretable approach. By mining over 500,000 association rules from real AI job postings in Mexico, it generates human-readable recommendations that directly inform students about missing skills and suggest edits to improve their alignment with ATS systems. Unlike opaque models, VitaEX combines confidence and lift from Apriori rules with semantic similarity from SBERT, creating a hybrid that balances statistical robustness and contextual relevance. Moreover, its architecture is designed for continuous updates and regional adaptability, using asynchronous scraping and retraining mechanisms that ensure the system reflects current market dynamics.\\
 	
-	\subsection{Neural Networks for Recruitment~\cite{estadoarte4}}
-	This research employs neural network models to streamline recruitment processes. The system evaluates candidate profiles using historical hiring data, focusing on classification and ranking. However, it does not provide template generation or vacancy-specific suggestions. The system is not freely accessible and is not tailored to the needs of students or entry-level professionals.
-	
-	\subsection{LinkedIn Resume Builder~\cite{estadoarte5}}
-	LinkedIn offers a resume builder that allows users to auto-generate résumés based on their LinkedIn profiles. It provides a user-friendly interface and professional templates. Although it offers job suggestions based on user skills, it lacks detailed explanations for these matches. The system is partially accessible to students but does not include transparency or advanced AI capabilities.
-	
-	\subsection{CVapp~\cite{estadoarte8}}
-	CVapp is a widely used commercial platform for generating professional-looking résumés using customizable templates. It lacks integration with any form of job recommendation or AI-based content analysis. As such, it is useful purely for formatting but does not provide any enhancement or evaluation based on job market needs.
-	
-	\subsection{Jobania~\cite{estadoarte6}}
-	Jobania is a hybrid platform that offers both résumé generation and basic job recommendations. It uses static matching algorithms without machine learning or adaptive feedback. Although more complete than tools focused only on design, it is not open access and does not prioritize student needs.
-	
-	\subsection{CVMATCHER~\cite{estadoarte7}}
-	CVMATCHER stands out as one of the more technically advanced systems in the literature. It uses both rule-based and machine learning approaches to analyze CV-job fit. The platform is capable of recommending offers and suggesting improvements, although it remains a proprietary tool with no free access for educational users.
-	
+	\newpage
 	\renewcommand{\arraystretch}{1.5}
 	\footnotesize
 	\begin{center}
@@ -425,6 +407,14 @@ Monthly Celery-based cron jobs refresh the corpus and flag updates via change st
 	$\mathcal{T}=\{$\texttt{skills, city, modality, experience}$\}$.
 \end{enumerate}
 
+\subsection{Data Preprocessing and Noise Handling}
+
+The web scraper extracted over 5,000 AI-related job postings across five major Mexican cities between November 2024 and May 2025. These postings presented high heterogeneity in formatting, language use, and keyword conventions due to varying employer practices and platform encoding.
+
+To address this, a multi-phase cleaning pipeline was applied. First, \textbf{deduplication} logic discarded redundant entries based on URL and job ID hashing. Second, \textbf{regex-based cleaning} were applied to normalize inconsistent labels (e.g., ``machine learning engineer'' vs. ``ML Engr'') and to standardize experience tags. Third, \textbf{Stopwords} were removed from job descriptions using SpaCy and custom pre-tokenization rules.
+
+Lastly, a validation step assessed field completeness across required dimensions (title, location, description, tags). Only postings with at least 80\% field population and valid location encoding were retained for rule mining, ensuring high signal-to-noise ratio in the input dataset.
+
 % ........................................................
 
 % ........................................................
@@ -442,7 +432,7 @@ VitaEX follows a service-oriented, three–layer MVC design (Fig.~\ref{fig:archi
 	authentication, role-based authorisation, and request throttling.  Swagger/OpenAPI
 	documentation is autogenerated at build time.
 	\item \textbf{Model} – Persistence is split by access pattern:  
-	\emph{(i)}~PostgreSQL stores relational data (users, roles, audit trails) and vector
+	\emph{(i)}~MySQL stores relational data (users, roles, audit trails) and vector
 	embeddings via the \texttt{pgvector} extension;  
 	\emph{(ii)}~MongoDB houses unstructured job postings and mined Apriori rules in BSON
 	format, supporting rapid schema evolution.  
@@ -481,16 +471,39 @@ VitaEX follows a service-oriented, three–layer MVC design (Fig.~\ref{fig:archi
 		\item \textbf{Lift:} The strength of association; a value greater than 1 implies a positive correlation.
 	\end{itemize}
 	
-	To build a transparent recommendation engine, the system transforms each student profile into a transaction $\mathcal{T}$ containing elements such as \texttt{skills}, \texttt{experience\_level}, \texttt{city}, and \texttt{modality}. Apriori association rules are generated with thresholds of \textbf{support} $> 1\%$, \textbf{confidence} $> 50\%$, and \textbf{lift} $> 2$. 
+	\subsection{Rule Filtering: Balancing Specificity and Generalizability}
 	
-	Out of a total of \textbf{2,075,096} candidate rules, only \textbf{533,889} were retained after filtering. This included the removal of \textbf{1,541,207 redundant or uninformative rules}, such as those whose antecedents and consequents overlapped or involved unspecified attributes. Each surviving rule is interpretable as a student recommendation, such as:
+	The initial execution of the Apriori algorithm yielded over \textbf{2,075,096} candidate rules. However, not all of them were useful for practical recommendation purposes. To ensure both relevance and clarity, a rigorous multi-stage filtering strategy was applied.
+	
+	First, \textbf{redundant and symmetric rules} were pruned using lift-based thresholds and subset comparison techniques. Second, we retained only those rules that met minimum thresholds of \textbf{confidence} ($\geq$ 50\%) and \textbf{lift} ($\geq$ 1.5), eliminating statistically weak associations. Third, we enforced \textbf{antecedent-consequent dissimilarity} to remove tautological rules (e.g., \texttt{“Python” $\Rightarrow$ “Python”}) or those with minimal informative value.
+	
+	In a final manual review, we removed rules exhibiting \textbf{semantic saturation}, where antecedents were overly specific (e.g., rare locations or niche technologies), compromising generalizability across the broader student population. After applying these filters, the rule set was narrowed to \textbf{533,889 high-quality, interpretable rules}, striking a balance between specificity and usability for student guidance.
+	
+	Each student profile is transformed into a transaction $\mathcal{T}$ composed of semantically relevant elements such as \texttt{skills}, \texttt{experience\_level}, \texttt{city}, and \texttt{work\_modality}. The Apriori algorithm was configured with the following thresholds: \textbf{support} $>$ 1\%, \textbf{confidence} $>$ 50\%, and \textbf{lift} $>$ 2. These settings ensured both statistical significance and practical impact in the recommendations.
+	
+	Of the original 2 million+ rules, approximately \textbf{1,541,207} were discarded for being either redundant, weakly predictive, or overly narrow in scope. The remaining \textbf{533,889} rules were retained as the core knowledge base for the recommender system. Each rule is directly interpretable as a career-enhancing suggestion. For example:
 	
 	\begin{quote}
 		\small
-		\texttt{If the student has “Data Analysis” and “Intermediate Experience”} $\Rightarrow$ \texttt{Add “Machine Learning” to improve fit} (Confidence: 91\%).
+		\texttt{If the student has “Data Analysis” and “Intermediate Experience”} $\Rightarrow$ \texttt{Add “Machine Learning” to improve fit} (Confidence: 91\%, Lift: 2.8).
 	\end{quote}
 	
-	The system ranks job vacancies by combining cosine similarity (from SBERT embeddings) with rule confidence. Suggestions are generated for any missing but high-lift consequent features.
+	These filtered rules are then operationalized in the recommendation engine. For each missing but highly relevant feature identified in a rule’s consequent, the system evaluates its contextual match through semantic similarity. This is achieved by combining the rule’s confidence with the \textbf{cosine similarity} derived from SBERT embeddings between the student’s CV and the target vacancy. The final ranked suggestions help students augment their CVs with high-impact keywords, thereby improving alignment with employer expectations and boosting ATS compatibility.
+	
+	
+	\subsection{Hybrid Recommendation: Apriori + SBERT Fusion}
+	
+	The recommender engine integrates two paradigms: rule-based learning (via Apriori) and semantic embedding similarity (via SBERT). Each incoming user CV is vectorized using sentence embeddings through a fine-tuned multilingual SBERT model. In parallel, association rules derived from historical vacancy data are filtered by relevance to the user’s vector profile.
+	
+	To generate a final ranked recommendation list, we compute a composite score $S$ for each candidate recommendation $r$ as follows:
+	
+	\[
+	S(r) = \alpha \cdot \text{Confidence}_{\text{Apriori}}(r) + (1 - \alpha) \cdot \text{CosineSim}_{\text{SBERT}}(r, \text{user\_cv})
+	\]
+	
+	Here, $\alpha$ was empirically set to 0.6 after grid-search optimization on a validation subset, giving slightly more weight to interpretable rule confidence. This hybrid strategy preserves explainability via the Apriori rules while capturing nuanced semantic associations through dense vector similarity, addressing cold-start cases and lexical drift.
+	
+	
 	
 	\vspace{0.5em}
 	
@@ -548,7 +561,7 @@ VitaEX follows a service-oriented, three–layer MVC design (Fig.~\ref{fig:archi
 
 	\section{System Architecture and Implementation}
 	
-	Figure~\ref{fig:blocks} shows a three-layer MVC stack: \textbf{View} (Bootstrap~5) $\rightarrow$ \textbf{Controller} (Django REST API) $\rightarrow$ \textbf{Model} (NLP services + MongoDB/PostgreSQL). Celery workers handle asynchronous scraping and model retraining.
+	Figure~\ref{fig:blocks} shows a three-layer MVC stack: \textbf{View} (Bootstrap~5) $\rightarrow$ \textbf{Controller} (Django REST API) $\rightarrow$ \textbf{Model} (NLP services + MongoDB/MySQL). Celery workers handle asynchronous scraping and model retraining.
 	
 	\begin{figure}[H]
 		\centering
@@ -575,7 +588,14 @@ VitaEX follows a service-oriented, three–layer MVC design (Fig.~\ref{fig:archi
 	
 	Finally, the analysis results are displayed in different sections of the web interface. Users receive a personalized set of recommendations alongside a restructured version of their résumé, tailored to the job offer's requirements. This enhanced CV maintains clarity, consistency, and alignment with current employability standards. Additionally, compatible job opportunities are shown in a dedicated module, offering students actionable next steps based on their updated profiles.
 	
-
+	\subsection{Development Methodologies and Data Consistency}
+	
+	The system architecture was developed following the \textbf{Spiral Model}, enabling iterative prototyping and risk-driven refinement throughout each development phase. This approach allowed frequent stakeholder feedback and early detection of integration bottlenecks, especially during deployment of the RESTful API and its interaction with asynchronous tasks such as scraping and model retraining.
+	
+	In parallel, the entire data pipeline adhered to the \textbf{CRISP-DM} (Cross-Industry Standard Process for Data Mining) methodology, ensuring a structured and traceable workflow from data acquisition to model deployment. This dual-method integration provided both macro-level delivery control (via the Spiral Model) and micro-level pipeline traceability (via CRISP-DM), thus reinforcing the integrity and auditability of all experimental stages. Each stage—from business understanding, data understanding, and preprocessing to modeling and evaluation—was explicitly logged and version-controlled, allowing reproducibility of results.
+	
+	Regarding data persistence, the system uses a \textbf{hybrid storage architecture}: MongoDB stores unstructured documents like scraped job postings and rule outputs, while MySQL handles structured entities such as user profiles and authentication metadata. To ensure consistency across both layers during recommendation generation, a synchronization layer was implemented. This layer queries the MongoDB-derived feature vector and cross-validates with the MySQL user profile before computing recommendations, ensuring that outdated or misaligned records do not propagate downstream.
+	
 	% --------------------------------------------------------
 %	\section{Risk and Feasibility}
 %	Thirty‑one risks were catalogued. Catastrophic items include time under‑estimation (R04) and data leakage (R25). Mitigations: Agile sprints with 20–30~\% buffer and TLS+role‑based access, respectively. Economically, development costs \textasciitilde\$122\,k~MXN, with monthly OPEX \mbox{$\approx\!\$3\,k$}. Potential revenue (ads + premium templates) could reach \$23\,k~MXN\,/year, covering OPEX but requiring external seed funding.
@@ -600,7 +620,7 @@ The system successfully mined over \textbf{500,000 meaningful association rules}
 
 Furthermore, the system achieves this while maintaining full transparency in its reasoning, offering users personalized explanations for each suggestion. This interpretability serves a dual purpose: it enhances trust in the system and also contributes to educational value by informing students of current job market trends in AI.
 
-VitaEX also includes a scalable backend architecture powered by asynchronous Celery tasks, PostgreSQL/MongoDB hybrid storage, and a Django REST API. It is designed to be modular and updatable, allowing future integration of new recommendation engines or resume parsers without compromising performance.
+VitaEX also includes a scalable backend architecture powered by asynchronous Celery tasks, MySQL/MongoDB hybrid storage, and a Django REST API. It is designed to be modular and updatable, allowing future integration of new recommendation engines or resume parsers without compromising performance.
 
 \subsection*{Future Work}
 
