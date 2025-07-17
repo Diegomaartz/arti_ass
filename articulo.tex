@@ -254,17 +254,53 @@ The framework's Object-Relational Mapper (ORM) enables database-agnostic data op
 
 	\section{Related Work}
 	
-	Several systems and academic efforts have attempted to address the challenges of résumé optimization and job recommendation. These initiatives generally fall into three categories: (i) platforms that focus on CV template generation without intelligent adaptation to job market demands, (ii) machine learning models that recommend jobs but provide little to no explanation of the matching process, and (iii) systems that are either commercial or not tailored to student users in emerging markets.\\
+	Despite the proliferation of tools aimed at improving job-matching and résumé optimization, a critical gap persists between algorithmic sophistication and user-centered applicability—especially in the context of emerging economies. Existing systems fall short in one or more of the following dimensions: transparency of recommendation, alignment with local labor market conditions, explainability of models, and accessibility for non-technical student populations. This section examines the state of the art not merely as a list, but as a critical landscape in which VitaEX carves out a novel, high-impact space.
 	
-	For instance, ResumeNet~\cite{estadoarte3} evaluates the quality of résumés using learning-based models, offering an automated assessment score. However, it does not align candidates’ profiles with specific job offers, nor does it offer concrete suggestions for improvement. Similarly, GIRL~\cite{estadoarte2} leverages large language models to generate job recommendations, but it lacks transparency in its reasoning process, which undermines user trust and makes the recommendations difficult to interpret or act upon.\\
+	\subsection{Template-Based CV Builders: Form Without Substance}
 	
-	On the other hand, systems such as LinkedIn Resume Builder and CVapp focus on providing attractive résumé templates but do not employ machine learning to assess skill-job fit. While they are user-friendly and widely used, their utility ends at formatting rather than strategic content optimization. Likewise, platforms like CVMATCHER and Jobania attempt to recommend job matches but do so without considering nuanced attributes such as location constraints, student experience levels, or evolving industry skill demands.\\
+	Widely used platforms such as LinkedIn Resume Builder and CVapp offer elegant visual templates for building résumés. These tools emphasize formatting aesthetics and usability but do not provide personalized feedback about content quality or job-market fit. While this might suffice for experienced professionals with clarity about industry expectations, it is insufficient for students or recent graduates unfamiliar with employer language or keyword strategies.
 	
-	Notably, some works have applied Natural Language Understanding (NLU) methods to extract information from CVs~\cite{estadoarte1}, or employed neural networks in recruitment pipelines~\cite{estadoarte4}. While technically advanced, these efforts are often limited in scope—focusing either on model performance or on recruiter-facing use cases, rather than the candidate experience.\\
+	In contrast, VitaEX embeds its recommendation engine at the semantic and data-mining level, showing not just how a CV should look, but what it should contain based on statistically significant job patterns. It bridges the gap between document design and strategic content optimization.
 	
-	In contrast, \textbf{VitaEX} distinguishes itself through a student-centered, transparent, and interpretable approach. By mining over 500,000 association rules from real AI job postings in Mexico, it generates human-readable recommendations that directly inform students about missing skills and suggest edits to improve their alignment with ATS systems. Unlike opaque models, VitaEX combines confidence and lift from Apriori rules with semantic similarity from SBERT, creating a hybrid that balances statistical robustness and contextual relevance. Moreover, its architecture is designed for continuous updates and regional adaptability, using asynchronous scraping and retraining mechanisms that ensure the system reflects current market dynamics.\\
+	\subsection{Machine Learning Systems: Opaque Recommendations}
 	
-	\newpage
+	Several academic efforts have introduced ML-based tools for job recommendation. ResumeNet~\cite{estadoarte3}, for instance, scores résumés using a neural network model trained on job application outcomes. Similarly, GIRL~\cite{estadoarte2} (Generative Job Recommendation with LLMs) employs large language models to align candidate profiles with potential vacancies.
+	
+	While technically robust, these systems suffer from low explainability. The models act as black boxes, failing to communicate to users why a given job was recommended or what changes might improve their match score. This opacity creates a trust gap, particularly among first-time job seekers unfamiliar with the underlying algorithms.
+	
+	VitaEX addresses this issue directly by combining Apriori rules which are inherently interpretable with SBERT-based semantic similarity, ensuring every suggestion is traceable, explainable, and actionable.
+	
+	\subsection{Academic Prototypes: Narrow Scope, Recruiter-Centric}
+	
+	Some initiatives have applied Natural Language Understanding (NLU) techniques for CV parsing~\cite{estadoarte1} or used neural networks for recruiter-facing tools~\cite{estadoarte4}. These works typically optimize HR workflows and thus cater to the recruiter rather than the candidate.
+	
+	This recruiter-centric orientation limits their utility for students, who require guidance to build competitive profiles in the first place. Moreover, these systems often rely on proprietary data from private firms or Western job markets, limiting their generalizability to Latin America and public-university graduates.
+	
+	VitaEX, in contrast, is explicitly student-centered, trained on publicly scraped data from Mexican tech hubs, and built with open-access principles. Its transparency and local data make it both more democratic and more relevant to underserved populations.
+	
+	\subsection{Recommender Systems: Lack of Contextual Anchoring}
+	
+	General recommender platforms like CVMATCHER and Jobania provide basic keyword matching but fail to incorporate rich contextual dimensions like location, seniority, modality, or evolving industry trends. Their flat, surface-level analysis often leads to suggestions that are either too generic or too irrelevant to act upon.
+	
+	VitaEX improves on this by transforming job postings into structured transactions:
+	\[
+	\mathcal{T} = \{\texttt{skills}, \texttt{experience level}, \texttt{city}, \texttt{modality}\}
+	\]
+	This structure enables multidimensional filtering, meaning that a student from Puebla with intermediate experience receives different suggestions than a senior candidate in Monterrey, even if they share some core skills.
+	
+	\subsection{Interpretability as an Educational Tool}
+	
+	A crucial innovation of VitaEX lies in treating recommendations as explanations, not just predictions. For example, the rule:
+	\[
+	\texttt{``Data Analysis'', ``Intermediate Experience''} \Rightarrow \texttt{``Machine Learning''} \quad (\text{Confidence}: 91\%, \text{Lift}: 2.8)
+	\]
+	not only suggests an improvement but also educates the user about statistical associations in the job market. This educational feedback loop is entirely missing from most systems reviewed, yet it is essential for student empowerment.\\
+	
+	
+	The critical review above reveals that most prior art lacks one or more of the following: explainability, local context, user-centered design, and educational impact. VitaEX is unique in its ability to synthesize interpretable rule-mining, contextual embeddings, and modern web architecture into a system that is transparent, actionable, and regionally grounded.
+	
+	This contribution is particularly significant for underrepresented student populations, bridging the gap between academic preparation and algorithmic hiring processes that are often opaque and exclusionary. It not only competes with global systems in sophistication but surpasses them in transparency, equity, and adaptability.
+	
 	\renewcommand{\arraystretch}{1.5}
 	\footnotesize
 	\begin{center}
@@ -303,6 +339,7 @@ The framework's Object-Relational Mapper (ORM) enables database-agnostic data op
 
 % --------------------------------------------------------
 % --------------------------------------------------------
+\newpage
 \section{Methodologies}
 \label{sec:methodologies}
 

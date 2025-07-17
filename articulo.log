@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.3.24)  14 JUL 2025 22:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.3.24)  16 JUL 2025 18:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1155,119 +1155,98 @@ ers/LuisValle/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
 y.enc}]
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 257--258
-
- []
-
-
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 259--260
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 261--262
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 263--264
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 265--266
-
- []
-
-
 
 [5]
-Underfull \hbox (badness 10000) in alignment at lines 274--298
+Underfull \hbox (badness 10000) in paragraph at lines 296--298
+
+ []
+
+
+Underfull \hbox (badness 10000) in alignment at lines 310--334
 [] [] [] [] [] []
  []
 
 
-Underfull \hbox (badness 3323) in paragraph at lines 346--348
+
+[6]
+Underfull \hbox (badness 3323) in paragraph at lines 383--385
 \T1/lmr/m/n/9 ads to in-spect fields and noise. EDA:
  []
 
 
-Underfull \hbox (badness 4726) in paragraph at lines 346--348
+Underfull \hbox (badness 4726) in paragraph at lines 383--385
 \T1/lmr/m/n/9 city/skill/experience his-tograms, missing-
  []
 
 
-Underfull \hbox (badness 3158) in paragraph at lines 351--351
+Underfull \hbox (badness 3158) in paragraph at lines 388--388
 []|\T1/lmr/m/n/9 Clean, trans-form and for-mat
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 354--355
+Underfull \hbox (badness 10000) in paragraph at lines 391--392
 []\T1/lmr/m/n/9 Spanish spaCy POS-tagger to keep
  []
-
-[6]
-
-LaTeX Warning: Reference `fig:architecture' on page 7 undefined on input line 4
-25.
 
 
 
 [7]
 
+LaTeX Warning: Reference `fig:architecture' on page 8 undefined on input line 4
+62.
+
+
+
 [8]
-<imagenes/top_rules.png, id=171, 1004.553pt x 498.663pt>
+
+[9]
+<imagenes/top_rules.png, id=187, 1004.553pt x 498.663pt>
 File: imagenes/top_rules.png Graphic file (type png)
 <use imagenes/top_rules.png>
-Package pdftex.def Info: imagenes/top_rules.png  used on input line 535.
+Package pdftex.def Info: imagenes/top_rules.png  used on input line 572.
 (pdftex.def)             Requested size: 542.83304pt x 269.47183pt.
 
-Overfull \hbox (70.8018pt too wide) in paragraph at lines 535--536
+Overfull \hbox (70.8018pt too wide) in paragraph at lines 572--573
  [][] 
  []
 
-
-Underfull \vbox (badness 3078) has occurred while \output is active []
-
-
-
-[9]
-<imagenes/frequent_attributes.png, id=187, 714.7503pt x 426.393pt>
+<imagenes/frequent_attributes.png, id=189, 714.7503pt x 426.393pt>
 File: imagenes/frequent_attributes.png Graphic file (type png)
 <use imagenes/frequent_attributes.png>
 Package pdftex.def Info: imagenes/frequent_attributes.png  used on input line 5
-42.
+79.
 (pdftex.def)             Requested size: 424.82523pt x 253.44348pt.
-<imagenes/confidence_distribution.png, id=188, 932.283pt x 498.663pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[10 <./imagenes/top_rules.png>]
+<imagenes/confidence_distribution.png, id=198, 932.283pt x 498.663pt>
 File: imagenes/confidence_distribution.png Graphic file (type png)
 <use imagenes/confidence_distribution.png>
 Package pdftex.def Info: imagenes/confidence_distribution.png  used on input li
-ne 549.
+ne 586.
 (pdftex.def)             Requested size: 424.82523pt x 227.23442pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-[10 <./imagenes/top_rules.png> <./imagenes/frequent_attributes.png>]
-<imagenes/Arquitectura_Sistema.png, id=196, 2049.6575pt x 973.6375pt>
+[11 <./imagenes/frequent_attributes.png> <./imagenes/confidence_distribution.pn
+g>]
+<imagenes/Arquitectura_Sistema.png, id=206, 2049.6575pt x 973.6375pt>
 File: imagenes/Arquitectura_Sistema.png Graphic file (type png)
 <use imagenes/Arquitectura_Sistema.png>
 Package pdftex.def Info: imagenes/Arquitectura_Sistema.png  used on input line 
-568.
+605.
 (pdftex.def)             Requested size: 472.03123pt x 224.22903pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
+[12 <./imagenes/Arquitectura_Sistema.png>]
 
+[13] (articulo.bbl
 
-[11 <./imagenes/confidence_distribution.png>]
-
-[12 <./imagenes/Arquitectura_Sistema.png>] (articulo.bbl
-
-[13]
+[14]
 Underfull \hbox (badness 10000) in paragraph at lines 48--51
 []\T1/lmr/m/n/9 GeeksforGeeks, ``What is web scrap-ing and how to use it?'' [][
 ]$https : / / www . geeksforgeeks . org /
@@ -1287,7 +1266,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 111--113
 
 )
 
-[14
+[15
 
 ] (articulo.aux)
  ***********
@@ -1302,13 +1281,13 @@ Package rerunfilecheck Info: File `articulo.out' has not changed.
 (rerunfilecheck)             Checksum: 28D4983B2A11223D6015BED9BAF6D08C;476.
  ) 
 Here is how much of TeX's memory you used:
- 25258 strings out of 473523
- 460940 string characters out of 5712694
- 849359 words of memory out of 5000000
- 47912 multiletter control sequences out of 15000+600000
- 631938 words of font info for 84 fonts, out of 8000000 for 9000
+ 25267 strings out of 473523
+ 461051 string characters out of 5712694
+ 841359 words of memory out of 5000000
+ 47914 multiletter control sequences out of 15000+600000
+ 632580 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 103i,8n,106p,797b,752s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 103i,8n,106p,764b,752s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/LuisValle/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx1
 0.pfb><C:/Users/LuisValle/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/l
 mbx12.pfb><C:/Users/LuisValle/AppData/Local/Programs/MiKTeX/fonts/type1/public/
@@ -1328,9 +1307,9 @@ al/Programs/MiKTeX/fonts/type1/public/lm/lmsy9.pfb><C:/Users/LuisValle/AppData/
 Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/LuisValle/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt9.pfb><C:/Users/LuisValle/A
 ppData/Local/Programs/MiKTeX/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on articulo.pdf (14 pages, 686539 bytes).
+Output written on articulo.pdf (15 pages, 695009 bytes).
 PDF statistics:
- 360 PDF objects out of 1000 (max. 8388607)
- 104 named destinations out of 1000 (max. 500000)
+ 371 PDF objects out of 1000 (max. 8388607)
+ 110 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
