@@ -1,60 +1,51 @@
 This is BibTeX, Version 0.99d (TeX Live 2023)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: articulo.aux
-The style file: IEEEtranN.bst
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
+The style file: unsrt.bst
+Illegal, another \bibstyle command---line 94 of file articulo.aux
+ : \bibstyle
+ :          {splncs04}
+I'm skipping whatever remains of this command
 Database file #1: referencias.bib
--- IEEEtranN.bst version 1.14 (2015/08/26) by Michael Shell.
--- http://www.michaelshell.org/tex/ieeetran/bibtex/
--- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
-** Natbib version - not for normal IEEE work.
-Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
-Reallocated global_strs (elt_size=200001) to 20 items from 10.
-Reallocated glb_str_end (elt_size=4) to 20 items from 10.
-
-Done.
 You've used 16 entries,
-            4855 wiz_defined-function locations,
-            1020 strings with 10588 characters,
-and the built_in function-call counts, 8600 in all, are:
-= -- 799
-> -- 178
-< -- 15
-+ -- 89
-- -- 48
-* -- 407
-:= -- 1517
-add.period$ -- 32
+            1791 wiz_defined-function locations,
+            520 strings with 6389 characters,
+and the built_in function-call counts, 2262 in all, are:
+= -- 180
+> -- 92
+< -- 0
++ -- 40
+- -- 24
+* -- 51
+:= -- 366
+add.period$ -- 50
 call.type$ -- 16
-change.case$ -- 39
-chr.to.int$ -- 21
+change.case$ -- 15
+chr.to.int$ -- 0
 cite$ -- 16
-duplicate$ -- 636
-empty$ -- 710
-format.name$ -- 70
-if$ -- 1847
-int.to.chr$ -- 2
-int.to.str$ -- 17
-missing$ -- 120
-newline$ -- 82
-num.names$ -- 48
-pop$ -- 397
+duplicate$ -- 96
+empty$ -- 283
+format.name$ -- 24
+if$ -- 521
+int.to.chr$ -- 0
+int.to.str$ -- 16
+missing$ -- 6
+newline$ -- 85
+num.names$ -- 16
+pop$ -- 95
 preamble$ -- 1
-purify$ -- 16
-quote$ -- 2
-skip$ -- 621
+purify$ -- 0
+quote$ -- 0
+skip$ -- 48
 stack$ -- 0
-substring$ -- 68
-swap$ -- 321
+substring$ -- 0
+swap$ -- 16
 text.length$ -- 0
 text.prefix$ -- 0
-top$ -- 6
-type$ -- 228
+top$ -- 0
+type$ -- 0
 warning$ -- 0
-while$ -- 33
-width$ -- 0
-write$ -- 198
+while$ -- 16
+width$ -- 18
+write$ -- 171
+(There was 1 error message)

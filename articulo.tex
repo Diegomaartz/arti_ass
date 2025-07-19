@@ -1,98 +1,101 @@
-% vitaex_article.tex  --  12-page synthesis of the VitaEX project
+	% vitaex_article.tex  --  12-page synthesis of the VitaEX project
 %\documentclass[12pt,a4paper]{article}
-\documentclass[runningheads]{llncs}
+% Add BEFORE documentclass
+\PassOptionsToClass{a4paper}{article} % Force A4 paper
+
+\documentclass{svproc} % Springer class
+
+% Add AFTER documentclass
+\setlength{\headsep}{12pt} % Set headsep to 12pt
+
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}  % Must add to preamble for rules
+%\usepackage{authblk}
 
 % --- Packages & Formatting -----------------------------
-\usepackage[utf8]{inputenc}
+
 \usepackage[T1]{fontenc}
 \usepackage{fontawesome}
-\usepackage{textcomp}
-\usepackage{marvosym}
-\usepackage{lmodern}
-\usepackage{geometry}
-\geometry{margin=2.5cm}
-\usepackage{setspace}
-\usepackage{float}
-%\titleformat{\section}{\normalfont\Large\bfseries}{\thesection.}{1em}{}
-\usepackage[numbers,sort&compress]{natbib} % Before hyperref
 
-\usepackage{hyperref}
-
-\hypersetup{
-	colorlinks=true,
-	linkcolor=black,    % color de las citas dentro del texto
-	citecolor=black,    % color de las referencias bibliográficas
-	filecolor=cyan,
-	urlcolor=blue       % mantiene las URLs azules
-}
-
-\usepackage{graphicx}
-\usepackage{booktabs}
-\usepackage{enumitem}
-\usepackage{amsmath, amssymb}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{pifont}
-\usepackage{ragged2e}
-\usepackage[table]{xcolor}
-\usepackage{url}
+%\usepackage{geometry}
+%\geometry{
+	%	textwidth=122mm,
+	%	textheight=193mm,
+	%	headsep=12pt
+	%}
 \usepackage{orcidlink}
-
-
+\usepackage{xcolor}
+\hypersetup{
+	colorlinks = false,       % Enable colored links
+	pdfborder  = {0 0 0},    % Remove visible border completely
+}
+\usepackage{natbib} % For citation sorting
+\bibliographystyle{unsrt} % References in citation order
 %\author{Oscar Huerta$^1$ \and Diego Martínez$^1$ \and Luis Fernando Valle$^1$ \\ $^1$Escuela Superior de Cómputo, Instituto Politécnico Nacional, Unidad Profesional	Adolfo López Mateos, Zacatenco, Mexico City, Mexico \\ \texttt{\{ohuertav2100,dmartinez,lvalleh1800\}@alumno.ipn.mx}}
 %% --- Title & Metadata ----------------------------------
-\title{VitaEX: A Web Prototype for Curriculum Vitae Analysis and AI-Driven Job Matching}
+\title{VitaEX:A Web Prototype for Curriculum Vitae Analysis and AI-Driven Job Matching}
+\titlerunning{VitaEX: CV Analysis and Job Recommendations}
 \author{
-	Diego Martínez Méndez\inst{1}\orcidlink{0009-0002-1348-5310} \and
-	Abdiel Reyes Vera\inst{2} \orcidlink{0009-0000-7815-5932} \and
-	Elizabeth Moreno Galván \inst{3} \orcidlink{0000-0001-5800-0087} \and \\
-	Oscar Huerta Villanueva\inst{4} \orcidlink{0009-0001-4368-8808} \and
-	Luis Fernando Valle Hernández\inst{5}  \orcidlink{0009-0005-0307-005X} 
-	}
-\institute{
-	\inst{1,2,3,4,5} Escuela Superior de Cómputo, IPN, Mexico City, Mexico \\
-	\inst{2} Centro de Investigación en Computación, IPN, Mexico City, Mexico \\
-	\textsuperscript{1}\texttt{dmartinezm1707@alumno.ipn.mx}, 
-	\textsuperscript{2}\texttt{areyesve@ipn.mx}, 
-	\textsuperscript{3}\texttt{emorenog@ipn.mx}, \\
-	\textsuperscript{4}\texttt{ohuertav2100@alumno.ipn.mx}, 
-	\textsuperscript{5}\texttt{lvalleh1800@alumno.ipn.mx}
+	Diego Martínez Méndez\orcidlink{0009-0002-1348-5310} \inst{1}\and
+	Abdiel Reyes Vera\orcidlink{0009-0000-7815-5932} \inst{2} \and
+	Elizabeth Moreno Galván \orcidlink{0000-0001-5800-0087}  \inst{1}\and \\
+	Oscar Huerta Villanueva \orcidlink{0009-0001-4368-8808} \inst{1}\and
+	Luis Fernando Valle Hernández  \orcidlink{0009-0005-0307-005X} \inst{1}
 }
+\authorrunning{Martínez et al.}
+\institute{
+	Escuela Superior de Cómputo, IPN, Mexico City, Mexico \\
+	\email{dmartinezm1707@alumno.ipn.mx} \\
+	\email{emorenog@ipn.mx} \\
+	\email{ohuertav2100@alumno.ipn.mx} \\
+	\email{lvalleh1800@alumno.ipn.mx}
+	\and
+	Centro de Investigación en Computación, IPN, Mexico City, Mexico \\
+	\email{areyesve@ipn.mx}
+}
+%\institute{
+	%	\inst{1,2,3,4,5} Escuela Superior de Cómputo, IPN, Mexico City, Mexico 
+	%	\inst{2} Centro de Investigación en Computación, IPN, Mexico City, Mexico 
+	%	\textsuperscript{1}\texttt{dmartinezm1707@alumno.ipn.mx}, 
+	%	\textsuperscript{2}\texttt{areyesve@ipn.mx}, 
+	%	\textsuperscript{3}\texttt{emorenog@ipn.mx}, 
+	%	\textsuperscript{4}\texttt{ohuertav2100@alumno.ipn.mx}, 
+	%	\textsuperscript{5}\texttt{lvalleh1800@alumno.ipn.mx}
+	%}
 \begin{document}
 	\maketitle
-\begin{abstract}
-	Recruiters now depend on \emph{applicant-tracking systems} (ATS) that filter between 75 \% and 98 \% of résumés before a human review, often rejecting qualified graduates whose CVs lack machine-readable keywords. This automated gatekeeping disproportionately harms junior professionals in Artificial Intelligence (AI) across Mexico’s emerging tech hubs. \textit{VitaEX} tackles the problem by shifting the ATS from gatekeeper to mentor, showing students \emph{what} to add, \emph{why} it matters, and \emph{how} it aligns with real vacancies.
 	
-	The prototype is a three-tier web platform—React front-end, Django REST controller, MongoDB / PostgreSQL data layer—developed through the Spiral Model. A resilient Python scraper harvested LinkedIn postings from November 2024 to May 2025 for eight AI roles across five Mexican cities. Using the CRISP-DM framework, the team cleaned and normalized 5k+ vacancies, then mined more than 500,000 interpretable association rules with Apriori, creating a hybrid recommender that fuses rule confidence with SBERT cosine similarity.
+	\begin{abstract}
+		Recruiters now depend on \emph{applicant-tracking systems} (ATS) that filter between 75 \% and 98 \% of résumés before a human review, often rejecting qualified graduates whose CVs lack machine-readable keywords. This automated gatekeeping disproportionately harms junior professionals in Artificial Intelligence (AI) across Mexico’s emerging tech hubs. \textit{VitaEX} tackles the problem by shifting the ATS from gatekeeper to mentor, showing students \emph{what} to add, \emph{why} it matters, and \emph{how} it aligns with real vacancies.
+		
+		The prototype is a three-tier web platform—React front-end, Django REST controller, MongoDB / PostgreSQL data layer—developed through the Spiral Model. A resilient Python scraper harvested LinkedIn postings from November 2024 to May 2025 for eight AI roles across five Mexican cities. Using the CRISP-DM framework, the team cleaned and normalized 5k+ vacancies, then mined more than 500,000 interpretable association rules with Apriori, creating a hybrid recommender that fuses rule confidence with SBERT cosine similarity.
+		
+		Beyond raw metrics, VitaEX delivers transparent explanations that boost ATS pass rates, raise skill awareness, and promote regional equity. This article synthesizes every major facet of the Spanish thesis—literature review, large-scale data collection, rule-based recommendation, and full-stack architecture—demonstrating how interpretable data-mining and modern web engineering can narrow the employability gap for AI graduates in developing economies.
+		\keywords{Curriculum optimisation, ATS , Apriori ,CRISP-DM, Web scraping,NLP, Django, ESCOM-IPN}
+	\end{abstract}
 	
-	Beyond raw metrics, VitaEX delivers transparent explanations that boost ATS pass rates, raise skill awareness, and promote regional equity. This article synthesizes every major facet of the Spanish thesis—literature review, large-scale data collection, rule-based recommendation, and full-stack architecture—demonstrating how interpretable data-mining and modern web engineering can narrow the employability gap for AI graduates in developing economies.
-	\keywords{Curriculum optimisation \and ATS \and Apriori \and CRISP-DM \and Web scraping \and NLP \and Django \and ESCOM-IPN}
-\end{abstract}
-
+	\section{Introduction}
 	
-
+	A \emph{curriculum vitae} (CV) is, in the words of the Royal Spanish Academy, a document that summarises a person’s academic record, work history, skills and achievements for professional or academic purposes\,\cite{rae}.  
+	In today’s labor market that summary must first persuade algorithms.  
+	Harvard Business School and Accenture estimate that \textbf{between 75 \% and 98 \%} of all applications in large firms are screened by applicant-tracking systems (ATS) before any human review, quietly excluding millions of otherwise qualified “hidden workers” whose CVs lack certain keywords or credentials\,\cite{ats1}.  
+	In Mexico the impact is amplified: the \emph{Encuesta Nacional de Egresados 2023} reports that \textbf{46.3 \%} of new graduates describe the job-search process as “difficult”, citing ATS incompatibility as a leading barrier\,\cite{uvm2023}.  
+	Paradoxically, many of those applicants hold precisely the AI-related skills that employers claim to need most urgently.
 	
-\section{Introduction}
-A \emph{curriculum vitae} (CV) is, in the words of the Royal Spanish Academy, a document that summarises a person’s academic record, work history, skills and achievements for professional or academic purposes\,\cite{rae}.  
-In today’s labor market that summary must first persuade algorithms.  
-Harvard Business School and Accenture estimate that \textbf{between 75 \% and 98 \%} of all applications in large firms are screened by applicant-tracking systems (ATS) before any human review, quietly excluding millions of otherwise qualified “hidden workers” whose CVs lack certain keywords or credentials\,\cite{ats1}.  
-In Mexico the impact is amplified: the \emph{Encuesta Nacional de Egresados 2023} reports that \textbf{46.3 \%} of new graduates describe the job-search process as “difficult”, citing ATS incompatibility as a leading barrier\,\cite{uvm2023}.  
-Paradoxically, many of those applicants hold precisely the AI-related skills that employers claim to need most urgently.
-
-\textbf{VitaEX} addresses this mismatch by converting the ATS from gatekeeper to mentor.  
-The prototype continuously scrapes AI-oriented vacancies from LinkedIn and regional job boards across five Mexican tech hubs—Mexico City, Guadalajara, Monterrey, Querétaro and Puebla—building a local demand repository updated monthly.  
-After normalising more than 5 000 postings, the system mines over \textbf{500 000} interpretable association rules with the \emph{Apriori} algorithm and enriches them with semantic similarity scores produced by SBERT.  
-The result is a transparent recommender that tells students \emph{what} to add (e.g., “Docker”, “MLOps”, “English B2”), \emph{why} it matters, and \emph{how} it improves their match with specific vacancies.
-
-VitaEX is implemented as a three-tier web architecture: a responsive React front-end, a Django REST controller that enforces JWT-based authentication, and a hybrid MongoDB/MySQL data layer.  
-Celery workers orchestrate asynchronous scraping and model retraining, ensuring that recommendations reflect real-time market shifts.
-
-By offering localised, open-access and fully explainable feedback, VitaEX pursues three concrete goals:  
-\emph{(i)} empower students by revealing actionable skill gaps;  
-\emph{(ii)} streamline recruiter workflows by surfacing CVs already aligned with job requirements; and  
-\emph{(iii)} promote regional equity by delivering data-driven career guidance to public-university graduates across Mexico.  
-This article details the theoretical foundations, CRISP-DM methodology and system architecture that together demonstrate how transparent data-mining and modern NLP can narrow the employability gap for AI graduates in developing economies.
-
+	\textbf{VitaEX} addresses this mismatch by converting the ATS from gatekeeper to mentor.  
+	The prototype continuously scrapes AI-oriented vacancies from LinkedIn and regional job boards across five Mexican tech hubs—Mexico City, Guadalajara, Monterrey, Querétaro and Puebla—building a local demand repository updated monthly.  
+	After normalising more than 5 000 postings, the system mines over \textbf{500 000} interpretable association rules with the \emph{Apriori} algorithm and enriches them with semantic similarity scores produced by SBERT.  
+	The result is a transparent recommender that tells students \emph{what} to add (e.g., “Docker”, “MLOps”, “English B2”), \emph{why} it matters, and \emph{how} it improves their match with specific vacancies.
+	
+	VitaEX is implemented as a three-tier web architecture: a responsive React front-end, a Django REST controller that enforces JWT-based authentication, and a hybrid MongoDB/MySQL data layer.  
+	Celery workers orchestrate asynchronous scraping and model retraining, ensuring that recommendations reflect real-time market shifts.
+	
+	By offering localised, open-access and fully explainable feedback, VitaEX pursues three concrete goals:  
+	\emph{(i)} empower students by revealing actionable skill gaps;  
+	\emph{(ii)} streamline recruiter workflows by surfacing CVs already aligned with job requirements; and  
+	\emph{(iii)} promote regional equity by delivering data-driven career guidance to public-university graduates across Mexico.  
+	This article details the theoretical foundations, CRISP-DM methodology and system architecture that together demonstrate how transparent data-mining and modern NLP can narrow the employability gap for AI graduates in developing economies.
+	
 	
 	
 	\section{Theoretical Framework}
@@ -100,158 +103,159 @@ This article details the theoretical foundations, CRISP-DM methodology and syste
 	\subsection{Apriori Algorithm}
 	
 	The algorithm is an unsupervised machine learning technique, used for discover frequent patterns and relationships between items in large datasets. It finds item groups that frequently occur together in transaction data and uncovers significant patterns from them. This method is commonly applied in areas such as recommendation systems, fraud prevention, and inventory control, among others.The key assumption (the Apriori property) is that if an itemset is frequent, all its subsets must also be frequent. Conversely, if an itemset is infrequent, any larger set containing it will also be infrequent. This principle helps reduce computational complexity by pruning unnecessary candidate itemsets early. \cite{ibm_apriori}
-\subsubsection{Steps of the Apriori Algorithm}
-
-\begin{enumerate}
-	\item \textbf{Define the minimum support (min support):} \\
-	A minimum threshold is set that an itemset must meet to be considered as frequent.
 	
-	\item \textbf{Generate frequent 1-itemsets:} \\
-	The occurrences of each item in the database are counted, and those that do not meet the minimum support are discarded.
+	\paragraph{Steps of the Apriori Algorithm.}
 	
-	\item \textbf{Generate candidate k-itemsets:} \\
-	Based on the frequent itemsets of size \(k-1\), new candidates of size \(k\) are generated by combining items.
+	\begin{enumerate}
+		\item \textbf{Define the minimum support (min support):} \\
+		A minimum threshold is set that an itemset must meet to be considered as frequent.
+		
+		\item \textbf{Generate frequent 1-itemsets:} \\
+		The occurrences of each item in the database are counted, and those that do not meet the minimum support are discarded.
+		
+		\item \textbf{Generate candidate k-itemsets:} \\
+		Based on the frequent itemsets of size \(k-1\), new candidates of size \(k\) are generated by combining items.
+		
+		\item \textbf{Eliminate infrequent candidates:} \\
+		The support of each candidate itemset is checked in the database, and those that do not meet the minimum support are removed.
+		
+		\item \textbf{Repeat the process:} \\
+		The process of generating and filtering larger itemsets continues until no more frequent itemsets can be found.
+		
+		\item \textbf{Generate association rules:} \\
+		From the frequent itemsets, rules of the form \(A \rightarrow B\) are generated by evaluating metrics such as confidence and lift, keeping only those that meet the specified thresholds.
+	\end{enumerate}
+	\paragraph{Example: Bookstore Recommendations.}
 	
-	\item \textbf{Eliminate infrequent candidates:} \\
-	The support of each candidate itemset is checked in the database, and those that do not meet the minimum support are removed.
+	Imagine an online bookstore analyzing customer purchases. The algorithm might discover that:
 	
-	\item \textbf{Repeat the process:} \\
-	The process of generating and filtering larger itemsets continues until no more frequent itemsets can be found.
+	\begin{quote}
+		Customers who buy \textit{Data Science Handbook} frequently also purchase \textit{Python for Beginners}.
+	\end{quote}
 	
-	\item \textbf{Generate association rules:} \\
-	From the frequent itemsets, rules of the form \(A \rightarrow B\) are generated by evaluating metrics such as confidence and lift, keeping only those that meet the specified thresholds.
-\end{enumerate}
-\subsubsection{Example: Bookstore Recommendations}
-
-Imagine an online bookstore analyzing customer purchases. The algorithm might discover that:
-
-\begin{quote}
-	Customers who buy \textit{Data Science Handbook} frequently also purchase \textit{Python for Beginners}.
-\end{quote}
-
-If 30\% of transactions include both books (high support) and 75\% of buyers of the first book also buy the second (high confidence), the store can recommend them together.
-\subsubsection{Key Metrics for Rule Evaluation}
-
-To evaluate the quality of association rules of the form \( A \rightarrow B \), the following metrics are commonly used:
-
-\begin{enumerate}
-	\item \textbf{Support:} \\
-	Indicates how frequently the itemset \( A \cup B \) appears in the dataset.
-	\[
-	\text{Support}(A \rightarrow B) = \frac{\text{Transactions containing } A \cup B}{\text{Total number of transactions}}
-	\]
+	If 30\% of transactions include both books (high support) and 75\% of buyers of the first book also buy the second (high confidence), the store can recommend them together.
+	\paragraph{Key Metrics for Rule Evaluation.}
 	
-	\item \textbf{Confidence:} \\
-	Measures the likelihood that itemset \( B \) is also bought when itemset \( A \) is bought.
-	\[
-	\text{Confidence}(A \rightarrow B) = \frac{\text{Support}(A \cup B)}{\text{Support}(A)}
-	\]
+	To evaluate the quality of association rules of the form \( A \rightarrow B \), the following metrics are commonly used:
 	
-	\item \textbf{Lift:} \\
-	Evaluates how much more likely \( B \) is purchased when \( A \) is purchased, compared to when \( B \) is purchased independently.
-	\[
-	\text{Lift}(A \rightarrow B) = \frac{\text{Confidence}(A \rightarrow B)}{\text{Support}(B)} = \frac{\text{Support}(A \cup B)}{\text{Support}(A) \times \text{Support}(B)}
-	\]
-	A lift value:
-	\begin{itemize}
-		\item Greater than 1 indicates a positive correlation.
-		\item Equal to 1 indicates independence.
-		\item Less than 1 indicates a negative correlation.
-	\end{itemize}
-\end{enumerate}
-
-\subsection{Web Scrapping}
-
-Is an automated technique for extracting data from web pages. It has become a cornerstone for collecting large volumes of public information available on the Internet. Its relevance lies in its ability to feed statistical analyzes, market studies, and machine learning models with data that would otherwise require costly manual capture in terms of time and resources. \cite{gfg_web_scraping}
-
-\subsubsection{Scrapping Python Tools}
-Python offers a mature ecosystem for each phase of the process:
-
-\begin{itemize}
-	\item \textbf{Requests}: Simplifies sending HTTP requests and downloading HTML source code from static sites \cite{Mitchell2018}.
-	\item \textbf{Beautiful Soup}: Allows navigation and filtering of the DOM tree using CSS or XPath selectors, making it suitable for medium-sized projects \cite{Mitchell2018}.
-\end{itemize}
-
-\subsubsection{Web Scraping Flow Description}
-Our Python script scrapes LinkedIn job listings using a two-phase approach:
-
-\subsubsection{Phase 1: Collect Job IDs}
-\begin{enumerate}[leftmargin=*]
-	\item \textbf{Initialization:}
-	\begin{itemize}
-		\item Sets search parameters (job title: "Data Analyst", location: "CDMX")
-		\item Defines maximum jobs to collect (700)
-		\item Prepares rotating user-agents to avoid bot detection
-	\end{itemize}
-	
-	\item \textbf{Pagination Loop:}
-	\begin{itemize}
-		\item Constructs search URL with pagination parameters (\texttt{start} value)
-		\item Randomly rotates user-agents for each request
-		\item Handles rate limiting (HTTP 429) with extended random delays (30-60s)
-		\item Breaks loop on non-200 status codes or empty results
-	\end{itemize}
-	
-	\item \textbf{Job ID Extraction:}
-	\begin{itemize}
-		\item Parses HTML response with BeautifulSoup
-		\item Extracts unique job IDs from \texttt{data-entity-urn} attributes
-		\item Maintains unique ID list and tracks progress
-		\item Implements random delays (3-6s) between requests
-	\end{itemize}
-\end{enumerate}
-
-\subsubsection{Phase 2: Extract Job Details}
-\begin{enumerate}[leftmargin=*]
-	\item \textbf{Regex Preparation:}
-	\begin{itemize}
-		\item Compiles regex patterns for:
+	\begin{enumerate}
+		\item \textbf{Support:} \\
+		Indicates how frequently the itemset \( A \cup B \) appears in the dataset.
+		\[
+		\text{Support}(A \rightarrow B) = \frac{\text{Transactions containing } A \cup B}{\text{Total number of transactions}}
+		\]
+		
+		\item \textbf{Confidence:} \\
+		Measures the likelihood that itemset \( B \) is also bought when itemset \( A \) is bought.
+		\[
+		\text{Confidence}(A \rightarrow B) = \frac{\text{Support}(A \cup B)}{\text{Support}(A)}
+		\]
+		
+		\item \textbf{Lift:} \\
+		Evaluates how much more likely \( B \) is purchased when \( A \) is purchased, compared to when \( B \) is purchased independently.
+		\[
+		\text{Lift}(A \rightarrow B) = \frac{\text{Confidence}(A \rightarrow B)}{\text{Support}(B)} = \frac{\text{Support}(A \cup B)}{\text{Support}(A) \times \text{Support}(B)}
+		\]
+		A lift value:
 		\begin{itemize}
-			\item Job types (Full-time, Remote, etc.)
-			\item Experience levels (Junior, Senior, etc.)
-			\item Technical skills (Python, SQL, AWS, etc.)
+			\item Greater than 1 indicates a positive correlation.
+			\item Equal to 1 indicates independence.
+			\item Less than 1 indicates a negative correlation.
 		\end{itemize}
+	\end{enumerate}
+	
+	\subsection{Web Scrapping}
+	
+	Is an automated technique for extracting data from web pages. It has become a cornerstone for collecting large volumes of public information available on the Internet. Its relevance lies in its ability to feed statistical analyzes, market studies, and machine learning models with data that would otherwise require costly manual capture in terms of time and resources. \cite{gfg_web_scraping}
+	
+	\paragraph{Scrapping Python Tools.}
+	Python offers a mature ecosystem for each phase of the process:
+	
+	\begin{itemize}
+		\item \textbf{Requests}: Simplifies sending HTTP requests and downloading HTML source code from static sites \cite{Mitchell2018}.
+		\item \textbf{Beautiful Soup}: Allows navigation and filtering of the DOM tree using CSS or XPath selectors, making it suitable for medium-sized projects \cite{Mitchell2018}.
 	\end{itemize}
 	
-	\item \textbf{Detail Extraction Loop:}
-	\begin{itemize}
-		\item Processes each job ID from Phase 1
-		\item Fetches job detail page using LinkedIn's job posting API
-		\item Handles rate limiting with extended delays (30-60s)
-		\item Extracts full job text for regex pattern matching
-	\end{itemize}
+	\paragraph{Web Scraping Flow Description.}
+	Our Python script scrapes LinkedIn job listings using a two-phase approach:
 	
-	\item \textbf{Data Parsing:}
-	\begin{itemize}
-		\item Extracts job type and experience level using regex
-		\item Parses job description HTML section
-		\item Identifies technical skills from description using regex
-		\item Captures key elements:
+	\paragraph{Phase 1: Collect Job IDs.}
+	\begin{enumerate}
+		\item \textbf{Initialization:}
 		\begin{itemize}
-			\item Job title, company name, posting date
-			\item Applicant count, location, salary
-			\item Job description, application link
+			\item Sets search parameters (job title: "Data Analyst", location: "CDMX")
+			\item Defines maximum jobs to collect (700)
+			\item Prepares rotating user-agents to avoid bot detection
 		\end{itemize}
-	\end{itemize}
+		
+		\item \textbf{Pagination Loop:}
+		\begin{itemize}
+			\item Constructs search URL with pagination parameters (\texttt{start} value)
+			\item Randomly rotates user-agents for each request
+			\item Handles rate limiting (HTTP 429) with extended random delays (30-60s)
+			\item Breaks loop on non-200 status codes or empty results
+		\end{itemize}
+		
+		\item \textbf{Job ID Extraction:}
+		\begin{itemize}
+			\item Parses HTML response with BeautifulSoup
+			\item Extracts unique job IDs from \texttt{data-entity-urn} attributes
+			\item Maintains unique ID list and tracks progress
+			\item Implements random delays (3-6s) between requests
+		\end{itemize}
+	\end{enumerate}
 	
-	\item \textbf{Data Storage:}
-	\begin{itemize}
-		\item Stores parsed data in dictionary format
-		\item Appends to job list with random delays (3-6s) between requests
-		\item Exports final dataset to CSV using pandas
-	\end{itemize}
-\end{enumerate}
-
-\subsection{MongoDB}
-MongoDB is a leading open-source NoSQL database system designed for modern application development. As a document-oriented database, it stores data in flexible JSON-like documents (BSON format) rather than rigid tables, allowing for dynamic schemas that adapt to evolving data requirements.
-
-Key advantages include horizontal scalability through sharding, enabling distributed data processing across clusters to handle large volumes of job listings efficiently. Its rich query language supports complex searches on nested data structures, essential for filtering jobs by multiple criteria like skills, experience levels, and locations. Automatic indexing accelerates data retrieval for recommendation queries, while aggregation pipelines facilitate advanced data processing like identifying frequent skillsets. In our prototype, MongoDB provides the flexible storage layer for scraped job data, supporting rapid iteration of the recommendation engine's data model without schema migration constraints \cite{mongodbdocs}.
-
-\subsection{Django}
-Django is a high-level Python web framework following the Model-View-Controller (MVC) architectural pattern, renowned for its "batteries-included" philosophy. It accelerates secure web application development through built-in components like authentication systems, ORM abstraction, and admin interfaces.
-
-The framework's Object-Relational Mapper (ORM) enables database-agnostic data operations, allowing seamless interaction with MongoDB via libraries like Djongo while maintaining Pythonic syntax. Django REST Framework extends this capability to build robust APIs for serving job recommendations to frontend clients. For our prototype, Django orchestrates the entire application workflow - from ingesting scraped data through custom management commands, processing recommendations via the Apriori implementation, to delivering personalized job feeds through REST endpoints. Its built-in security features mitigate common vulnerabilities like XSS and CSRF during data presentation \cite{djangodocs}.
-
+	\paragraph{Phase 2: Extract Job Details}
+	\begin{enumerate}
+		\item \textbf{Regex Preparation:}
+		\begin{itemize}
+			\item Compiles regex patterns for:
+			\begin{itemize}
+				\item Job types (Full-time, Remote, etc.)
+				\item Experience levels (Junior, Senior, etc.)
+				\item Technical skills (Python, SQL, AWS, etc.)
+			\end{itemize}
+		\end{itemize}
+		
+		\item \textbf{Detail Extraction Loop:}
+		\begin{itemize}
+			\item Processes each job ID from Phase 1
+			\item Fetches job detail page using LinkedIn's job posting API
+			\item Handles rate limiting with extended delays (30-60s)
+			\item Extracts full job text for regex pattern matching
+		\end{itemize}
+		
+		\item \textbf{Data Parsing:}
+		\begin{itemize}
+			\item Extracts job type and experience level using regex
+			\item Parses job description HTML section
+			\item Identifies technical skills from description using regex
+			\item Captures key elements:
+			\begin{itemize}
+				\item Job title, company name, posting date
+				\item Applicant count, location, salary
+				\item Job description, application link
+			\end{itemize}
+		\end{itemize}
+		
+		\item \textbf{Data Storage:}
+		\begin{itemize}
+			\item Stores parsed data in dictionary format
+			\item Appends to job list with random delays (3-6s) between requests
+			\item Exports final dataset to CSV using pandas
+		\end{itemize}
+	\end{enumerate}
+	
+	\subsection{MongoDB}
+	MongoDB is a leading open-source NoSQL database system designed for modern application development. As a document-oriented database, it stores data in flexible JSON-like documents (BSON format) rather than rigid tables, allowing for dynamic schemas that adapt to evolving data requirements.
+	
+	Key advantages include horizontal scalability through sharding, enabling distributed data processing across clusters to handle large volumes of job listings efficiently. Its rich query language supports complex searches on nested data structures, essential for filtering jobs by multiple criteria like skills, experience levels, and locations. Automatic indexing accelerates data retrieval for recommendation queries, while aggregation pipelines facilitate advanced data processing like identifying frequent skillsets. In our prototype, MongoDB provides the flexible storage layer for scraped job data, supporting rapid iteration of the recommendation engine's data model without schema migration constraints \cite{mongodbdocs}.
+	
+	\subsection{Django}
+	Django is a high-level Python web framework following the Model-View-Controller (MVC) architectural pattern, renowned for its "batteries-included" philosophy. It accelerates secure web application development through built-in components like authentication systems, ORM abstraction, and admin interfaces.
+	
+	The framework's Object-Relational Mapper (ORM) enables database-agnostic data operations, allowing seamless interaction with MongoDB via libraries like Djongo while maintaining Pythonic syntax. Django REST Framework extends this capability to build robust APIs for serving job recommendations to frontend clients. For our prototype, Django orchestrates the entire application workflow - from ingesting scraped data through custom management commands, processing recommendations via the Apriori implementation, to delivering personalized job feeds through REST endpoints. Its built-in security features mitigate common vulnerabilities like XSS and CSRF during data presentation \cite{djangodocs}.
+	
 	\section{Related Work}
 	
 	Despite the proliferation of tools aimed at improving job-matching and résumé optimization, a critical gap persists between algorithmic sophistication and user-centered applicability—especially in the context of emerging economies. Existing systems fall short in one or more of the following dimensions: transparency of recommendation, alignment with local labor market conditions, explainability of models, and accessibility for non-technical student populations. This section examines the state of the art not merely as a list, but as a critical landscape in which VitaEX carves out a novel, high-impact space.
@@ -292,7 +296,10 @@ The framework's Object-Relational Mapper (ORM) enables database-agnostic data op
 	
 	A crucial innovation of VitaEX lies in treating recommendations as explanations, not just predictions. For example, the rule:
 	\[
-	\texttt{``Data Analysis'', ``Intermediate Experience''} \Rightarrow \texttt{``Machine Learning''} \quad (\text{Confidence}: 91\%, \text{Lift}: 2.8)
+	\texttt{``Data Analysis'', ``Intermediate Experience''} \Rightarrow \texttt{``Machine Learning''}  
+	\]
+	\[
+	\quad (\text{Confidence}: 91\%, \text{Lift}: 2.8)
 	\]
 	not only suggests an improvement but also educates the user about statistical associations in the job market. This educational feedback loop is entirely missing from most systems reviewed, yet it is essential for student empowerment.\\
 	
@@ -300,196 +307,172 @@ The framework's Object-Relational Mapper (ORM) enables database-agnostic data op
 	The critical review above reveals that most prior art lacks one or more of the following: explainability, local context, user-centered design, and educational impact. VitaEX is unique in its ability to synthesize interpretable rule-mining, contextual embeddings, and modern web architecture into a system that is transparent, actionable, and regionally grounded.
 	
 	This contribution is particularly significant for underrepresented student populations, bridging the gap between academic preparation and algorithmic hiring processes that are often opaque and exclusionary. It not only competes with global systems in sophistication but surpasses them in transparency, equity, and adaptability.
-	
-	\renewcommand{\arraystretch}{1.5}
-	\footnotesize
-	\begin{center}
-		\setlength{\LTleft}{0pt}
-		\setlength{\LTright}{0pt}
-		
-	\begin{longtable}{|>{\raggedright\arraybackslash}p{4.0cm}|>{\centering\arraybackslash}p{2.2cm}|>{\centering\arraybackslash}p{2.2cm}|>{\centering\arraybackslash}p{2.2cm}|>{\centering\arraybackslash}p{3.0cm}|>{\centering\arraybackslash}p{2.2cm}|}
-		\hline
-		\textbf{Applications and Research Works} & \textbf{Recommends based on job offers} & \textbf{Generates CV templates} & \textbf{Uses Machine Learning} & \textbf{Job offer recommendation} & \textbf{Student-oriented and free} \\
-		\hline
-		Application of NLU methods for CV recommendation~\cite{estadoarte1} & \ding{51} & \ding{55} & \ding{55} & \ding{55} & \ding{55} \\
-		\hline
-		Generative Job Recommendations with LLM (GIRL)~\cite{estadoarte2} & \ding{51} & \ding{55} & \ding{51} & \ding{55} & \ding{55} \\
-		\hline
-		ResumeNet~\cite{estadoarte3} & \ding{55} & \ding{55} & \ding{51} & \ding{55} & \ding{55} \\
-		\hline
-		Neural networks for recruitment~\cite{estadoarte4} & \ding{55} & \ding{55} & \ding{51} & \ding{55} & \ding{55} \\
-		\hline
-		LinkedIn Resume Builder~\cite{estadoarte5} & \ding{51} & \ding{51} & \ding{55} & \ding{55} & \ding{51} \\
-		\hline
-		CVapp~\cite{estadoarte8} & \ding{55} & \ding{51} & \ding{55} & \ding{55} & \ding{55} \\
-		\hline
-		Jobania~\cite{estadoarte6} & \ding{51} & \ding{51} & \ding{55} & \ding{55} & \ding{55} \\
-		\hline
-		CVMATCHER~\cite{estadoarte7} & \ding{51} & \ding{51} & \ding{51} & \ding{51} & \ding{55} \\
-		\hline
-		\textbf{VitaEX (proposed system)} & \ding{51} & \ding{51} & \ding{51} & \ding{51} & \ding{51} \\
-		\hline
-		\caption{Comparison of systems and research works related to CV analysis and job recommendation}
+	\begin{table}[ht]
+		\caption{Comparison of CV analysis and job recommendation systems}
 		\label{tab:related}
-	\end{longtable}
-	\end{center}
-
-	% --------------------------------------------------------
-% --------------------------------------------------------
-
-% --------------------------------------------------------
-% --------------------------------------------------------
-\newpage
-\section{Methodologies}
-\label{sec:methodologies}
-
-To ensure disciplined software delivery \emph{and} reproducible data science, VitaEX combines two complementary frameworks.  
-The \textbf{Spiral Model} governs system development, guiding each release through goal setting, risk analysis, engineering, and stakeholder validation.  
-Concurrently, all data activities follow the \textbf{CRISP-DM} standard, whose six-step cycle—business understanding, data understanding, preparation, modeling, evaluation, deployment—provides full traceability from raw web data to production rules.
-
-\paragraph{\textbf{Spiral Model.}}
-Every loop begins by defining objectives and identifying risks; mitigations are then prototyped and evaluated before the next iteration.  
-This cadence enabled early validation of LinkedIn-scraping scalability, Apriori performance, and security controls, reducing late-stage surprises.
-
-\paragraph{\textbf{CRISP-DM.}}
-Within each Spiral loop the team executes CRISP-DM:  
-\emph{(i)} translate recruiter needs into scraping targets;  
-\emph{(ii)} profile incoming job data;  
-\emph{(iii)} clean, tokenize, and canonicalize skills;  
-\emph{(iv)} mine Apriori association rules;  
-\emph{(v)} benchmark rule quality; and  
-\emph{(vi)} publish refreshed models via the REST API.  
-The outputs of CRISP-DM feed the next Spiral cycle, while new Spiral deliverables provide infrastructure for subsequent data iterations.
-
-
-
-
-
-\renewcommand{\arraystretch}{1.3}
-\begin{longtable}{|>{\raggedright\arraybackslash}p{3.5cm}|p{4.6cm}|p{6.3cm}|}
-	\hline
-	\rowcolor{gray!20}\textbf{Phase} & \textbf{Standard Definition} & \textbf{Implementation in \emph{VitaEX}} \\ \hline
-	\endhead
-	\textbf{1. Business Understanding} &
-	Translate business goals into a well-framed analytics problem. &
-	AI graduates rejected by ATS keyword filters.\
+		\centering
+		\small
+		\renewcommand{\arraystretch}{1.2}
+		\begin{tabular}{lccccc}
+			\hline
+			\textbf{Systems} & 
+			\begin{tabular}{c}\textbf{Recomendations}\\ \textbf{based on job offers}\end{tabular} & 
+			\begin{tabular}{c}\textbf{CV}\\ \textbf{temps.}\end{tabular} & 
+			\textbf{ML} & 
+			\begin{tabular}{c}\textbf{Job offer}\\ \textbf{recommendation}\end{tabular} & 
+			\begin{tabular}{c}\textbf{Free for}\\ \textbf{students}\end{tabular} \\
+			\hline
+			NLU for CV~\cite{estadoarte1} & $\checkmark$ & & & & \\
+			\hline
+			GIRL~\cite{estadoarte2} & $\checkmark$ & & $\checkmark$ & & \\
+			\hline
+			ResumeNet~\cite{estadoarte3} & & & $\checkmark$ & & \\
+			\hline
+			NN Recruitment~\cite{estadoarte4} & & & $\checkmark$ & & \\
+			\hline
+			LinkedIn Builder~\cite{estadoarte5} & $\checkmark$ & $\checkmark$ & & & $\checkmark$ \\
+			\hline
+			CVapp~\cite{estadoarte8} & & $\checkmark$ & & & \\
+			\hline
+			Jobania~\cite{estadoarte6} & $\checkmark$ & $\checkmark$ & & & \\
+			\hline
+			CVMATCHER~\cite{estadoarte7} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & \\
+			\hline
+			\textbf{VitaEX (ours)} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
+			\hline
+		\end{tabular}
+	\end{table}
+	\section{Methodologies}
+	To ensure disciplined software delivery \emph{and} reproducible data science, VitaEX combines two complementary frameworks.  
+	The \textbf{Spiral Model} governs system development, guiding each release through goal setting, risk analysis, engineering, and stakeholder validation.  
+	Concurrently, all data activities follow the \textbf{CRISP-DM} standard, whose six-step cycle—business understanding, data understanding, preparation, modeling, evaluation, deployment—provides full traceability from raw web data to production rules.
+	\subsection{\textbf{CRISP-DM.}}
+	Within each Spiral loop the team executes CRISP-DM:  
+	\emph{(i)} translate recruiter needs into scraping targets;  
+	\emph{(ii)} profile incoming job data;  
+	\emph{(iii)} clean, tokenize, and canonicalize skills;  
+	\emph{(iv)} mine Apriori association rules;  
+	\emph{(v)} benchmark rule quality; and  
+	\emph{(vi)} publish refreshed models via the REST API.  
+	The outputs of CRISP-DM feed the next Spiral cycle, while new Spiral deliverables provide infrastructure for subsequent data iterations.
 	
-	Goal: turn the ATS into a “mentor” that pinpoints missing skills.\
 	
-	\\ \hline
+	\begin{table}[ht]
+		\caption{Application of CRISP-DM in VitaEX}
+		\label{tab:crispdm}
+		\centering
+		\small
+		\begin{tabular}{p{30mm}p{35mm}p{58mm}}
+			\toprule
+			\textbf{Phase} & \textbf{Standard Definition} & \textbf{VitaEX Implementation} \\
+			\midrule
+			\textbf{1. Business Understanding} & 
+			Translate business goals into analytics problem & 
+			AI graduates rejected by ATS filters. Goal: Turn ATS into "mentor" that pinpoints missing skills \\
+			\addlinespace
+			
+			\textbf{2. Data Understanding} & 
+			Collect, explore and assess raw data quality & 
+			Pilot scrape (Nov 2024) of 500 LinkedIn ads. EDA: city/skill/experience distributions, missing-value analysis \\
+			\addlinespace
+			
+			\textbf{3. Data Preparation} & 
+			Clean, transform and format data for modeling & 
+			Lower-casing, accent removal, HTML stripping. spaCy POS-tagging (nouns/verbs/adjectives). Custom ontology (ML→machine learning). Transaction format: $\mathcal{T}=${skills, city, modality, experience} (5,313 records) \\
+			\addlinespace
+			
+			\textbf{4. Modeling} & 
+			Choose algorithms and build models & 
+			Apriori algorithm for association rule mining \\
+			\addlinespace
+			
+			\textbf{5. Evaluation} & 
+			Verify model meets objectives & 
+			Offline metrics: Support, confidence, lift \\
+			\addlinespace
+			
+			\textbf{6. Deployment} & 
+			Deploy solution and plan maintenance & 
+			REST endpoint \texttt{/recommend} exposes rules and rankings \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	%\pagebreak
 	
-	\textbf{2. Data Understanding} &
-	Collect, explore and assess raw data quality. &
-	Pilot scrape (Nov 2024) of 500 LinkedIn ads to inspect fields and noise.\
-	EDA: city/skill/experience histograms, missing-value audit, HTML encoding issues.\
-	\\ \hline
+	% ........................................................
+	\subsection{Data Acquisition and Ingestion}
+	\label{ssec:data_acquisition}
 	
-	\textbf{3. Data Preparation} &
-	Clean, transform and format data for modeling. &
-	Lower-casing, accent removal, strip HTML.\
+	\subsubsection{Target definition.}
+	The scraping focused on eight AI-related roles—\emph{AI Engineer}, \emph{Machine Learning Engineer}, \emph{Data Scientist}, \emph{NLP Engineer}, \emph{Computer Vision Engineer}, \emph{Deep Learning Researcher}, \emph{MLOps Engineer}, and \emph{Data Analyst}—across five Mexican tech hubs: \emph{Ciudad de México (CDMX)}, \emph{Guadalajara}, \emph{Monterrey}, \emph{Querétaro}, and \emph{Puebla}.
 	
-	Spanish spaCy POS-tagger to keep nouns/verbs/adjectives.\
 	
-	Custom ontology (\textit{ML}→\textit{machine learning}).\
+	\subsubsection{Scraping pipeline.}
+	A resilient Python crawler (\texttt{requests} + \texttt{BeautifulSoup}) executed a two-phase loop:  
+	\emph{(i)} collect paginated job IDs using rotating user-agents and exponential back-off;  
+	\emph{(ii)} retrieve detail pages through LinkedIn’s public API, parsing HTML and JSON payloads.  
+	All records are stored in MongoDB as BSON documents\\
+	\verb|{id, title, company, city, date, experience, description, skills[]}|.  
+	Monthly Celery-based cron jobs refresh the corpus and flag updates via change streams.
 	
-	Each vacancy becomes a transaction $\mathcal{T}=\{$skills, city, modality, experience$\}$.\
+	% ........................................................
+	\subsection{Data Preparation}
+	\label{ssec:data_prep}
 	
-	Output: 5 313 clean records. \\ \hline
+	\begin{enumerate}
+		\item \textbf{Cleaning \& normalisation:} lower-casing, accent stripping, HTML removal.
+		\item \textbf{Filtering:} spaCy’s Spanish model retains nouns, verbs, adjectives.
+		\item \textbf{Skill mapping:} custom ontology maps synonyms (\textit{“ML”}$\rightarrow$\textit{“machine learning”}).
+		\item \textbf{Feature engineering:} each posting becomes a transaction
+		$\mathcal{T}=\{$\texttt{skills, city, modality, experience}$\}$.
+	\end{enumerate}
 	
-	\textbf{4. Modeling} &
-	Choose algorithms, build models, tune parameters. &
-	Apriori algorithm \\ \hline
+	\subsection{Data Preprocessing and Noise Handling}
 	
-	\textbf{5. Evaluation} &
-	Verify models meet business and quality objectives. &
-	Offline metrics: Precision, confidence, lift
-\\ \hline
+	The web scraper extracted over 5,000 AI-related job postings across five major Mexican cities between November 2024 and May 2025. These postings presented high heterogeneity in formatting, language use, and keyword conventions due to varying employer practices and platform encoding.
 	
-	\textbf{6. Deployment} &
-	Put the solution into production and plan maintenance. &
-	REST endpoint \texttt{recommend} exposes rules and rankings.\
+	To address this, a multi-phase cleaning pipeline was applied. First, \textbf{deduplication} logic discarded redundant entries based on URL and job ID hashing. Second, \textbf{regex-based cleaning} were applied to normalize inconsistent labels (e.g., ``machine learning engineer'' vs. ``ML Engr'') and to standardize experience tags. Third, \textbf{Stopwords} were removed from job descriptions using SpaCy and custom pre-tokenization rules.
 	
-\\ \hline
-	\caption{Step-by-step application of CRISP–DM in the \emph{VitaEX} project.}
-	\label{tab:crispdm}
-\end{longtable}
-% ----------------------------------------------------------
-
-
-% ........................................................
-\subsection{Data Acquisition and Ingestion}
-\label{ssec:data_acquisition}
-
-\subsubsection{Target definition.}
-The scraping focused on eight AI-related roles—\emph{AI Engineer}, \emph{Machine Learning Engineer}, \emph{Data Scientist}, \emph{NLP Engineer}, \emph{Computer Vision Engineer}, \emph{Deep Learning Researcher}, \emph{MLOps Engineer}, and \emph{Data Analyst}—across five Mexican tech hubs: \emph{Ciudad de México (CDMX)}, \emph{Guadalajara}, \emph{Monterrey}, \emph{Querétaro}, and \emph{Puebla}.
-
-
-\subsubsection{Scraping pipeline.}
-A resilient Python crawler (\texttt{requests} + \texttt{BeautifulSoup}) executed a two-phase loop:  
-\emph{(i)} collect paginated job IDs using rotating user-agents and exponential back-off;  
-\emph{(ii)} retrieve detail pages through LinkedIn’s public API, parsing HTML and JSON payloads.  
-All records are stored in MongoDB as BSON documents
-\verb|{id, title, company, city, date, experience, description, skills[]}|.  
-Monthly Celery-based cron jobs refresh the corpus and flag updates via change streams.
-
-% ........................................................
-\subsection{Data Preparation}
-\label{ssec:data_prep}
-
-\begin{enumerate}[leftmargin=*]
-	\item \textbf{Cleaning \& normalisation:} lower-casing, accent stripping, HTML removal.
-	\item \textbf{Filtering:} spaCy’s Spanish model retains nouns, verbs, adjectives.
-	\item \textbf{Skill mapping:} custom ontology maps synonyms (\textit{“ML”}$\rightarrow$\textit{“machine learning”}).
-	\item \textbf{Feature engineering:} each posting becomes a transaction
-	$\mathcal{T}=\{$\texttt{skills, city, modality, experience}$\}$.
-\end{enumerate}
-
-\subsection{Data Preprocessing and Noise Handling}
-
-The web scraper extracted over 5,000 AI-related job postings across five major Mexican cities between November 2024 and May 2025. These postings presented high heterogeneity in formatting, language use, and keyword conventions due to varying employer practices and platform encoding.
-
-To address this, a multi-phase cleaning pipeline was applied. First, \textbf{deduplication} logic discarded redundant entries based on URL and job ID hashing. Second, \textbf{regex-based cleaning} were applied to normalize inconsistent labels (e.g., ``machine learning engineer'' vs. ``ML Engr'') and to standardize experience tags. Third, \textbf{Stopwords} were removed from job descriptions using SpaCy and custom pre-tokenization rules.
-
-Lastly, a validation step assessed field completeness across required dimensions (title, location, description, tags). Only postings with at least 80\% field population and valid location encoding were retained for rule mining, ensuring high signal-to-noise ratio in the input dataset.
-
-% ........................................................
-
-% ........................................................
-\subsection{Web-Application Development}
-\label{ssec:web_dev}
-
-\subsubsection{Architecture}
-VitaEX follows a service-oriented, three–layer MVC design (Fig.~\ref{fig:architecture}):
-\begin{itemize}[leftmargin=*]
-	\item \textbf{View} – A lightweight React front-end styled with Bootstrap~5 delivers a fully
-	responsive UI.  Static assets are served by \texttt{nginx}, enabling HTTP/2
-	multiplexing and Brotli compression for optimal latency on low-bandwidth connections.
-	\item \textbf{Controller} – All business logic resides in a versioned \texttt{/api/v1}
-	implemented with Django REST Framework.  The API enforces stateless JWT
-	authentication, role-based authorisation, and request throttling.  Swagger/OpenAPI
-	documentation is autogenerated at build time.
-	\item \textbf{Model} – Persistence is split by access pattern:  
-	\emph{(i)}~MySQL stores relational data (users, roles, audit trails) and vector
-	embeddings via the \texttt{pgvector} extension;  
-	\emph{(ii)}~MongoDB houses unstructured job postings and mined Apriori rules in BSON
-	format, supporting rapid schema evolution.  
-	All write operations are wrapped in ACID transactions where cross-store consistency
-	is required.
-\end{itemize}
-
-% ........................................................
-
-%	\section{Dataset Construction}
-%	\subsection{Web Scraping Pipeline}
-%	Python \texttt{requests} + BeautifulSoup iteratively queried LinkedIn’s public job pages using rotating user agents and random delays. Each posting is stored in MongoDB with fields \{\texttt{id}, title, company, city, modality, date, experience, description, skills[\,]\}. Monthly incremental runs refresh the corpus and trigger rule re-mining.
-%	
-%	\subsection{Pre-processing}
-%	Text is lower-cased, tokenised (spaCy), stop-words removed, and skill synonyms normalised (\emph{"ML"}$\to$\emph{"machine learning"}). Eight AI-centric job titles (AI Engineer, NLP Engineer, \dots) and five cities (CDMX, Monterrey, Guadalajara, Querétaro, Puebla) define the study scope.
-%	
-%	% --------------------------------------------------------
+	Lastly, a validation step assessed field completeness across required dimensions (title, location, description, tags). Only postings with at least 80\% field population and valid location encoding were retained for rule mining, ensuring high signal-to-noise ratio in the input dataset.
+	
+	% ........................................................
+	
+	% ........................................................
+	\subsection{Web-Application Development}
+	\label{ssec:web_dev}
+	
+	\subsubsection{Architecture}
+	VitaEX follows a service-oriented, three–layer MVC design (Fig.~\ref{fig:blocks}):
+	\begin{itemize}
+		\item \textbf{View} – A lightweight React front-end styled with Bootstrap~5 delivers a fully
+		responsive UI.  Static assets are served by \texttt{nginx}, enabling HTTP/2
+		multiplexing and Brotli compression for optimal latency on low-bandwidth connections.
+		\item \textbf{Controller} – All business logic resides in a versioned \texttt{/api/v1}
+		implemented with Django REST Framework.  The API enforces stateless JWT
+		authentication, role-based authorisation, and request throttling.  Swagger/OpenAPI
+		documentation is autogenerated at build time.
+		\item \textbf{Model} – Persistence is split by access pattern:  
+		\emph{(i)}~MySQL stores relational data (users, roles, audit trails) and vector
+		embeddings via the \texttt{pgvector} extension;  
+		\emph{(ii)}~MongoDB houses unstructured job postings and mined Apriori rules in BSON
+		format, supporting rapid schema evolution.  
+		All write operations are wrapped in ACID transactions where cross-store consistency
+		is required.
+	\end{itemize}
+	
+	% ........................................................
+	
+	%	\section{Dataset Construction}
+	%	\subsection{Web Scraping Pipeline}
+	%	Python \texttt{requests} + BeautifulSoup iteratively queried LinkedIn’s public job pages using rotating user agents and random delays. Each posting is stored in MongoDB with fields \{\texttt{id}, title, company, city, modality, date, experience, description, skills[\,]\}. Monthly incremental runs refresh the corpus and trigger rule re-mining.
+	%	
+	%	\subsection{Pre-processing}
+	%	Text is lower-cased, tokenised (spaCy), stop-words removed, and skill synonyms normalised (\emph{"ML"}$\to$\emph{"machine learning"}). Eight AI-centric job titles (AI Engineer, NLP Engineer, \dots) and five cities (CDMX, Monterrey, Guadalajara, Querétaro, Puebla) define the study scope.
+	%	
+	%	% --------------------------------------------------------
 	\section{Recommender}
-%	\subsection{Feature Extraction}
-%	CVs in PDF/DOCX are parsed (\texttt{pdfplumber}, \texttt{python-docx}). Skills and experiences become one-hot vectors; TF–IDF and SBERT embeddings provide semantic similarity used later to flag “missing” skills.
+	%	\subsection{Feature Extraction}
+	%	CVs in PDF/DOCX are parsed (\texttt{pdfplumber}, \texttt{python-docx}). Skills and experiences become one-hot vectors; TF–IDF and SBERT embeddings provide semantic similarity used later to flag “missing” skills.
 	
 	\subsection{Apriori Rule-Mining}
 	
@@ -545,7 +528,7 @@ VitaEX follows a service-oriented, three–layer MVC design (Fig.~\ref{fig:archi
 	\vspace{0.5em}
 	
 	
-	\paragraph{Algorithm Workflow:}
+	\subsubsection{Algorithm Workflow:}
 	\begin{enumerate}
 		\item The student profile is converted into a set of normalized attributes.
 		\item Rules whose antecedents are a subset of the student's profile are selected.
@@ -557,37 +540,34 @@ VitaEX follows a service-oriented, three–layer MVC design (Fig.~\ref{fig:archi
 	
 	The rule-mining process revealed several patterns that are both statistically significant and practically useful. Notably, many rules with \textbf{100\% confidence} exhibited only moderate lift values. This implies that while the consequent always follows the antecedent in those cases, the relationship may be too generic or expected to be informative (e.g., “SQL” $\Rightarrow$ “Python”). Conversely, rules with \textbf{high lift} values ($> 3.0$) tended to capture less obvious, domain-specific associations that are especially valuable for guiding students (e.g., “Pandas”, “Querétaro” $\Rightarrow$ “TensorFlow”).
 	
-	\begin{itemize}
-		\item \textbf{Figure~\ref{fig:top_rules}} presents the top 10 association rules ordered by lift. These rules include combinations of skills and job attributes that strongly co-occur in the dataset. The visualization highlights the antecedents and consequents in each rule, alongside their lift scores. High lift indicates that these rule suggestions are much more likely than random chance, making them ideal candidates for recommendation.
-		
-		\item \textbf{Figure~\ref{fig:frequent_attrs}} shows a bar chart of the most common attributes appearing in the job postings, such as technical skills (e.g., Python, SQL, Docker) and location or modality terms (e.g., CDMX, remote). This distribution is key for understanding which features dominate the job market and thus should be prioritized in student CVs.
-		
-		\item \textbf{Figure~\ref{fig:confidence_distribution}} visualizes the range of confidence levels across filtered rules. Rather than limiting to only 100\% confidence rules, this chart includes a balanced mix from 50\% up to 100\%, illustrating the richness of the rule base. Rules with 70–90\% confidence, though not absolute, offer realistic and frequently valid suggestions that generalize well across roles.
-	\end{itemize}
-		%\vspace{-8.2em}
+	\textbf{Figure~\ref{fig:top_rules}} presents the top 10 association rules ordered by lift. These rules include combinations of skills and job attributes that strongly co-occur in the dataset. The visualization highlights the antecedents and consequents in each rule, alongside their lift scores. High lift indicates that these rule suggestions are much more likely than random chance, making them ideal candidates for recommendation.
+	
+	\textbf{Figure~\ref{fig:frequent_attrs}} shows a bar chart of the most common attributes appearing in the job postings, such as technical skills (e.g., Python, SQL, Docker) and location or modality terms (e.g., CDMX, remote). This distribution is key for understanding which features dominate the job market and thus should be prioritized in student CVs.
+	
+	\textbf{Figure~\ref{fig:confidence_distribution}} visualizes the range of confidence levels across filtered rules. Rather than limiting to only 100\% confidence rules, this chart includes a balanced mix from 50\% up to 100\%, illustrating the richness of the rule base. Rules with 70–90\% confidence, though not absolute, offer realistic and frequently valid suggestions that generalize well across roles.
+	%\vspace{-8.2em}
 	These patterns directly fuel the recommender engine. For instance, if a student from CDMX includes “SQL” and “Pandas” in their profile but not “TensorFlow”, and a rule exists where \{“SQL”, “Pandas”, “Querétaro”\} $\Rightarrow$ “TensorFlow” with high lift and confidence, the system will recommend adding “TensorFlow” to improve CV–vacancy alignment.
-	%\vspace{-1.5em}
-	\begin{figure}[H]
+	\begin{figure}
 		\centering
-		\includegraphics[width=1.15\linewidth]{imagenes/top_rules.png}
+		\includegraphics[width=1\linewidth]{imagenes/top_rules.png}
 		\caption{Top 10 association rules sorted by lift, highlighting the strongest co-occurrence patterns.}
 		\label{fig:top_rules}
 	\end{figure}
 	
-	\begin{figure}[H]
+	\begin{figure}
 		\centering
-		\includegraphics[width=0.9\linewidth]{imagenes/frequent_attributes.png}
+		\includegraphics[width=1\linewidth]{imagenes/frequent_attributes.png}
 		\caption{Most frequent attributes in job postings, including skills, experience levels, locations, and modalities.}
 		\label{fig:frequent_attrs}
 	\end{figure}
 	
-	\begin{figure}[H]
+	\begin{figure}
 		\centering
-		\includegraphics[width=0.9\linewidth]{imagenes/confidence_distribution.png}
+		\includegraphics[width=1\linewidth]{imagenes/confidence_distribution.png}
 		\caption{Confidence distribution of retained rules, covering the 50–100\% range to show diverse recommendation strength.}
 		\label{fig:confidence_distribution}
 	\end{figure}
-	
+	\pagebreak
 	To assess the practical impact of the rule system, we evaluated 1\,200 anonymized student profiles. Each profile matched an average of 6–9 rules, with 83\% of suggested consequents corresponding to previously missing skills or job attributes. For rules with confidence $\geq 85\%$ and lift $\geq 2.5$, over 67\% resulted in an increase in cosine similarity between the enriched student profile and relevant job descriptions. This quantitative improvement supports the value of rule-based enrichment in guiding résumé revision.
 	
 	To benchmark this approach, we also applied the \textbf{K-Means clustering algorithm} to the same dataset after reducing its dimensionality with TF-IDF and PCA. Although K-Means was able to group job postings by general themes (e.g., data engineering, software development), the clusters lacked interpretability. Furthermore, precision@5 for top recommended vacancies dropped by 24\%, and qualitative student feedback indicated that the suggestions were “generic” or “unclear.” This contrast highlights the advantage of Apriori’s transparent logic for both system explainability and student trust.
@@ -595,12 +575,12 @@ VitaEX follows a service-oriented, three–layer MVC design (Fig.~\ref{fig:archi
 	Overall, the Apriori-based recommendation engine not only offers statistically grounded guidance but also serves an educational role, helping students understand why specific improvements are suggested. This aligns with the project’s dual goals of enhancing CV effectiveness and supporting career readiness in a comprehensible manner.
 	
 	% --------------------------------------------------------
-
+	
 	\section{System Architecture and Implementation}
 	
-	Figure~\ref{fig:blocks} shows a three-layer MVC stack: \textbf{View} (Bootstrap~5) $\rightarrow$ \textbf{Controller} (Django REST API) $\rightarrow$ \textbf{Model} (NLP services + MongoDB/MySQL). Celery workers handle asynchronous scraping and model retraining.
+	\textbf{Figure~\ref{fig:blocks}} shows a three-layer MVC stack: \textbf{View} (Bootstrap~5) $\rightarrow$ \textbf{Controller} (Django REST API) $\rightarrow$ \textbf{Model} (NLP services + MongoDB/MySQL). Celery workers handle asynchronous scraping and model retraining.
 	
-	\begin{figure}[H]
+	\begin{figure}
 		\centering
 		\includegraphics[width=1\linewidth]{imagenes/Arquitectura_Sistema.png}
 		\caption{High-level architecture of VitaEX.}
@@ -634,62 +614,58 @@ VitaEX follows a service-oriented, three–layer MVC design (Fig.~\ref{fig:archi
 	Regarding data persistence, the system uses a \textbf{hybrid storage architecture}: MongoDB stores unstructured documents like scraped job postings and rule outputs, while MySQL handles structured entities such as user profiles and authentication metadata. To ensure consistency across both layers during recommendation generation, a synchronization layer was implemented. This layer queries the MongoDB-derived feature vector and cross-validates with the MySQL user profile before computing recommendations, ensuring that outdated or misaligned records do not propagate downstream.
 	
 	% --------------------------------------------------------
-%	\section{Risk and Feasibility}
-%	Thirty‑one risks were catalogued. Catastrophic items include time under‑estimation (R04) and data leakage (R25). Mitigations: Agile sprints with 20–30~\% buffer and TLS+role‑based access, respectively. Economically, development costs \textasciitilde\$122\,k~MXN, with monthly OPEX \mbox{$\approx\!\$3\,k$}. Potential revenue (ads + premium templates) could reach \$23\,k~MXN\,/year, covering OPEX but requiring external seed funding.
-%	
+	%	\section{Risk and Feasibility}
+	%	Thirty‑one risks were catalogued. Catastrophic items include time under‑estimation (R04) and data leakage (R25). Mitigations: Agile sprints with 20–30~\% buffer and TLS+role‑based access, respectively. Economically, development costs \textasciitilde\$122\,k~MXN, with monthly OPEX \mbox{$\approx\!\$3\,k$}. Potential revenue (ads + premium templates) could reach \$23\,k~MXN\,/year, covering OPEX but requiring external seed funding.
+	%	
 	% --------------------------------------------------------
-%	\section{Preliminary Evaluation}
-%	A/B tests on 30 students showed:
-%	\begin{itemize}
-%		\item \textbf{CV pass-rate through a commercial ATS} rose from 28~\% to 60~\%.
-%		\item \textbf{Perceived usability} (SUS) scored 79~$\pm$~4 (“good”).
-%		\item Average rule-explanation helpfulness rated 4.2/5.
-%	\end{itemize}
-%	Limitations: small single-institution sample and absence of long-term placement data.
-%	
+	%	\section{Preliminary Evaluation}
+	%	A/B tests on 30 students showed:
+	%	\begin{itemize}
+		%		\item \textbf{CV pass-rate through a commercial ATS} rose from 28~\% to 60~\%.
+		%		\item \textbf{Perceived usability} (SUS) scored 79~$\pm$~4 (“good”).
+		%		\item Average rule-explanation helpfulness rated 4.2/5.
+		%	\end{itemize}
+	%	Limitations: small single-institution sample and absence of long-term placement data.
+	%	
 	% --------------------------------------------------------
-
-\section{Conclusion}
-
-VitaEX demonstrates that the fusion of interpretable rule-based models with state-of-the-art natural language processing (NLP) can substantially enhance the employment readiness of students in Artificial Intelligence (AI), particularly within the Mexican context. Unlike opaque black-box systems, VitaEX leverages transparent and explainable logic through the \textbf{Apriori algorithm}, generating actionable recommendations based on real labor market data.
-
-The system successfully mined over \textbf{500,000 meaningful association rules} from real-world job postings collected between November 2024 and May 2025. These rules reveal underlying skill patterns, frequently co-occurring competencies, and contextual relationships between job locations, skillsets, and experience levels. For example, the system uncovered that knowledge of SQL and Pandas in candidates from Mexico City often predicts the requirement of TensorFlow expertise. This kind of granular insight empowers students to tailor their résumés in ways that not only pass Applicant Tracking Systems (ATS) but also resonate more accurately with recruiter expectations.
-
-Furthermore, the system achieves this while maintaining full transparency in its reasoning, offering users personalized explanations for each suggestion. This interpretability serves a dual purpose: it enhances trust in the system and also contributes to educational value by informing students of current job market trends in AI.
-
-VitaEX also includes a scalable backend architecture powered by asynchronous Celery tasks, MySQL/MongoDB hybrid storage, and a Django REST API. It is designed to be modular and updatable, allowing future integration of new recommendation engines or resume parsers without compromising performance.
-
-\subsection*{Future Work}
-
-To build on the current system and ensure continuous relevance in an evolving market, several future enhancements are planned:
-
-\begin{enumerate}
-	\item \textbf{Enhanced Keyword Extraction}: Integration of advanced Named Entity Recognition (NER) models capable of understanding context-aware and implicit skill references in user-submitted CVs.
 	
-	\item \textbf{Document Format Support}: Expanding compatibility to allow direct extraction of skills and metadata from diverse CV formats such as \texttt{.docx} and \texttt{.pdf}, thus removing reliance on plain text input.
+	\section{Conclusion}
 	
-	\item \textbf{Skill Normalization and Ontology Mapping}: Implementing AI-specific ontologies to normalize synonymous terms (e.g., “ML” vs “Machine Learning”) and improve consistency in skill matching.
+	VitaEX demonstrates that the fusion of interpretable rule-based models with state-of-the-art natural language processing (NLP) can substantially enhance the employment readiness of students in Artificial Intelligence (AI), particularly within the Mexican context. Unlike opaque black-box systems, VitaEX leverages transparent and explainable logic through the \textbf{Apriori algorithm}, generating actionable recommendations based on real labor market data.
 	
-	\item \textbf{Temporal Analysis of Skill Trends}: Adding capabilities for time-series analysis to capture the rise and fall of skill demand over time, offering students a forecast of which abilities will remain in high demand.
+	The system successfully mined over \textbf{500,000 meaningful association rules} from real-world job postings collected between November 2024 and May 2025. These rules reveal underlying skill patterns, frequently co-occurring competencies, and contextual relationships between job locations, skillsets, and experience levels. For example, the system uncovered that knowledge of SQL and Pandas in candidates from Mexico City often predicts the requirement of TensorFlow expertise. This kind of granular insight empowers students to tailor their résumés in ways that not only pass Applicant Tracking Systems (ATS) but also resonate more accurately with recruiter expectations.
 	
-	\item \textbf{User Feedback Loop}: Incorporating user feedback and success metrics (e.g., interview callbacks) to iteratively refine recommendation quality.
-\end{enumerate}
-
-\subsection*{Social and Educational Impact}
-
-By focusing on students—especially those from underserved areas or public universities—VitaEX democratizes access to quality career guidance. Its open-access model and user-centered design enable thousands of students to receive personalized, data-driven advice without cost, narrowing the gap between academic preparation and real-world employability in the AI sector.
-
+	Furthermore, the system achieves this while maintaining full transparency in its reasoning, offering users personalized explanations for each suggestion. This interpretability serves a dual purpose: it enhances trust in the system and also contributes to educational value by informing students of current job market trends in AI.
 	
-%	% ----------------- Acknowledgements ---------------------
-%	\section*{Acknowledgements}
-%	We thank M.\,C. Elizabeth Moreno Galván and M.\,C. Abdiel Reyes Vera for supervision
+	VitaEX also includes a scalable backend architecture powered by asynchronous Celery tasks, MySQL/MongoDB hybrid storage, and a Django REST API. It is designed to be modular and updatable, allowing future integration of new recommendation engines or resume parsers without compromising performance.
 	
-% ----------------- Bibliography -------------------------
+	\subsubsection{Future Work}
+	
+	To build on the current system and ensure continuous relevance in an evolving market, several future enhancements are planned:
+	
+	\begin{enumerate}
+		\item \textbf{Enhanced Keyword Extraction}: Integration of advanced Named Entity Recognition (NER) models capable of understanding context-aware and implicit skill references in user-submitted CVs.
+		
+		\item \textbf{Document Format Support}: Expanding compatibility to allow direct extraction of skills and metadata from diverse CV formats such as \texttt{.docx} and \texttt{.pdf}, thus removing reliance on plain text input.
+		
+		\item \textbf{Skill Normalization and Ontology Mapping}: Implementing AI-specific ontologies to normalize synonymous terms (e.g., “ML” vs “Machine Learning”) and improve consistency in skill matching.
+		
+		\item \textbf{Temporal Analysis of Skill Trends}: Adding capabilities for time-series analysis to capture the rise and fall of skill demand over time, offering students a forecast of which abilities will remain in high demand.
+		
+		\item \textbf{User Feedback Loop}: Incorporating user feedback and success metrics (e.g., interview callbacks) to iteratively refine recommendation quality.
+	\end{enumerate}
+	
+	\subsubsection{Social and Educational Impact}
+	
+	By focusing on students—especially those from underserved areas or public universities—VitaEX democratizes access to quality career guidance. Its open-access model and user-centered design enable thousands of students to receive personalized, data-driven advice without cost, narrowing the gap between academic preparation and real-world employability in the AI sector.
+	
+	% ----------------- Bibliography -------------------------
 \makeatletter
-\renewcommand{\@biblabel}[1]{#1.} 
+\renewcommand\@biblabel[1]{#1.}  % opcional: cambia [1] por 1.
+\renewcommand\bibsection{\section*{References}\vspace*{-0.5em}} % quita salto de pagina 
 \makeatother
 
-\bibliographystyle{splncs04}
-%\bibliographystyle{IEEEtranN}
-\bibliography{referencias}
+	\bibliographystyle{splncs04}
+	%\bibliographystyle{IEEEtranN}
+	\bibliography{referencias}
 \end{document}
