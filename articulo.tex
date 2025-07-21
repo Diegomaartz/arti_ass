@@ -342,10 +342,32 @@
 			\hline
 		\end{tabular}
 	\end{table}
-	\section{Methodologies}
-	To ensure disciplined software delivery \emph{and} reproducible data science, VitaEX combines two complementary frameworks.  
-	The \textbf{Spiral Model} governs system development, guiding each release through goal setting, risk analysis, engineering, and stakeholder validation.  
-	Concurrently, all data activities follow the \textbf{CRISP-DM} standard, whose six-step cycle—business understanding, data understanding, preparation, modeling, evaluation, deployment—provides full traceability from raw web data to production rules.
+	
+	
+	\newpage
+	
+\section{Methodologies}
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imagenes/cascada.png}
+	\caption{CRISP-DM methodology depicted as a descending staircase.}
+	\label{fig:blocks}
+\end{figure}
+
+
+
+
+
+To ensure disciplined software delivery \emph{and} reproducible data science, \textit{VitaEX} combines two complementary frameworks.  
+The \textbf{Spiral Model} governs system development, guiding each release through goal-setting, risk analysis, engineering, and stakeholder validation.  
+Concurrently, all data activities follow the \textbf{CRISP-DM} standard, whose six-step cycle—Business Understanding, Data Understanding, Data Preparation, Modeling, Evaluation, and Deployment—provides full traceability from raw web data to production rules.
+
+
+	
+	
+	
 	\subsection{\textbf{CRISP-DM.}}
 	Within each Spiral loop the team executes CRISP-DM:  
 	\emph{(i)} translate recruiter needs into scraping targets;  
@@ -355,6 +377,9 @@
 	\emph{(v)} benchmark rule quality; and  
 	\emph{(vi)} publish refreshed models via the REST API.  
 	The outputs of CRISP-DM feed the next Spiral cycle, while new Spiral deliverables provide infrastructure for subsequent data iterations.
+	
+	
+	
 	
 	
 	\begin{table}[ht]
@@ -630,14 +655,7 @@
 	% --------------------------------------------------------
 	
 	\section{Conclusion}
-	
-	VitaEX demonstrates that the fusion of interpretable rule-based models with state-of-the-art natural language processing (NLP) can substantially enhance the employment readiness of students in Artificial Intelligence (AI), particularly within the Mexican context. Unlike opaque black-box systems, VitaEX leverages transparent and explainable logic through the \textbf{Apriori algorithm}, generating actionable recommendations based on real labor market data.
-	
-	The system successfully mined over \textbf{500,000 meaningful association rules} from real-world job postings collected between November 2024 and May 2025. These rules reveal underlying skill patterns, frequently co-occurring competencies, and contextual relationships between job locations, skillsets, and experience levels. For example, the system uncovered that knowledge of SQL and Pandas in candidates from Mexico City often predicts the requirement of TensorFlow expertise. This kind of granular insight empowers students to tailor their résumés in ways that not only pass Applicant Tracking Systems (ATS) but also resonate more accurately with recruiter expectations.
-	
-	Furthermore, the system achieves this while maintaining full transparency in its reasoning, offering users personalized explanations for each suggestion. This interpretability serves a dual purpose: it enhances trust in the system and also contributes to educational value by informing students of current job market trends in AI.
-	
-	VitaEX also includes a scalable backend architecture powered by asynchronous Celery tasks, MySQL/MongoDB hybrid storage, and a Django REST API. It is designed to be modular and updatable, allowing future integration of new recommendation engines or resume parsers without compromising performance.
+%	VitaEX demonstrates that the fusion of interpretable rule‑based models (Apriori) with state‑of‑the‑art NLP (SBERT embeddings) can substantially enhance the employment readiness of AI students in the Mexican context by converting mined labor‑market regularities into transparent, actionable résumé guidance. From job postings collected between November 2024 and May 2025 the system initially generated 2,075,096 candidate association rules and, after pruning by support (>1\%), confidence (>50\%), lift (≥1.5 where specified) and redundancy elimination, retained 533,889 high‑quality interpretable rules—summarized in the abstract as “over 500,000 meaningful association rules.” These rules surface underlying skill patterns, frequently co‑occurring competencies, and contextual relationships (skills, experience level, location, modality), exemplified by observed linkages such as SQL and Pandas profiles aligning with expectations like TensorFlow expertise. A hybrid scoring function with weighting \(\alpha = 0.6\) toward rule confidence integrates symbolic association strength with semantic similarity, maintaining full transparency via per‑suggestion explanations that build user trust and educational value. The project’s contributions include a localized multi‑city AI vacancy corpus normalized into transactional form; a large, pruned association‑rule knowledge base; a hybrid recommend‑and‑explain mechanism uniting Apriori metrics with SBERT similarity; and a modular full‑stack implementation (React front‑end, Django REST controller with JWT authentication, hybrid MongoDB/MySQL persistence, Celery‑based asynchronous scraping and retraining) that supports iterative refinement. Practical implications span clearer identification of skill gaps for students, empirical co‑occurrence signals for academic stakeholders, and data‑driven regional guidance, while current limitations involve the bounded temporal window, focus on five urban hubs, potential platform selection bias, absence so far of longitudinal placement indicators (e.g., interview callbacks or offers), and the need for periodic re‑mining to address temporal drift and cold‑start emergence of novel technologies.Beyond these quantitative outcomes, the integration of the Spiral Model with CRISP‑DM ensured disciplined iteration: early loops de‑risked scraping scale, rule explosion, and security controls, while each data mining cycle fed directly into refreshed recommendation endpoints. Educational intent remains central—rules are not opaque scores but structured explanations linking a student’s present profile to statistically grounded next steps, aligning with the project goals of empowering graduates, streamlining recruiter evaluation, and promoting regional equity across Mexico City, Guadalajara, Monterrey, Querétaro, and Puebla. The architecture (asynchronous scraping, transactional and semi‑structured persistence separation, REST exposure) supports periodic rule re‑mining without interrupting user interaction, and its modularity enables future incorporation of additional parsing or ranking components consistent with existing interfaces. Future enhancements already outlined—richer keyword/skill extraction (NER), broadened document format ingestion, ontology‑driven normalization of synonymous terms, temporal tracking of emergent skill demand, and incorporation of a feedback loop—are aimed at deepening personalization and resilience against market drift while preserving interpretability. Collectively, VitaEX provides an explainable, region‑aware scaffold that narrows informational gaps for early‑career AI candidates and establishes a reproducible foundation for subsequent refinement cycles anchored in transparent data mining and modern NLP.
 	
 	\subsubsection{Future Work}
 	
